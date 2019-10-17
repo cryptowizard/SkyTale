@@ -1,11 +1,16 @@
 package world.skytale.cyphers;
 
+import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 
 public final class AccountKey {
 
-    public static final int KEY_SIZE = 4096;
+    public static final int KEY_SIZE = 256;
 
     public static final  KeyPair generateKeyPair()
     {
@@ -18,6 +23,19 @@ public final class AccountKey {
         {
            throw  new RuntimeException(e.getMessage());
         }
+    }
+
+
+    public static PublicKey fromBytes(byte [] bytes)
+    {
+        try {
+            return      KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(bytes));
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
