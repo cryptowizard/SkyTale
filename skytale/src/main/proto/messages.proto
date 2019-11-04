@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package JSONmodels;
+package Messages;
 
-option java_package = "world.skytale.Message";
-option java_outer_classname = "Messages";
+option java_package = "world.skytale.message";
+option java_outer_classname = "Messages2";
 
 
 
@@ -32,3 +32,7 @@ message ChatMessage {
     bytes randomBytes=3;
 }
 
+message Hmm
+{
+    string ok =1;
+}
