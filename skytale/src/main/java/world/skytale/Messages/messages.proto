@@ -32,8 +32,5 @@ message ChatMessage {
     bytes randomBytes=3;
 }
 
-message Hmm
-{
-    string ok =1;
-}
+
 

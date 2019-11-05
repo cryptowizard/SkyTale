@@ -1,15 +1,11 @@
 package world.skytale.model;
 
 import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.util.Arrays;
 
-import world.skytale.converters.LongConverter;
+import world.xfreemedia.converters.LongConverter;
 import world.skytale.cyphers.Sha256;
-
-import static java.security.MessageDigest.getInstance;
 
 /**
  * PublicKeyId is used to convert long public key to unique 8 byte long value

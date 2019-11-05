@@ -3,7 +3,7 @@ syntax = "proto3";
 package Messages;
 
 option java_package = "world.skytale.message";
-option java_outer_classname = "Messages2";
+option java_outer_classname = "Messages";
 
 
 
