@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.security.PublicKey;
 import java.util.Arrays;
 
-import world.xfreemedia.converters.LongConverter;
+import world.skytale.converters.LongConverter;
 import world.skytale.cyphers.Sha256;
 
 /**

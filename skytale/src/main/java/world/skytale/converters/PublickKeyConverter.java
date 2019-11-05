@@ -1,4 +1,4 @@
-package world.xfreemedia.converters;
+package world.skytale.converters;
 
 public class PublickKeyConverter {
 }

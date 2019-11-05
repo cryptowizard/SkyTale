@@ -10,7 +10,7 @@ import java.security.spec.X509EncodedKeySpec;
 
 public final class AccountKey {
 
-    public static final int KEY_SIZE = 512;
+    public static final int KEY_SIZE = 4096;
 
     public static final  KeyPair generateKeyPair()
     {
