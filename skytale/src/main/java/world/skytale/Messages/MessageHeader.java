@@ -1,5 +1,6 @@
 package world.skytale.Messages;
 
+import world.skytale.converters.LongConverter;
 import world.skytale.model.PublicKeyId;
 
 public class MessageHeader {
@@ -18,11 +19,9 @@ public class MessageHeader {
         {
             throw new MessageProcessingException("Title Parsing failed, title too short");
         }
-
         String messageType = split[1];
         PublicKeyId publicKeyId = new PublicKeyId(split[2]);
-        long time = Long.parseLong(split[3]);
-
+        long time = LongConverter.fromBase32String(split[3]);
         return  new MessageHeader(messageType,publicKeyId,time);
     }
 
@@ -32,8 +31,7 @@ public class MessageHeader {
         String title = TITLE_TAG + SPLIT_STRING
                 + messageType +SPLIT_STRING
                 + senderID.toString() + SPLIT_STRING
-                + time ;
-
+                + LongConverter.toBase32String(time);
         return title;
     }
 
