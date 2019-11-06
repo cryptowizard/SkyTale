@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PublicKeyIdTest {
 
-    public static final int LENGTH = 20;
+    public static final int LENGTH = 2;
     static final PublicKey [] randomKeys = getRandomKeys();
 
 
@@ -78,7 +78,9 @@ public class PublicKeyIdTest {
     @Test
     public void generateID() {
 
-
+        String wrongString = "Hmm1421412";
+        PublicKeyId publicKeyId = new PublicKeyId(wrongString);
+       System.out.println(publicKeyId.toLong());
     }
 
 

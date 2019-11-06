@@ -21,7 +21,6 @@ public class Contact {
     private String lastName;
     private String address;
     private int type;
-
     private String picturePath;
 
     public Contact(PublicKey publicKey, String firstName, String lastName, String address) {
