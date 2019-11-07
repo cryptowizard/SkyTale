@@ -26,10 +26,16 @@ message PublicProfile{
     repeated string links=3;
 }
 
+
 message ChatMessage {
     string messageText=1;
     repeated Attachment attachments=2;
     bytes randomBytes=3;
+}
+
+message EncryptedChatMessage {
+    bytes encryptedChatMessage=1;
+    int64 chatID=2;
 }
 
 message Hmm

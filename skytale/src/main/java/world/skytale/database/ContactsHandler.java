@@ -15,7 +15,7 @@ public interface ContactsHandler {
      * @throws ContactNotFoundException
      */
 
-     Contact getContact(String contactID) throws ContactNotFoundException;
+     Contact getContact(long contactID) throws ContactNotFoundException;
 
 
     /**

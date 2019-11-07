@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class ChatMessage implements Serializable {
     private static final long serialVersionUID = 132126L;
 
-    private PublicKeyId senderID;
+    private ID senderID;
     private long time;
 
     private String message;

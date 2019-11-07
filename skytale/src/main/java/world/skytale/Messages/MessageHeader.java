@@ -1,7 +1,7 @@
 package world.skytale.Messages;
 
 import world.skytale.converters.LongConverter;
-import world.skytale.model.PublicKeyId;
+import world.skytale.model.ID;
 
 public class MessageHeader {
 
@@ -9,7 +9,7 @@ public class MessageHeader {
     public static final String SPLIT_STRING = ";";
 
     private  String messageType;
-    private PublicKeyId senderID;
+    private ID senderID;
     private long time;
 
 
@@ -20,9 +20,9 @@ public class MessageHeader {
             throw new MessageProcessingException("Title Parsing failed, title too short");
         }
         String messageType = split[1];
-        PublicKeyId publicKeyId = new PublicKeyId(split[2]);
+        ID uniqueID = new ID(split[2]);
         long time = LongConverter.fromBase32String(split[3]);
-        return  new MessageHeader(messageType,publicKeyId,time);
+        return  new MessageHeader(messageType, uniqueID,time);
     }
 
 
@@ -35,7 +35,7 @@ public class MessageHeader {
         return title;
     }
 
-    public MessageHeader(String messageType, PublicKeyId senderID, long time) {
+    public MessageHeader(String messageType, ID senderID, long time) {
         this.messageType = messageType;
         this.senderID = senderID;
         this.time = time;
@@ -49,11 +49,11 @@ public class MessageHeader {
         this.messageType = messageType;
     }
 
-    public PublicKeyId getSenderID() {
+    public ID getSenderID() {
         return senderID;
     }
 
-    public void setSenderID(PublicKeyId senderID) {
+    public void setSenderID(ID senderID) {
         this.senderID = senderID;
     }
 
@@ -64,7 +64,5 @@ public class MessageHeader {
     public void setTime(long time) {
         this.time = time;
     }
-
-
 
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Random;
 
 import world.skytale.Messages.processors.ChatMessageProcessor;
-import world.skytale.model.PublicKeyId;
+import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +16,7 @@ public class MessageHeaderTest {
     public void parseTitle() throws MessageProcessingException {
 
         long time = new Date().getTime();
-        PublicKeyId ID = new PublicKeyId(new Random().nextLong());
+        ID ID = new ID(new Random().nextLong());
         String type = ChatMessageProcessor.TYPE_TAG;
 
        MessageHeader header = new MessageHeader(type,ID,time);
