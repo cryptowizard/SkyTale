@@ -6,16 +6,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 import world.skytale.database.ChatHandler;
+import world.skytale.database.ChatMessageHandler;
 import world.skytale.database.ContactsHandler;
 import world.skytale.model.Chat;
+import world.skytale.model.ChatMessage;
 import world.skytale.model.Contact;
 import world.skytale.model.ID;
+import world.xfreemedia.databes.Tables.TableChat;
 import world.xfreemedia.databes.Tables.TableChatList;
 import world.xfreemedia.databes.Tables.TableContacts;
 import world.xfreemedia.databes.daos.ChatDAO;
+import world.xfreemedia.databes.daos.ChatMessageDAO;
 
-public class SQLDatabaseHelper extends SQLiteOpenHelper implements ContactsHandler, ChatHandler {
+public class SQLDatabaseHelper extends SQLiteOpenHelper implements ContactsHandler, ChatHandler, ChatMessageHandler {
 
     public static final String DATABASE_NAME = "SkyTale.db";
     public static final int VERSION = 3;
@@ -93,7 +99,12 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements ContactsHandl
         ChatDAO chatDAO = new ChatDAO(chat);
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result=  TableChatList.addData(db,chatDAO);
-        return result;
+        if( result)
+        {
+            db.execSQL(TableChat.createTable(chat.chatID));
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -103,4 +114,18 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements ContactsHandl
         boolean result=  TableChatList.updateChat(db,chatDAO);
         return result;
     }
+
+    @Override
+    public boolean addChatMessage(ChatMessage chatMessage, ID chatID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean result=  TableChat.addData(db, new ChatMessageDAO(chatMessage),chatID);
+        this.close();
+        return result;
+    }
+    public ArrayList<ChatMessageDAO> getAllMessages(ID chatID)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return  TableChat.selectAll(db,chatID);
+    }
+
 }

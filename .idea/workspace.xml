@@ -6,9 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="378933e3-8944-44d0-a647-1feb3d89e868" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessageDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/Tables/TableChatTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/SQLDatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/SQLDatabaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessageDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,21 +35,9 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.50094044">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableContacts.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-74">
-                  <caret line="81" column="71" selection-start-line="81" selection-start-column="71" selection-end-line="81" selection-end-column="71" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChatList.java">
               <provider selected="true" editor-type-id="text-editor">
@@ -69,26 +60,22 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatDAO.java">
+            <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableContactsTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="130">
-                  <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+                <state relative-caret-position="340">
+                  <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="21" selection-end-column="69" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#503#504#0" expanded="true" />
-                    <element signature="e#543#544#0" expanded="true" />
-                    <element signature="e#606#607#0" expanded="true" />
-                    <element signature="e#649#650#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableContactsTest.java">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatDAO.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+                <state relative-caret-position="316">
+                  <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -99,8 +86,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/SQLDatabaseHelper.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1462">
-                  <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+                <state relative-caret-position="436">
+                  <caret line="127" column="27" lean-forward="true" selection-start-line="127" selection-start-column="27" selection-end-line="127" selection-end-column="27" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1129#1130#0" expanded="true" />
@@ -113,8 +100,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+                <state relative-caret-position="374">
+                  <caret line="22" selection-start-line="22" selection-end-line="22" />
                 </state>
               </provider>
             </entry>
@@ -122,17 +109,47 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessageDAO.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+                <state relative-caret-position="68">
+                  <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="16" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#271#272#0" expanded="true" />
+                    <element signature="e#294#295#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-85">
+                  <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#745#746#0" expanded="true" />
+                    <element signature="e#782#783#0" expanded="true" />
+                    <element signature="method#putChatMessageIntoContentValues#0;class#TableChat#0" />
+                    <element signature="method#readChatMessageFromCursor#0;class#TableChat#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java">
+            <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/Tables/TableChatTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+                <state relative-caret-position="170">
+                  <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -144,19 +161,19 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableChatListTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="290">
-                  <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+                <state relative-caret-position="748">
+                  <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChatList.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-322">
+                <state relative-caret-position="-1111">
                   <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -186,9 +203,9 @@
       <list>
         <option value="valueResourceFile" />
         <option value="Kotlin Class" />
-        <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -202,8 +219,9 @@
       <find>long</find>
       <find>Chat</find>
       <find>Chat.conversationKeyFromString</find>
-      <find>Contact</find>
       <find>private</find>
+      <find>String TABLE_NAME = TableChat.TABLE_NAME+chatID;</find>
+      <find>Contact</find>
     </findStrings>
     <replaceStrings>
       <replace>cipher</replace>
@@ -211,8 +229,9 @@
       <replace>ID</replace>
       <replace>ChatDAO</replace>
       <replace>SecretKeyConventer.fromString</replace>
-      <replace>Chat</replace>
       <replace>public</replace>
+      <replace>final      String TABLE_NAME = getTableName(chatID);</replace>
+      <replace>Chat</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -221,9 +240,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/test/java/world/xfreemedia/converters/StringConverterTest.java" />
-        <option value="$PROJECT_DIR$/app/src/test/java/world/xfreemedia/converters/ByteConverterTest.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/converters/ByteConverter.java" />
         <option value="$PROJECT_DIR$/skytale/src/test/java/world/skytale/skytale/converters/LongConverterTest.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/AccountKey.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/proto/messages.proto" />
@@ -266,12 +282,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatDAO.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/Tables/TableChatListTest.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableContactsTest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/SQLDatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableChatListTest.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/TableChat.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessageDAO.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/SQLDatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/Tables/TableChatTest.java" />
       </list>
     </option>
   </component>
@@ -341,6 +360,14 @@
             </path>
             <path>
               <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="xfreemedia" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="databes" type="462c0819:PsiDirectoryNode" />
+              <item name="Tables" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
               <item name="skytale" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
@@ -353,6 +380,13 @@
               <item name="skytale" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="skytale" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
+              <item name="skytale" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="skytale" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
@@ -833,6 +867,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.14933333" />
@@ -924,27 +959,6 @@
     <SUITE FILE_PATH="coverage/SkyTale$skytale_in_skytale.ic" NAME="skytale in skytale Coverage Results" MODIFIED="1573128376453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/FilesStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/Messages/MessageProcessingException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-          <folding>
-            <element signature="e#156#157#0" expanded="true" />
-            <element signature="e#179#180#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/Messages/MessageHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1280,6 +1294,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableContacts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-74">
+          <caret line="81" column="71" selection-start-line="81" selection-start-column="71" selection-end-line="81" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Chat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1287,26 +1318,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableChatListTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
+        <state relative-caret-position="316">
           <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableContacts.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-74">
-          <caret line="81" column="71" selection-start-line="81" selection-start-column="71" selection-end-line="81" selection-end-column="71" />
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessageDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1321,17 +1364,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableChatListTest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+        <state relative-caret-position="-85">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="e#782#783#0" expanded="true" />
+            <element signature="method#putChatMessageIntoContentValues#0;class#TableChat#0" />
+            <element signature="method#readChatMessageFromCursor#0;class#TableChat#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableContactsTest.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="119">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1340,8 +1390,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/SQLDatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+        <state relative-caret-position="436">
+          <caret line="127" column="27" lean-forward="true" selection-start-line="127" selection-start-column="27" selection-end-line="127" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1129#1130#0" expanded="true" />
@@ -1350,34 +1400,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java">
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/TableContactsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/daos/ChatMessageDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/world/xfreemedia/databes/Tables/TableChat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="21" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/world/xfreemedia/databes/Tables/TableChatTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
         </state>
       </provider>
     </entry>

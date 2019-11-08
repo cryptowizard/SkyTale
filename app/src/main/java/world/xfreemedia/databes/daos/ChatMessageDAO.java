@@ -1,5 +1,8 @@
 package world.xfreemedia.databes.daos;
 
+import java.util.Date;
+
+import world.skytale.model.ChatMessage;
 import world.skytale.model.ID;
 
 public class ChatMessageDAO extends world.skytale.model.ChatMessage {
@@ -7,6 +10,16 @@ public class ChatMessageDAO extends world.skytale.model.ChatMessage {
 
     public long recivedTime;
 
+
+    public ChatMessageDAO()
+    {
+        super();
+    }
+    public ChatMessageDAO(ChatMessage chatMessage)
+    {
+        super(chatMessage);
+        this.recivedTime = new Date().getTime();
+    }
 
     public String aatachmentsToString()
     {

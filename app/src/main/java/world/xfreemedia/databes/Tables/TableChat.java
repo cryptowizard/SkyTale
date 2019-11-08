@@ -14,18 +14,23 @@ import world.xfreemedia.databes.daos.ChatMessageDAO;
 public class TableChat {
 
     public static final String DATABASE_NAME= "SkyTale.db";
-    public static  String  TABLE_NAME = "Chat";
+    
 
     public static final String senderID = "senderID";
     public static final String time = "time";
     public static final String message = "message";
     public static final String atachments = "atachments";
     public static final String recivedTime = "recivedTime";
+    
+    public static final String getTableName(ID chatID)
+    {
+        return chatID.toString();
+    }
 
-    public static String createTable(String chatID)
+    public static String createTable(ID chatID)
     {
 
-        String TABLE_NAME = TableChat.TABLE_NAME+chatID;
+        final String TABLE_NAME = getTableName(chatID);
         String c2 = "CREATE TABLE "+TABLE_NAME+" (\r\n" +
                 "	"+senderID+"	INTEGER,\r\n" +
                 "	"+time+"	INTEGER,\r\n" +
@@ -41,10 +46,7 @@ public class TableChat {
     {
 
         ContentValues contentValues = putChatMessageIntoContentValues(msg);
-        String TABLE_NAME = TableChat.TABLE_NAME+chatID;
-
-
-
+        final String TABLE_NAME = getTableName(chatID);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         db.close();
@@ -77,8 +79,8 @@ public class TableChat {
         return contentValues;
     }
 
-    public static ArrayList<ChatMessageDAO> selectAll(SQLiteDatabase db, String chatID) {
-        String TABLE_NAME = TableChat.TABLE_NAME+chatID;
+    public static ArrayList<ChatMessageDAO> selectAll(SQLiteDatabase db, ID chatID) {
+        String TABLE_NAME = getTableName(chatID);
 
 
         String query = "SELECT  * FROM " + TABLE_NAME +
@@ -93,10 +95,7 @@ public class TableChat {
         cursor.moveToFirst();
 
         while(!cursor.isAfterLast()) {
-
             ChatMessageDAO t = readChatMessageFromCursor(cursor);
-            //ChatFragment2 t = new ChatFragment2(ID,ChatFragment2.conversationKeyFromString(key),participants.split(";"),lastMessageTime,newMessages,picture);
-            // mArrayList.add(cursor.getLong(cursor.getColumnIndex(MessegeHelper.COL2))); //add the item
             tmp.add(t);
 
             cursor.moveToNext();
@@ -123,16 +122,17 @@ public class TableChat {
 
     }
 
-    public static void removeChat(SQLiteDatabase db,String chatID)
+    public static void removeChat(SQLiteDatabase db,ID chatID)
     {
-        String TABLE_NAME = TableChat.TABLE_NAME+chatID;
+       final String TABLE_NAME = getTableName(chatID);
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
 
-    public static void removeMessage(SQLiteDatabase db,String chatID,  String senderID, long time)
+    public static void removeMessage(SQLiteDatabase db,ID chatID,  String senderID, long time)
     {
-        String query = "DELETE FROM " + TABLE_NAME+chatID+ " WHERE " + TableChat.senderID + " = '" + senderID + "' AND "+TableChat.time+" = "+time;
+        final String TABLE_NAME = getTableName(chatID);
+        String query = "DELETE FROM " + TABLE_NAME+ " WHERE " + TableChat.senderID + " = '" + senderID + "' AND "+TableChat.time+" = "+time;
         db.execSQL(query);
 
     }
