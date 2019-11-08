@@ -1,15 +1,14 @@
 package world.skytale.model;
 
+import java.io.Serializable;
 import java.security.PublicKey;
 
 
-public class Contact {
-
+public class Contact implements Serializable {
+    private static final long serialVersionUID = 1321102L;
 
     public static final int TYPE_DEFAULT=10;
-
     public static final int TYPE_ME=0;
-
     public static final int TYPE_CLOSE_FRIEND=1;
     public static final int TYPE_FRIEND =2;
     public static final int TYPE_OBSERVED=4;

@@ -1,6 +1,7 @@
 package world.skytale.database;
 
 import world.skytale.model.Contact;
+import world.skytale.model.ID;
 
 
 /**
@@ -15,7 +16,7 @@ public interface ContactsHandler {
      * @throws ContactNotFoundException
      */
 
-     Contact getContact(long contactID) throws ContactNotFoundException;
+     Contact getContact(ID contactID) throws ContactNotFoundException;
 
 
     /**
@@ -40,13 +41,13 @@ public interface ContactsHandler {
      * @param contactType - contact type
      * @return  true if contact was updated scornfully  / false if contact was not found
      */
-    boolean changeContactType(String contactID, int contactType);
+    boolean changeContactType(ID contactID, int contactType);
 
 
 
      class ContactNotFoundException extends Exception
      {
-         public ContactNotFoundException(String contactID)
+         public ContactNotFoundException(ID contactID)
          {
              super("Contact with ID: \""+contactID+"\" was not found in Database");
          }
