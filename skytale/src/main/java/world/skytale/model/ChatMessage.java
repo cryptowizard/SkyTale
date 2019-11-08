@@ -3,11 +3,10 @@ package world.skytale.model;
 import java.io.Serializable;
 
 public class ChatMessage implements Serializable {
-    private static final long serialVersionUID = 132126L;
+    public static final long serialVersionUID = 132126L;
 
-    private ID senderID;
-    private long time;
-
-    private String message;
-    private String [] attachments;
+    public ID senderID;
+    public long time;
+    public String message;
+    public String [] attachments;
 }
