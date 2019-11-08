@@ -1,4 +1,4 @@
-package world.xfreemedia.databes;
+package world.xfreemedia.databes.Tables;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -79,7 +79,7 @@ public class TableContacts {
 
 
             if (cursor.getCount() == 0) {
-                return null;
+                throw new ContactsHandler.ContactNotFoundException(new ID(id));
             }
             cursor.moveToFirst();
             Contact contact = readFromCursor(cursor);
