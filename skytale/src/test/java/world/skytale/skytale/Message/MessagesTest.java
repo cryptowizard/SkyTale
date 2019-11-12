@@ -22,12 +22,12 @@ public class MessagesTest {
 
         PublicKey publicKey = AccountKey.generateKeyPair().getPublic();
         Contact  contact = new Contact(publicKey,"Maciek","MSD","MSD@gmail.com");
-        ByteString byteString = ByteString.copyFrom(contact.getPublicKey().getEncoded());
+        ByteString byteString = ByteString.copyFrom(contact.publicKey.getEncoded());
 
         Messages.Contact contact1 = Messages.Contact.newBuilder()
-                .setAddress(contact.getAbbess())
+                .setAddress(contact.address)
                 .setPublicKey(byteString)
-                .setFirstName(contact.getFirstName())
+                .setFirstName(contact.firstName)
                 .build();
 
 
@@ -39,7 +39,7 @@ public class MessagesTest {
         Contact contact3 = new Contact(AccountKey.fromBytes(contact2.getPublicKey().toByteArray()),contact2.getFirstName(),contact2.getLastName(),contact2.getAddress());
 
 
-        assertEquals(contact.getContactID(),contact3.getContactID());
+        assertEquals(contact.contactID,contact3.contactID);
 
 
 

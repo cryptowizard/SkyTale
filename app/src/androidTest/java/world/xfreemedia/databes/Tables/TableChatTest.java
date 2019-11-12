@@ -16,7 +16,7 @@ public class TableChatTest {
    SQLDatabaseHelper sqlDatabaseHelper= new SQLDatabaseHelper(context);
 
 
-   
+
     @Test
     public void addData() {
 

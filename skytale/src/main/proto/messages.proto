@@ -10,7 +10,7 @@ option java_outer_classname = "Messages";
 message Attachment
 {
     bytes fileBytes=1;
-    string fileName=2;
+    string fileExtension=2;
 }
 message Contact {
     bytes publicKey = 1;
@@ -34,7 +34,7 @@ message ChatMessage {
 }
 
 message EncryptedChatMessage {
-    bytes encryptedChatMessage=1;
+    bytes encryptedChatMessageBytes=1;
     int64 chatID=2;
 }
 

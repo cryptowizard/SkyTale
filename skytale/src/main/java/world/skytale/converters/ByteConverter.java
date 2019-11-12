@@ -1,5 +1,7 @@
 package world.skytale.converters;
 
+import com.google.protobuf.ByteString;
+
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -29,6 +31,16 @@ public class ByteConverter {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    public static ByteString toByteString(byte [] bytes)
+    {
+         return ByteString.copyFrom(bytes);
+    }
+
+    public static byte [] fromBytesString(ByteString byteString)
+    {
+        return byteString.toByteArray();
     }
 
 

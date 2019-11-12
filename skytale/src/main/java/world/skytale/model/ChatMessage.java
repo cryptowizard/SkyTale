@@ -11,6 +11,14 @@ public class ChatMessage implements Serializable {
     public String [] attachments;
 
 
+    public ChatMessage(ID senderID, long time, String message, String[] attachments) {
+        this.senderID = senderID;
+        this.time = time;
+        this.message = message;
+        this.attachments = attachments;
+    }
+
+
     public ChatMessage(ChatMessage chatMessage)
     {
         this.senderID = chatMessage.senderID;

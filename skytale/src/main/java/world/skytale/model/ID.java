@@ -17,7 +17,7 @@ public class ID implements Serializable, Comparable {
 
     static final  long serialVersionUID = 777L;
 
-    private long id;
+    private  long id;
 
 
     /**
@@ -27,7 +27,6 @@ public class ID implements Serializable, Comparable {
     public static ID generateRandomID()
     {
         long id = new Random().nextLong();
-        id = Math.abs(id);
         return new ID(id);
     }
 
@@ -35,6 +34,7 @@ public class ID implements Serializable, Comparable {
     {
             this.id = id;
     }
+
 
 
     public ID(String id)
@@ -48,6 +48,7 @@ public class ID implements Serializable, Comparable {
      * Base 32 is used so the returned string is shorter than base 10 or 16, but still easily readable and does not use any special characters
      * So it can be send in E-mail title without changing value due to different encoding used by the service provider
      */
+
     public String toString()
     {
         return LongConverter.toBase32String(id);
@@ -130,7 +131,7 @@ public static final class PublicKeyID {
 
         long id = LongConverter.fromBytes(truncatedBytes);
 
-        return Math.abs(id);
+        return id;
 
     }
 }
