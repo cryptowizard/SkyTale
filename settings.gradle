@@ -1,2 +1,2 @@
-include ':app', ':skytale'
+include ':aappTest', ':skytale', ':androidhandlers'
 rootProject.name='SkyTale'

@@ -41,7 +41,7 @@ public class Contact implements Serializable {
     public ID contactID;
     public PublicKey publicKey;
     public String address;
-    private int type;
+    public int type;
 
     public String firstName;
     public String lastName;

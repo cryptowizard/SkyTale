@@ -131,6 +131,7 @@ public static final class PublicKeyID {
 
         long id = LongConverter.fromBytes(truncatedBytes);
 
+
         return id;
 
     }

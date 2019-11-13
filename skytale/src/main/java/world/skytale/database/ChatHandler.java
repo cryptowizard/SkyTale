@@ -5,16 +5,16 @@ import world.skytale.model.ID;
 
 public interface ChatHandler {
 
-    Chat getChat(ID chatID) throws  ChatNotFoundExceptoin;
+    Chat getChat(ID chatID) throws ChatNotFoundException;
     boolean addChat(Chat chat);
     boolean updateChat(Chat chat);
 
 
-    class ChatNotFoundExceptoin extends Exception
+    class ChatNotFoundException extends Exception
     {
-        public ChatNotFoundExceptoin(ID chatID)
+        public ChatNotFoundException(ID chatID)
         {
-            super("Contact with ID: \""+chatID+"\" was not found in Database");
+            super("Chat with ID: \""+chatID+"\" was not found in Database");
         }
     }
 
