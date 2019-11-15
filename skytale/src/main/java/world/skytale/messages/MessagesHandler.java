@@ -1,21 +1,20 @@
 package world.skytale.messages;
 
-import world.skytale.database.AccountProvider;
+import java.io.IOException;
+
 import world.skytale.database.DatabaseHandler;
 import world.skytale.database.FilesHandler;
 import world.skytale.messages.processors.ChatMessageProcessor;
-import world.skytale.messages.processors.MessageProcessingException;
+import world.skytale.MessageProcessingException;
 import world.skytale.messages.processors.MessageProcessor;
 
-public class MessagesHandler {
+public class MessagesHandler implements MessageProcessor {
 
     private DatabaseHandler DatabaseHandler;
-    private AccountProvider AccountProvider;
     private FilesHandler filesHandler;
 
-    public MessagesHandler(world.skytale.database.DatabaseHandler databaseHandler, world.skytale.database.AccountProvider accountProvider, FilesHandler filesHandler) {
+    public MessagesHandler(world.skytale.database.DatabaseHandler databaseHandler, FilesHandler filesHandler) {
         DatabaseHandler = databaseHandler;
-        AccountProvider = accountProvider;
         this.filesHandler = filesHandler;
     }
 
@@ -23,32 +22,38 @@ public class MessagesHandler {
         return DatabaseHandler;
     }
 
-    public world.skytale.database.AccountProvider getAccountProvider() {
-        return AccountProvider;
-    }
 
     public FilesHandler getFilesHandler() {
         return filesHandler;
     }
 
-    public void processIncomingMail(DownloadedMail downloadedMail) throws MessageProcessingException {
+
+
+    @Override
+    public void processIncoming(DownloadedMail downloadedMail) throws MessageProcessingException, IOException {
 
         MessageHeader messageHeader = MessageHeader.parseTitle(downloadedMail.getTitle());
 
-        MessageProcessor processor= null;
-        switch (messageHeader.getMessageType())
-        {
-            case ChatMessageProcessor.TYPE_TAG:
-                processor = new ChatMessageProcessor(this);
-                break;
-        }
-
-        if(processor==null)
-        {
-            throw new MessageProcessingException("Processing failed due to: unrecognized message Type");
-        }
-
+        MessageProcessor processor= getMessageProcessorForType(messageHeader.getMessageType());
+        processor.processIncoming(downloadedMail);
 
     }
 
+
+    private MessageProcessor getMessageProcessorForType(String type) throws MessageProcessingException {
+        switch (type)
+        {
+            case ChatMessageProcessor.TYPE_TAG:
+               return getChatMessageProcessor();
+
+        }
+
+        throw new MessageProcessingException("Processing failed due to: unrecognized message Type");
+    }
+
+
+    public ChatMessageProcessor getChatMessageProcessor()
+    {
+        return new ChatMessageProcessor(this);
+    }
 }

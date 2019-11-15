@@ -1,6 +1,5 @@
 package world.skytale.database;
 
-import java.io.File;
 import java.io.IOException;
 
 
@@ -8,9 +7,8 @@ import java.io.IOException;
  * FilesHandler object is used to store
  */
 public interface FilesHandler {
-    byte [] readFileBytes(File file) throws IOException;
+    byte [] readFileBytes(String filePath) throws IOException;
 
-    String writeTemporaryFile (byte [] fileBytes, String extension);
-    String getTemporaryFilePath (String extension);
-
+    String writeTemporaryFile (byte [] fileBytes, String extension) throws IOException;
+    String saveFile(byte [] fileBytes, String extension) throws IOException;
 }

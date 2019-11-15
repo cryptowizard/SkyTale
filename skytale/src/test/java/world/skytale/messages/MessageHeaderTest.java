@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Random;
 
 import world.skytale.messages.processors.ChatMessageProcessor;
-import world.skytale.messages.processors.MessageProcessingException;
+import world.skytale.MessageProcessingException;
 import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;

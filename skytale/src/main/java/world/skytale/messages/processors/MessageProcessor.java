@@ -1,8 +1,14 @@
 package world.skytale.messages.processors;
 
-import world.skytale.messages.DownloadedMail;
+import java.io.IOException;
+import java.security.InvalidKeyException;
+
+import world.skytale.MessageProcessingException;
+import world.skytale.VeryfiedMessage;
+import world.skytale.database.ChatHandler;
 
 public interface MessageProcessor {
-    void processIncoming(DownloadedMail downloadedMail) throws Exception;
+    void processIncoming(VeryfiedMessage message) throws MessageProcessingException, IOException, ChatHandler.ChatNotFoundException, InvalidKeyException;
+
 
 }

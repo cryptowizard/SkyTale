@@ -2,6 +2,8 @@ package world.skytale.model;
 
 import javax.crypto.SecretKey;
 
+import world.skytale.cyphers.AES;
+
 public class Chat {
 
     public ID chatID;
@@ -11,6 +13,16 @@ public class Chat {
     public String chatImagePath;
 
 
+    public static Chat startNewChat(String chatName, ID [] participantIDs)
+    {
+        Chat chat = new Chat();
+        chat.chatID = ID.generateRandomID();
+        chat.chatName = chatName;
+        chat.participantIDs = participantIDs;
+        chat.secretKey = AES.generateNewKey();
+        chat.chatImagePath = "";
+        return  chat;
+    }
     public Chat()
     {
 

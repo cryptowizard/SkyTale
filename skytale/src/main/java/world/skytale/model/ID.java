@@ -10,7 +10,7 @@ import world.skytale.cyphers.Sha256;
 
 
 /**
- *  IDs are long values used to uniquely identify object of the given type in database
+ *  IDs are long values used to uniquely identify object of the given contactType in database
  *  64 bit positive long values are enough due to decentralized nature of the network
  */
 public class ID implements Serializable, Comparable {

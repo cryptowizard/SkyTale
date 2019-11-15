@@ -1,7 +1,7 @@
 package world.skytale.messages;
 
 import world.skytale.converters.LongConverter;
-import world.skytale.messages.processors.MessageProcessingException;
+import world.skytale.MessageProcessingException;
 import world.skytale.model.ID;
 
 public class MessageHeader {

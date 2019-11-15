@@ -38,7 +38,7 @@ public interface ContactsHandler {
     /**
      *
      * @param contactID - contact identifier
-     * @param contactType - contact type
+     * @param contactType - contact contactType
      * @return  true if contact was updated scornfully  / false if contact was not found
      */
     boolean changeContactType(ID contactID, int contactType);

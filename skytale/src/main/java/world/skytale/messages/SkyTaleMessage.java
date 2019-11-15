@@ -1,11 +1,10 @@
 package world.skytale.messages;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 
 import world.skytale.database.FilesHandler;
-import world.skytale.messages.processors.MessageProcessingException;
+import world.skytale.MessageProcessingException;
 
 
 /**
@@ -14,8 +13,8 @@ import world.skytale.messages.processors.MessageProcessingException;
  */
 public class SkyTaleMessage {
 
-    public static final String SIGNATURE_EXTENSION = ".signature";
-    public static final String MESSAGE_EXTENSION = ".message";
+    public static final String SIGNATURE_EXTENSION = "signature";
+    public static final String MESSAGE_EXTENSION = "message";
 
     private final MessageHeader messageHeader;
     private final byte [] signatureBytes;
@@ -34,11 +33,11 @@ public class SkyTaleMessage {
         messageHeader = MessageHeader.parseTitle(downloadedMail.getTitle());
 
         String signaturePath = findPathWithExtension(SIGNATURE_EXTENSION, downloadedMail.getAttachmentPaths());
-        String messagePath = findPathWithExtension(SIGNATURE_EXTENSION, downloadedMail.getAttachmentPaths());
+        String messagePath = findPathWithExtension(MESSAGE_EXTENSION, downloadedMail.getAttachmentPaths());
 
 
-        this.signatureBytes = filesHandler.readFileBytes(new File(signaturePath));
-        this.messageBytes = filesHandler.readFileBytes(new File(messagePath));
+        this.signatureBytes = filesHandler.readFileBytes(signaturePath);
+        this.messageBytes = filesHandler.readFileBytes(messagePath);
     }
 
     protected String findPathWithExtension(String fileExtension, Collection<String> paths) throws MessageProcessingException { ;
@@ -52,8 +51,7 @@ public class SkyTaleMessage {
         throw new MessageProcessingException("Message processing failed : required file is missing");
     }
 
-    public DownloadedMail makeDownloadedMail(FilesHandler fileStore)
-    {
+    public DownloadedMail makeDownloadedMail(FilesHandler fileStore) throws IOException {
         String title = messageHeader.makeTitle();
 
         String signaturePath = fileStore.writeTemporaryFile(signatureBytes, SIGNATURE_EXTENSION);

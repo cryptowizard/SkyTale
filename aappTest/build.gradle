@@ -41,3 +41,7 @@ dependencies {
 dependencies {
     implementation project(':skytale')
 }
+
+dependencies {
+    implementation project(':handlersAndroid')
+}

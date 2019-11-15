@@ -11,7 +11,7 @@ public class Contact implements Serializable {
     /**
      *  Constant values have been used because they take less resources than enum
      *  and can be easily extended if the client application wants to use more types
-     *  The relation with smaller type is considered closer relation to relation with larger types
+     *  The relation with smaller contactType is considered closer relation to relation with larger types
      */
 
     public static final int TYPE_ME=0;
@@ -41,7 +41,35 @@ public class Contact implements Serializable {
     public ID contactID;
     public PublicKey publicKey;
     public String address;
-    public int type;
+    public int contactType;
+
+    public ID getContactID() {
+        return contactID;
+    }
+
+    public PublicKey getPublicKey() {
+        return publicKey;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getContactType() {
+        return contactType;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
 
     public String firstName;
     public String lastName;
@@ -55,13 +83,13 @@ public class Contact implements Serializable {
         this.contactID = ID.PublicKeyID.makeID(publicKey);
     }
 
-    public Contact(ID contactID, PublicKey publicKey, String firstName, String lastName, String address, String picturePath, int type) {
+    public Contact(ID contactID, PublicKey publicKey, String firstName, String lastName, String address, String picturePath, int contactType) {
         this.contactID = contactID;
         this.publicKey = publicKey;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.type = type;
+        this.contactType = contactType;
     }
 
 

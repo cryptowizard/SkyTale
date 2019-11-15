@@ -1,7 +1,11 @@
 package world.skytale.messages.processors;
 
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SignatureException;
 
+import world.skytale.MessageProcessingException;
 import world.skytale.cyphers.RSASignature;
 import world.skytale.database.ContactsHandler;
 import world.skytale.database.FilesHandler;
@@ -25,7 +29,7 @@ public abstract class ContactMessageProcessor implements MessageProcessor {
     public ContactMessageProcessor(MessagesHandler messagesHandler) {
         this.contactsHandler = messagesHandler.getDatabaseHandler().getTableContacts();
         this.fileHandler = messagesHandler.getFilesHandler();
-        this.userAccount = messagesHandler.getAccountProvider().getCurrentAccount();
+        this.userAccount = messagesHandler.getDatabaseHandler().getAccountProvider().getCurrentAccount();
     }
 
     @Override
@@ -59,8 +63,8 @@ public abstract class ContactMessageProcessor implements MessageProcessor {
     public abstract void processIncoming(SkyTaleMessage skyTaleMessage) throws Exception;
 
 
-    protected DownloadedMail makeDownloadedMail(MessageHeader messageHeader, byte [] messageBytes) {
-        byte[] signatureBytes = RSASignature.signe(userAccount.getPrivateKey(), messageBytes);
+    protected DownloadedMail makeDownloadedMail(MessageHeader messageHeader, byte [] messageBytes) throws IOException, NoSuchAlgorithmException, InvalidKeyException, SignatureException {
+        byte[] signatureBytes = RSASignature.sign(userAccount.getPrivateKey(), messageBytes);
         SkyTaleMessage skyTaleMessage = new SkyTaleMessage(messageHeader, messageBytes, signatureBytes);
         DownloadedMail downloadedMail = skyTaleMessage.makeDownloadedMail(fileHandler);
         return downloadedMail;

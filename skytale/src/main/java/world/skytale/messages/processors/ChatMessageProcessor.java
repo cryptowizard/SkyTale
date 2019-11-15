@@ -1,12 +1,14 @@
 package world.skytale.messages.processors;
 
-import com.google.protobuf.InvalidProtocolBufferException;
-
 import java.io.IOException;
 import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import world.skytale.IncomingMessageProcessor;
+import world.skytale.VeryfiedMessage;
 import world.skytale.converters.ByteConverter;
 import world.skytale.cyphers.AES;
 import world.skytale.database.ChatHandler;
@@ -14,28 +16,28 @@ import world.skytale.database.ChatMessageHandler;
 import world.skytale.message.Messages;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
-import world.skytale.messages.MessagesHandler;
-import world.skytale.messages.SkyTaleMessage;
-import world.skytale.model.Attachment;
+
 import world.skytale.model.Chat;
 import world.skytale.model.ChatMessage;
 import world.skytale.model.ID;
 
-public class ChatMessageProcessor extends ContactMessageProcessor {
+
+
+public class ChatMessageProcessor implements MessageProcessor {
 
     public static final String TYPE_TAG = "CHAT_MSG";
   private final  ChatHandler chatHandler;
   private final ChatMessageHandler chatMessageHandler;
-    public ChatMessageProcessor(MessagesHandler messagesHandler)
+    public ChatMessageProcessor(IncomingMessageProcessor incomingMessageProcessor)
     {
-      super(messagesHandler);
-      chatHandler = messagesHandler.getDatabaseHandler().getChatHandler();
-      chatMessageHandler = messagesHandler.getDatabaseHandler().getChatMessageHandler();
+
+      chatHandler = incomingMessageProcessor.getDatabaseHandler().getChatHandler();
+      chatMessageHandler = incomingMessageProcessor.getDatabaseHandler().getChatMessageHandler();
     }
 
     @Override
-    public void processIncoming(SkyTaleMessage skyTaleMessage) throws InvalidProtocolBufferException, ChatHandler.ChatNotFoundException, InvalidKeyException {
-        Messages.EncryptedChatMessage encryptedChatMessage = Messages.EncryptedChatMessage.parseFrom(skyTaleMessage.getMessageBytes());
+    public void processIncoming(VeryfiedMessage veryfiedMessage) throws IOException, ChatHandler.ChatNotFoundException, InvalidKeyException {
+        Messages.EncryptedChatMessage encryptedChatMessage = Messages.EncryptedChatMessage.parseFrom(veryfiedMessage.getMessageBytes());
 
         Chat chat = chatHandler.getChat(new ID(encryptedChatMessage.getChatID()));
 
@@ -43,14 +45,14 @@ public class ChatMessageProcessor extends ContactMessageProcessor {
 
         Messages.ChatMessage chatMessage = Messages.ChatMessage.parseFrom(decryptedMessageBytes);
 
-        ChatMessage message = buildChatMessage(chatMessage,skyTaleMessage.getMessageHeader());
+        ChatMessage message = buildChatMessage(chatMessage,veryfiedMessage.getMessageHeader());
 
         chatMessageHandler.addChatMessage(message , chat.chatID);
     }
 
-    private ChatMessage buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader)
-    {
-        String [] attachments  = Attachment.saveAttachments(chatMessage.getAttachmentsList(),fileHandler);
+    private ChatMessage buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader) throws IOException {
+        String [] attachments  = saveAttachments(chatMessage.getAttachmentsList(),fileHandler);
+
         ChatMessage message = new ChatMessage();
         message.attachments = attachments;
         message.message = chatMessage.getMessageText();
@@ -61,11 +63,11 @@ public class ChatMessageProcessor extends ContactMessageProcessor {
 
 
 
-    public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException {
+    public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException, SignatureException, NoSuchAlgorithmException {
         MessageHeader messageHeader = new MessageHeader(TYPE_TAG, userAccount.getUserContact().contactID,chatMessage.time);
 
 
-       ArrayList<Messages.Attachment> attachemtns  = Attachment.makeAttachments(chatMessage.attachments, fileHandler);
+       ArrayList<Messages.Attachment> attachemtns  = makeAttachments(chatMessage.attachments, fileHandler);
 
         Messages.ChatMessage chatMessageProto = Messages.ChatMessage.newBuilder()
                 .setMessageText(chatMessage.message)
