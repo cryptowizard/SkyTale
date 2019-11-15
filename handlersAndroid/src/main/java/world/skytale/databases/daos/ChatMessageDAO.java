@@ -1,14 +1,22 @@
 package world.skytale.databases.daos;
 
+import java.util.ArrayList;
 import java.util.Date;
 
-import world.skytale.model.ChatMessage;
-import world.skytale.model.ID;
+import world.skytale.model2.Attachment;
+import world.skytale.model2.ChatMessage;
+import world.skytale.model2.ID;
 
-public class ChatMessageDAO extends world.skytale.model.ChatMessage {
+public class ChatMessageDAO implements ChatMessage {
 
 
+    public ID senderID;
+    public long time;
+    public String message;
     public long recivedTime;
+    public ArrayList<Attachment> attachments;
+
+
 
 
     public ChatMessageDAO()
@@ -18,34 +26,55 @@ public class ChatMessageDAO extends world.skytale.model.ChatMessage {
     }
     public ChatMessageDAO(ChatMessage chatMessage)
     {
-        super(chatMessage);
+
         this.recivedTime = new Date().getTime();
     }
 
-    public String aatachmentsToString()
+    public String atachmentsToString()
     {
-        if(attachments==null||attachments.length==0)
-        {
-            return "";
-        }
-        String tmp = "";
-        for(String attachment : attachments)
-        {
-            tmp+=";"+attachment;
-        }
-            return tmp.substring(1);
+//        if(getAttachments()==null||getAttachments().size()==0)
+//        {
+//            return "";
+//        }
+//        String tmp = "";
+//        for(String attachment : getAttachments())
+//        {
+//            tmp+=";"+attachment;
+//        }
+//            return tmp.substring(1);
+        return "";
     }
 
     public static ChatMessageDAO recreateMessage(long senderID, String message, long time, String attachments, long recivedTime)
     {
+
         ChatMessageDAO tmp = new ChatMessageDAO();
         tmp.senderID=new ID(senderID);
         tmp.message = message;
         tmp.time = time;
-        tmp.attachments = attachments.split(";");
+        //tmp.attachments = attachments.split(";");
         tmp.recivedTime = recivedTime;
         return tmp;
     }
 
 
+    @Override
+    public ID getSenderID() {
+        return senderID;
+    }
+
+    @Override
+    public long getTime() {
+        return time;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public ArrayList<Attachment> getAttachments() {
+        return attachments;
+    }
 }

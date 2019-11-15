@@ -128,13 +128,5 @@
     <orderEntry type="library" name="Gradle: androidx.arch.core:core-runtime:2.0.0@aar" level="project" />
     <orderEntry type="module" module-name="skytale" />
     <orderEntry type="module" module-name="handlersAndroid" />
-    <orderEntry type="module" module-name="skytale" />
-    <orderEntry type="module" module-name="handlersAndroid" />
-    <orderEntry type="module" module-name="skytale" />
-    <orderEntry type="module" module-name="handlersAndroid" />
-    <orderEntry type="module" module-name="skytale" />
-    <orderEntry type="module" module-name="handlersAndroid" />
-    <orderEntry type="module" module-name="skytale" />
-    <orderEntry type="module" module-name="handlersAndroid" />
   </component>
 </module>

@@ -49,6 +49,9 @@ dependencies {
     testCompile project(path: ':skytale')
 }
 
+dependencies {
+    implementation 'com.android.support:support-annotations:28.0.0'
+}
 
 
 

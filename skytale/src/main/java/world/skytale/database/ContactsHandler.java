@@ -1,7 +1,7 @@
 package world.skytale.database;
 
-import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model2.Contact;
+import world.skytale.model2.ID;
 
 
 /**

@@ -1,13 +1,11 @@
-package world.skytale.model.attachments;
+package world.skytale.daos.attachments;
 
-import world.skytale.utils.FileUtils;
+public class LoadedAttachment implements Attachment {
 
-public class AttachmentImp implements Attachment {
-
-    private final String fileName;
+    private final String fileExtension;
     private final byte [] fileBytes;
-    public AttachmentImp(String fileName, byte [] fileBytes) {
-        this.fileName = fileName;
+    public LoadedAttachment(String fileName, byte [] fileBytes) {
+        this.fileExtension = fileName;
         this.fileBytes = fileBytes;
     }
 
@@ -19,8 +17,22 @@ public class AttachmentImp implements Attachment {
 
     @Override
     public String getExtension() {
-      return FileUtils.getExtension(fileName);
+      return fileExtension;
     }
 
+
+    public static class  LoadedAttachmentFactory implements  AttachmentFactory
+    {
+        public static LoadedAttachmentFactory getInstance()
+        {
+            return new LoadedAttachmentFactory();
+        }
+        @Override
+        public LoadedAttachment makeAttachment(String extension, byte[] fileBytes) {
+            return new LoadedAttachment(extension, fileBytes);
+        }
+
+
+    }
 
 }

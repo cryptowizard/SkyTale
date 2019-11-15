@@ -2,38 +2,33 @@ package world.skytale.messages.processors;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
 import java.util.ArrayList;
-import java.util.Random;
 
-import world.skytale.IncomingMessageProcessor;
 import world.skytale.VeryfiedMessage;
-import world.skytale.converters.ByteConverter;
 import world.skytale.cyphers.AES;
 import world.skytale.database.ChatHandler;
 import world.skytale.database.ChatMessageHandler;
 import world.skytale.message.Messages;
-import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
-
-import world.skytale.model.Chat;
-import world.skytale.model.ChatMessage;
-import world.skytale.model.ID;
-
+import world.skytale.model.ChatMessageImp;
+import world.skytale.model.attachments.ProtoAttachment;
+import world.skytale.model2.Attachment;
+import world.skytale.model2.Chat;
+import world.skytale.model2.ChatMessage;
+import world.skytale.model2.ID;
 
 
 public class ChatMessageProcessor implements MessageProcessor {
 
     public static final String TYPE_TAG = "CHAT_MSG";
-  private final  ChatHandler chatHandler;
-  private final ChatMessageHandler chatMessageHandler;
-    public ChatMessageProcessor(IncomingMessageProcessor incomingMessageProcessor)
-    {
+    private final  ChatHandler chatHandler;
+    private final ChatMessageHandler chatMessageHandler;
 
-      chatHandler = incomingMessageProcessor.getDatabaseHandler().getChatHandler();
-      chatMessageHandler = incomingMessageProcessor.getDatabaseHandler().getChatMessageHandler();
+    public ChatMessageProcessor(ChatHandler chatHandler, ChatMessageHandler chatMessageHandler) {
+        this.chatHandler = chatHandler;
+        this.chatMessageHandler = chatMessageHandler;
     }
+
 
     @Override
     public void processIncoming(VeryfiedMessage veryfiedMessage) throws IOException, ChatHandler.ChatNotFoundException, InvalidKeyException {
@@ -41,64 +36,21 @@ public class ChatMessageProcessor implements MessageProcessor {
 
         Chat chat = chatHandler.getChat(new ID(encryptedChatMessage.getChatID()));
 
-        byte [] decryptedMessageBytes = AES.decrypt(chat.secretKey, encryptedChatMessage.getEncryptedChatMessageBytes().toByteArray());
+        byte [] decryptedMessageBytes = AES.decrypt(chat.getSecretKey(), encryptedChatMessage.getEncryptedChatMessageBytes().toByteArray());
 
         Messages.ChatMessage chatMessage = Messages.ChatMessage.parseFrom(decryptedMessageBytes);
 
         ChatMessage message = buildChatMessage(chatMessage,veryfiedMessage.getMessageHeader());
 
-        chatMessageHandler.addChatMessage(message , chat.chatID);
+        chatMessageHandler.addChatMessage(message , chat.getChatID());
     }
 
-    private ChatMessage buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader) throws IOException {
-        String [] attachments  = saveAttachments(chatMessage.getAttachmentsList(),fileHandler);
+    private ChatMessageImp buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader) throws IOException {
+        ArrayList<Attachment> attachments  =ProtoAttachment.fromProtoList(chatMessage.getAttachmentsList());
 
-        ChatMessage message = new ChatMessage();
-        message.attachments = attachments;
-        message.message = chatMessage.getMessageText();
-        message.time = messageHeader.getTime();
-        message.senderID = messageHeader.getSenderID();
+        ChatMessageImp message = new ChatMessageImp(messageHeader.getSenderID(), messageHeader.getTime(), chatMessage.getMessageText(),attachments);
         return message;
     }
-
-
-
-    public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException, SignatureException, NoSuchAlgorithmException {
-        MessageHeader messageHeader = new MessageHeader(TYPE_TAG, userAccount.getUserContact().contactID,chatMessage.time);
-
-
-       ArrayList<Messages.Attachment> attachemtns  = makeAttachments(chatMessage.attachments, fileHandler);
-
-        Messages.ChatMessage chatMessageProto = Messages.ChatMessage.newBuilder()
-                .setMessageText(chatMessage.message)
-                .setRandomBytes(ByteConverter.toByteString(getRandomBytes()))
-                .addAllAttachments(attachemtns)
-                .build();
-
-        byte [] messageBytes = chatMessageProto.toByteArray();
-        byte [] encryptedMessage = AES.encrypt(chat.secretKey,messageBytes);
-
-
-        Messages.EncryptedChatMessage encryptedChatMessage = Messages.EncryptedChatMessage.newBuilder()
-                .setEncryptedChatMessageBytes(ByteConverter.toByteString(encryptedMessage))
-                .setChatID(chat.chatID.toLong())
-                .build();
-
-
-        DownloadedMail downloadedMail = super.makeDownloadedMail(messageHeader,encryptedChatMessage.toByteArray());
-        return downloadedMail;
-    }
-
-
-    private static byte [] getRandomBytes()
-    {
-        Random random = new Random();
-        int size = random.nextInt(118)+10;
-        byte [] randomBytes = new byte[size];
-        random.nextBytes(randomBytes);
-        return randomBytes;
-    }
-
 
 
 

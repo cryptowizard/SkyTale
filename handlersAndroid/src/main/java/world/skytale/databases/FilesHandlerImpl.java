@@ -14,11 +14,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
+import world.skytale.model2.Attachment;
+
 public class FilesHandlerImpl implements world.skytale.database.FilesHandler {
 
 
     private static FilesHandlerImpl instance;
 
+
+    public String saveAttachment(Attachment attachment) throws IOException {
+       return this.saveFile(attachment.getFileBytes(),attachment.getExtension());
+    }
 
     public static FilesHandlerImpl getInstance(Context context) throws StoragePermissionDeniedException
     {

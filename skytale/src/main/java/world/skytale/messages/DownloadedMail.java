@@ -3,7 +3,7 @@ package world.skytale.messages;
 
 import java.util.ArrayList;
 
-import world.skytale.model.attachments.Attachment;
+import world.skytale.model2.Attachment;
 
 /**
  *  Class DownloadedMail represents email message with downloaded attachments as list of files
@@ -12,8 +12,27 @@ public class DownloadedMail {
 
     private String title;
     private String message;
-    private ArrayList<Attachment> attachmentPaths  ;
+    private ArrayList<Attachment> attachments  ;
 
+
+    public DownloadedMail()
+    {
+        this.message = "";
+        this.title = "";
+        this.attachments = new ArrayList<Attachment>();
+    }
+
+    public DownloadedMail(String title, ArrayList<Attachment> attachments) {
+        this.title = title;
+        this.attachments = attachments;
+    }
+
+    public DownloadedMail(String t, String m, ArrayList<Attachment> atachments)
+    {
+        this.title=t;
+        this.message=m;
+        this.attachments=atachments;
+    }
 
     public String getTitle() {
         return title;
@@ -31,33 +50,24 @@ public class DownloadedMail {
         this.message = message;
     }
 
-    public ArrayList<Attachment> getAttachmentPaths() {
-        return attachmentPaths;
+    public ArrayList<Attachment> getAttachments() {
+        return attachments;
     }
 
     public void  addAttachment(Attachment attachment)
     {
-        this.attachmentPaths.add(attachment);
+        this.attachments.add(attachment);
     }
-    public void setAttachmentPaths(ArrayList<Attachment> attachmentPaths) {
-        this.attachmentPaths = attachmentPaths;
+    public void setAttachments(ArrayList<Attachment> attachments) {
+        this.attachments = attachments;
     }
 
-
-
-    public DownloadedMail()
+    public int getNumberOfAttachments()
     {
-        this.message = "";
-        this.title = "";
-        this.attachmentPaths = new ArrayList<Attachment>();
+        return attachments.size();
     }
 
-    public DownloadedMail(String t, String m, ArrayList<Attachment> atachments)
-    {
-        this.title=t;
-        this.message=m;
-        this.attachmentPaths=atachments;
-    }
+
 
 
 }

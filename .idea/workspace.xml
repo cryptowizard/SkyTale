@@ -6,79 +6,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="378933e3-8944-44d0-a647-1feb3d89e868" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/aappTest/src/androidTest/java/world/ChatMessageProcessorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/FilesHandlerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SkyTaleDatabaseHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageProcessingException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageVerifier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/OutgoingMessageProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/Attachment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/LoadedAttachment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/ProtoAttachment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/utils/FileUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ContactDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MailSender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/builders/ChatMessageBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ContactImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Attachment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Chat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ChatMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Contact.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aappTest/aappTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aappTest/aappTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aappTest/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/aappTest/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aappTest/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/aappTest/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aappTest/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/aappTest/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/androidhandlers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/handlersAndroid.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/consumer-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/consumer-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/androidTest/java/world/skytale/databases/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/androidTest/java/world/skytale/databases/databes/TableChatListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableChatListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/androidTest/java/world/skytale/databases/databes/TableContactsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableContactsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/androidTest/java/world/skytale/databases/databes/Tables/TableChatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/Tables/TableChatTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/SQLDatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SQLDatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/Tables/TableChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/Tables/TableChatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/Tables/TableContacts.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableContacts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/UserAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/UserAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/daos/ChatDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/daos/ChatMessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatMessageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/daos/ContactType.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ContactType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidhandlers/src/test/java/world/skytale/databases/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/test/java/world/skytale/databases/ExampleUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/RSASignature.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/RSASignature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aappTest/src/androidTest/java/world/ChatMessageProcessorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/aappTest/src/androidTest/java/world/ChatMessageProcessorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/handlersAndroid.iml" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/handlersAndroid.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableChatListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableChatListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableContactsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableContactsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/Tables/TableChatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/Tables/TableChatTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/FilesHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/FilesHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SQLDatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SQLDatabaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SkyTaleDatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SkyTaleDatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableContacts.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableContacts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/UserAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/UserAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatMessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatMessageDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MailBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MailBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/AccountProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/AccountProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ContactsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ContactsHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/FilesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/FilesHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/DownloadedMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/DownloadedMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/FollowerMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/FollowerMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/FollowerMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/IncomingMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/IncomingMail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessageHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessageHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessagesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessagesHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessagesHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ChatMessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ChatMessageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ContactMessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ContactMessageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessingException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Attachment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Contact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ContactMessageProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/FollowerMessageProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Chat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessageImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Contact.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Follower.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Follower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/Attachment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/AttachmentFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/LoadedAttachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/LoadedAttachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/ProtoAttachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/ProtoAttachment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/skytale/src/test/java/world/skytale/messages/MessageHeaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/test/java/world/skytale/messages/MessageHeaderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/test/java/world/skytale/skytale/Message/MessagesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/test/java/world/skytale/skytale/Message/MessagesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skytale/src/test/java/world/skytale/uniqueIDTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/skytale/src/test/java/world/skytale/uniqueIDTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,47 +92,32 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7132822">
+    <splitter split-orientation="horizontal" split-proportion="0.5249042">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Attachment.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="331">
-                  <caret line="56" column="19" lean-forward="true" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="method#findPathWithExtension#0;class#SkyTaleMessage#0" />
-                  </folding>
+                <state relative-caret-position="204">
+                  <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/AttachmentFactory.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#727#728#0" expanded="true" />
-                    <element signature="e#758#759#0" expanded="true" />
-                    <element signature="e#787#788#0" expanded="true" />
-                    <element signature="e#814#815#0" expanded="true" />
-                    <element signature="e#848#849#0" expanded="true" />
-                    <element signature="e#878#879#0" expanded="true" />
-                    <element signature="e#931#932#0" expanded="true" />
-                    <element signature="e#965#966#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="204">
+                  <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/FollowerMessage.java">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+                <state relative-caret-position="85">
+                  <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -152,8 +128,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ChatMessageProcessor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="410">
-                  <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+                <state relative-caret-position="467">
+                  <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -162,10 +138,22 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/builders/ChatMessageBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="697">
-                  <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+                <state relative-caret-position="765">
+                  <caret line="45" column="81" lean-forward="true" selection-start-line="45" selection-start-column="81" selection-end-line="45" selection-end-column="81" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ChatMessage.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -174,21 +162,161 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/ProtoAttachment.java">
+            <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatDAO.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="93">
-                  <caret line="11" column="86" selection-start-line="11" selection-start-column="86" selection-end-line="11" selection-end-column="86" />
+                <state relative-caret-position="493">
+                  <caret line="43" selection-start-line="43" selection-end-line="43" />
+                  <folding>
+                    <element signature="method#participantsFromString#0;class#ChatDAO#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Account.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="136">
+                  <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#367#368#0" expanded="true" />
-                    <element signature="e#411#412#0" expanded="true" />
-                    <element signature="e#461#462#0" expanded="true" />
-                    <element signature="e#523#524#0" expanded="true" />
-                    <element signature="e#573#574#0" expanded="true" />
-                    <element signature="e#625#626#0" expanded="true" />
-                    <element signature="e#1195#1216#0" expanded="true" />
-                    <element signature="e#1566#1583#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/build.gradle">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="229">
+                  <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Chat.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatImp.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatMessageDAO.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="306">
+                  <caret line="54" column="10" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1337#1338#0" expanded="true" />
+                    <element signature="e#1363#1364#0" expanded="true" />
+                    <element signature="e#1404#1405#0" expanded="true" />
+                    <element signature="e#1428#1429#0" expanded="true" />
+                    <element signature="e#1615#1616#0" expanded="true" />
+                    <element signature="e#1644#1645#0" expanded="true" />
+                    <element signature="e#1721#1722#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ContactImp.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="20" lean-forward="true" selection-start-line="12" selection-end-line="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ContactDAO.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-427">
+                  <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#592#593#0" expanded="true" />
+                    <element signature="e#626#627#0" expanded="true" />
+                    <element signature="e#687#688#0" expanded="true" />
+                    <element signature="e#721#722#0" expanded="true" />
+                    <element signature="e#758#759#0" expanded="true" />
+                    <element signature="e#790#791#0" expanded="true" />
+                    <element signature="e#857#858#0" expanded="true" />
+                    <element signature="e#891#892#0" expanded="true" />
+                    <element signature="e#957#958#0" expanded="true" />
+                    <element signature="e#989#990#0" expanded="true" />
+                    <element signature="e#1129#1130#0" expanded="true" />
+                    <element signature="e#1167#1168#0" expanded="true" />
+                    <element signature="e#1158#1159#0" expanded="true" />
+                    <element signature="e#1184#1185#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1224">
+                  <caret line="72" column="126" selection-start-line="72" selection-start-column="126" selection-end-line="72" selection-end-column="126" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableContacts.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="440">
+                  <caret line="111" column="50" lean-forward="true" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Contact.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="481">
+                  <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ContactType.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="34">
+                  <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -206,142 +334,12 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/VeryfiedMessage.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#693#694#0" expanded="true" />
-                    <element signature="e#729#730#0" expanded="true" />
-                    <element signature="e#768#769#0" expanded="true" />
-                    <element signature="e#803#804#0" expanded="true" />
-                    <element signature="e#838#839#0" expanded="true" />
-                    <element signature="e#872#873#0" expanded="true" />
-                    <element signature="e#923#924#0" expanded="true" />
-                    <element signature="e#969#970#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/OutgoingMessageProcessor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessageHeader.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessagesHandler.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="535">
-                  <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageVerifier.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="595">
-                  <caret line="35" column="133" selection-start-line="35" selection-start-column="133" selection-end-line="35" selection-end-column="133" />
+                <state relative-caret-position="195">
+                  <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="44" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/Attachment.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/FollowerMessageProcessor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/LoadedAttachment.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="578">
-                  <caret line="34" selection-start-line="34" selection-end-line="34" />
-                  <folding>
-                    <element signature="e#342#343#0" expanded="true" />
-                    <element signature="e#374#375#0" expanded="true" />
-                    <element signature="e#475#476#0" expanded="true" />
-                    <element signature="e#529#530#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/build/generated/source/proto/debug/javalite/world/skytale/message/Messages.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentFactory.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#409#410#0" expanded="true" />
-                    <element signature="e#465#466#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -373,7 +371,6 @@
       <find>long</find>
       <find>Chat</find>
       <find>Chat.conversationKeyFromString</find>
-      <find>private</find>
       <find>String TABLE_NAME = TableChat.TABLE_NAME+chatID;</find>
       <find>Contact</find>
       <find>Messages</find>
@@ -384,6 +381,10 @@
       <find>messagesHandler</find>
       <find>getExten</find>
       <find>path</find>
+      <find>public</find>
+      <find>private</find>
+      <find>protected</find>
+      <find>ContactImp</find>
     </findStrings>
     <replaceStrings>
       <replace>cipher</replace>
@@ -397,6 +398,9 @@
       <replace>path</replace>
       <replace>incomingMessageProcessor</replace>
       <replace>filePath</replace>
+      <replace>private</replace>
+      <replace>protected</replace>
+      <replace>ContactDAO</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -405,65 +409,65 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/androidhandlers/src/main/java/world/skytale/databases/Tables/TableChatList.java" />
-        <option value="$PROJECT_DIR$/androidhandlers/src/androidTest/java/world/skytale/databases/databes/TableContactsTest.java" />
-        <option value="$PROJECT_DIR$/androidhandlers/build.gradle" />
-        <option value="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/Tables/TableChatTest.java" />
-        <option value="$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableChatListTest.java" />
-        <option value="$PROJECT_DIR$/aappTest/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/handlersAndroid/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/aappTest/build.gradle" />
-        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SQLDatabaseHelper.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/FilesHandler.java" />
-        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/FilesHandler.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/FollowerMessage.java" />
-        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SkyTaleDatabaseHandler.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Chat.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ContactMessageProcessor.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java" />
-        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java" />
-        <option value="$PROJECT_DIR$/aappTest/src/androidTest/java/world/ChatMessageProcessorTest.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/AccountKey.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/RSASignature.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessagesHandler.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/AttachmentImp.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Attachment.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/utils/FileUtils.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/Mail.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/SkyTaleProcessor.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/OutgoingMessageProcessor.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessingException.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageProcessingException.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessageHeader.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/IncomingMail.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Contact.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/Attachment.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentBuilder.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/DownloadedMail.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentImp.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageSigner.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/VeryfiedMessage.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentFactory.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MailBuilder.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageVerifier.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessor.java" />
-        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/LoadedAttachment.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachemntUtil.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentUtil.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/MessageAttachment.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/DownloadedMail.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ContactDAO.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ContactMessageProcessor.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/builders/MailBuilder.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MailBuilder.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MailSender.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChat.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SQLDatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/daos/Account.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Account.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessageImpl.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/ImagesStorage.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Follower.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ID.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Chat.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Contact.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/FilesHandlerImpl.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/FilesHandler.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatDAO.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatHandler.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/ProtoAttachment.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ContactsHandler.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageVerifier.java" />
+        <option value="$PROJECT_DIR$/skytale/build.gradle" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Account.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Chat.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Attachment.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ChatMessage.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Contact.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatImp.java" />
         <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ChatMessageProcessor.java" />
+        <option value="$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/builders/ChatMessageBuilder.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatMessageDAO.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableContacts.java" />
+        <option value="$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ContactDAO.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="520" />
-    <option name="y" value="-36" />
-    <option name="width" value="2800" />
-    <option name="height" value="2000" />
+    <option name="x" value="1276" />
+    <option name="y" value="-10" />
+    <option name="width" value="1942" />
+    <option name="height" value="2092" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -490,25 +494,32 @@
             </path>
             <path>
               <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
-              <item name="aappTest" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="world" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
-              <item name="aappTest" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="world" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="xfreemedia" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
               <item name="handlersAndroid" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
               <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
               <item name="handlersAndroid" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
+              <item name="handlersAndroid" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="databases" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
+              <item name="handlersAndroid" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="databases" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="daos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
+              <item name="handlersAndroid" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="databases" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Tables" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
@@ -536,7 +547,22 @@
               <item name="skytale" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="skytale" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
+              <item name="skytale" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="skytale" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="messages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
+              <item name="skytale" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="skytale" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="messages" type="462c0819:PsiDirectoryNode" />
+              <item name="builders" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
@@ -558,8 +584,7 @@
               <item name="skytale" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="skytale" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="attachments" type="462c0819:PsiDirectoryNode" />
+              <item name="model2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SkyTale" type="1abcf292:AndroidViewProjectNode" />
@@ -586,7 +611,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -624,6 +648,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1013,6 +1038,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1648" />
@@ -1028,7 +1054,7 @@
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.15059589" />
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.15059589" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.70454544" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.54821235" />
@@ -1130,10 +1156,10 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java</url>
-          <line>42</line>
+          <url>file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChat.java</url>
+          <line>64</line>
           <properties />
-          <option name="timeStamp" value="13" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableContactsTest.java</url>
@@ -1150,238 +1176,17 @@
     <SUITE FILE_PATH="coverage/SkyTale$skytale_in_skytale.ic" NAME="skytale in skytale Coverage Results" MODIFIED="1573128376453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/skytale/src/test/java/world/skytale/skytale/ExampleUnitTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableContactsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" selection-start-line="25" selection-end-line="26" selection-end-column="118" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/TableChatListTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="23" selection-start-line="23" selection-end-line="23" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/androidTest/java/world/skytale/databases/databes/Tables/TableChatTest.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/androidTest/java/world/skytale/messages/processors/ChatMessageProcessorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/UserAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" selection-start-line="21" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SQLDatabaseHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aappTest/src/androidTest/java/world/xfreemedia/ExampleInstrumentedTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aappTest/src/androidTest/java/world/ChatMessageProcessorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SkyTaleDatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/AccountKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/Sha256.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableContacts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#putChatMessageIntoContentValues#0;class#TableChat#0" />
-            <element signature="method#readChatMessageFromCursor#0;class#TableChat#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/RSASignature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/DonwloadedMail2.java" />
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-29/java/lang/Exception.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="88" column="41" selection-start-line="88" selection-start-column="41" selection-end-line="88" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/utils/OutgoingMessageProcessor.java" />
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ContactMessageProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/Contact.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-          <folding>
-            <element signature="e#1378#1379#0" expanded="true" />
-            <element signature="e#1410#1411#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-            <element signature="e#1481#1482#0" expanded="true" />
-            <element signature="e#1515#1516#0" expanded="true" />
-            <element signature="e#1545#1546#0" expanded="true" />
-            <element signature="e#1573#1574#0" expanded="true" />
-            <element signature="e#1600#1601#0" expanded="true" />
-            <element signature="e#1636#1637#0" expanded="true" />
-            <element signature="e#1668#1669#0" expanded="true" />
-            <element signature="e#1703#1704#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
-            <element signature="e#1772#1773#0" expanded="true" />
-            <element signature="e#1806#1807#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/FilesHandlerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="53" column="25" lean-forward="true" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/utils/FileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/DownloadedMail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        <state relative-caret-position="178">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1073#1074#0" expanded="true" />
@@ -1390,25 +1195,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/FilesHandler.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/cyphers/RSASignature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="68" lean-forward="true" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="86" />
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/MailBuilder.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/MailBuilder.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java" />
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ContactDAO.java" />
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/VeryfiedMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1136#1137#0" expanded="true" />
-            <element signature="e#1163#1164#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="493">
+          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1419,6 +1221,8 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessagesHandler.java" />
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ContactMessageProcessor.java" />
     <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/OutgoingMessageProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1426,20 +1230,164 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/VeryfiedMessage.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/LoadedAttachment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
-          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="71" lean-forward="true" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
           <folding>
-            <element signature="e#693#694#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#768#769#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#838#839#0" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#923#924#0" expanded="true" />
-            <element signature="e#969#970#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/builders/MailBuilder.java" />
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/MailBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2749#2750#0" expanded="true" />
+            <element signature="e#2789#2790#0" expanded="true" />
+            <element signature="e#2824#2825#0" expanded="true" />
+            <element signature="e#2854#2855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#readChatMessageFromCursor#0;class#TableChat#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/ImagesStorage.java" />
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/SQLDatabaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1853">
+          <caret line="131" column="55" selection-start-line="128" selection-start-column="13" selection-end-line="131" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessageImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Follower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/FilesHandlerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/FilesHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="75" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/AccountProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/ProtoAttachment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ContactsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-298">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessageHeader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MailSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1455,177 +1403,196 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/MessageVerifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="133" selection-start-line="35" selection-start-column="133" selection-end-line="35" selection-end-column="133" />
+        <state relative-caret-position="195">
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/SkyTaleMessage.java">
+    <entry file="file://$PROJECT_DIR$/skytale/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="56" column="19" lean-forward="true" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#findPathWithExtension#0;class#SkyTaleMessage#0" />
-          </folding>
+        <state relative-caret-position="229">
+          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#878#879#0" expanded="true" />
-            <element signature="e#931#932#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/MessageProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/FollowerMessageProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessageHeader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/MessagesHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentFactory.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/build/generated/source/proto/debug/javalite/world/skytale/message/Messages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/Attachment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/FileAttachment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#409#410#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/AttachmentUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="13" selection-end-line="30" selection-end-column="21" />
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/LoadedAttachment.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Attachment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/attachments/ProtoAttachment.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/AttachmentFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="11" column="86" selection-start-line="11" selection-start-column="86" selection-end-line="11" selection-end-column="86" />
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/database/ChatMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#1195#1216#0" expanded="true" />
-            <element signature="e#1566#1583#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/processors/ChatMessageProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+        <state relative-caret-position="467">
+          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/IncomingMessageProcessor.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/builders/ChatMessageBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        <state relative-caret-position="765">
+          <caret line="45" column="81" lean-forward="true" selection-start-line="45" selection-start-column="81" selection-end-line="45" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/messages/FollowerMessage.java">
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ChatImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+        <state relative-caret-position="153">
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="method#participantsFromString#0;class#ChatDAO#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/ChatMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ChatMessageDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="54" column="10" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1337#1338#0" expanded="true" />
+            <element signature="e#1363#1364#0" expanded="true" />
+            <element signature="e#1404#1405#0" expanded="true" />
+            <element signature="e#1428#1429#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+            <element signature="e#1644#1645#0" expanded="true" />
+            <element signature="e#1721#1722#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableChatList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="72" column="126" selection-start-line="72" selection-start-column="126" selection-end-line="72" selection-end-column="126" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ContactType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model2/Contact.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skytale/src/main/java/world/skytale/model/ContactImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" lean-forward="true" selection-start-line="12" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/Tables/TableContacts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="111" column="50" lean-forward="true" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlersAndroid/src/main/java/world/skytale/databases/daos/ContactDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-427">
+          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#687#688#0" expanded="true" />
+            <element signature="e#721#722#0" expanded="true" />
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#891#892#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1167#1168#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1184#1185#0" expanded="true" />
           </folding>
         </state>
       </provider>

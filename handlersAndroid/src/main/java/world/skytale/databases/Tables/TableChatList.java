@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import world.skytale.database.ChatHandler;
-import world.skytale.model.ID;
+import world.skytale.model2.ID;
 import world.skytale.databases.daos.ChatDAO;
 
 
@@ -54,13 +54,13 @@ public class TableChatList {
     {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(CHAT_ID,chat.ID());
+        contentValues.put(CHAT_ID,chat.getChatID().toLong());
         contentValues.put(conversationKey,chat.conversationKeyToString());
-        contentValues.put(participants,chat.patricipantsToString());
+        contentValues.put(participants,chat.participantsToString());
         contentValues.put(newMessages,chat.newMessages);
         contentValues.put(lastMessageTime,chat.lastMessageTime);
-        contentValues.put(chatImagePath,chat.chatImagePath);
-        contentValues.put(chatName,chat.chatName);
+        contentValues.put(chatImagePath,chat.chatImage.getFilePath());
+        contentValues.put(chatName,chat.getChatName());
 
         return contentValues;
     }
@@ -70,7 +70,7 @@ public class TableChatList {
     public static boolean updateChat(SQLiteDatabase db, ChatDAO chat)
     {
         ContentValues contentValues = putChatIntoContentValues(chat);
-        int result =  db.update(TableChatList.TABLE_NAME, contentValues,TableChatList.CHAT_ID +" = "+chat.ID()+"",null);
+        int result =  db.update(TableChatList.TABLE_NAME, contentValues,TableChatList.CHAT_ID +" = "+chat.getChatID().toLong()+"",null);
 
         if(result >0)
         {
@@ -113,7 +113,6 @@ public class TableChatList {
         chatName = cursor.getString(cursor.getColumnIndex(TableChatList.chatName));
 
         ChatDAO t = new ChatDAO(ID, key,participants,lastMessageTime,newMessages,picture,chatName);
-
         return t;
     }
 

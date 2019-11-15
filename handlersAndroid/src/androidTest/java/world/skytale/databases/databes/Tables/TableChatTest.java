@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import world.skytale.model.Chat;
-import world.skytale.model.ChatMessage;
-import world.skytale.model.Contact;
+import world.skytale.model.ChatImp;
+import world.skytale.model.ChatMessageImp;
+import world.skytale.model.ContactImp;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.databes.TableChatListTest;
 import world.skytale.databases.daos.ChatMessageDAO;
@@ -29,13 +29,13 @@ public class TableChatTest {
     @Test
     public void addData() {
 
-            Chat chat = TableChatListTest.makeNewChat();
+            ChatImp chat = TableChatListTest.makeNewChat();
             Log.i("chatID", "Hello :  " + chat.chatID);
             sqlDatabaseHelper.addChat(chat);
 
 
-            Contact contact = makeNewContact();
-            ChatMessage chatMessage = new ChatMessage();
+            ContactImp contact = makeNewContact();
+            ChatMessageImp chatMessage = new ChatMessageImp();
             chatMessage.senderID = contact.contactID;
             chatMessage.message = "Hello";
             chatMessage.time = 100;

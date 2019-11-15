@@ -13,7 +13,7 @@ import org.junit.Test;
 import world.skytale.database.ContactsHandler;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.UserAccount;
-import world.skytale.model.Contact;
+import world.skytale.model.ContactImp;
 
 import static org.junit.Assert.assertTrue;
 
@@ -26,16 +26,16 @@ public class TableContactsTest {
     @Rule
     public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-    public static Contact makeNewContact()
+    public static ContactImp makeNewContact()
     {
-        Contact   contact = UserAccount.makeNewAccount("Maciej", "Solecki", "MaciejFW@gmail.com","Image").getUserContact();
+        ContactImp contact = UserAccount.makeNewAccount("Maciej", "Solecki", "MaciejFW@gmail.com","Image").getUserContact();
         return contact;
     }
 
     @Test
     public void addData() {
 
-        Contact contact = makeNewContact();
+        ContactImp contact = makeNewContact();
        boolean result1 =  contactsHandler.addContact(contact);
 
        assertTrue(result1);
@@ -44,22 +44,22 @@ public class TableContactsTest {
     @Test
     public void getContact() throws ContactsHandler.ContactNotFoundException {
 
-        Contact contact = makeNewContact();
+        ContactImp contact = makeNewContact();
         contactsHandler.addContact(contact);
-        Contact tmp = contactsHandler.getContact(contact.contactID);
+        ContactImp tmp = contactsHandler.getContact(contact.contactID);
 
         Assert.assertEquals(tmp.contactID,contact.contactID);
     }
 
     @Test
     public void setContactType() throws ContactsHandler.ContactNotFoundException {
-        Contact contact = makeNewContact();
+        ContactImp contact = makeNewContact();
         contactsHandler.addContact(contact);
 
-        int type = Contact.TYPE_CHAT;
+        int type = ContactImp.TYPE_CHAT;
         contactsHandler.changeContactType(contact.contactID,type);
 
-        Contact tmp = contactsHandler.getContact(contact.contactID);
+        ContactImp tmp = contactsHandler.getContact(contact.contactID);
 
         Assert.assertEquals(tmp.contactID,contact.contactID);
         Assert.assertEquals(tmp.contactType,type);
@@ -69,14 +69,14 @@ public class TableContactsTest {
     @Test
     public void updateContact() throws ContactsHandler.ContactNotFoundException {
 
-        Contact contact = makeNewContact();
+        ContactImp contact = makeNewContact();
         contactsHandler.addContact(contact);
 
         String name = "newName";
         contact.firstName = name;
 
         contactsHandler.updateContact(contact);
-        Contact tmp = contactsHandler.getContact(contact.contactID);
+        ContactImp tmp = contactsHandler.getContact(contact.contactID);
 
         Assert.assertEquals(tmp.contactID,contact.contactID);
         Assert.assertEquals(name,tmp.firstName);

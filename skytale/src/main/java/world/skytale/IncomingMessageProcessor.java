@@ -21,7 +21,7 @@ public abstract class IncomingMessageProcessor {
     {
         MessageHeader messageHeader = MessageHeader.parseTitle(mail.getTitle());
         try{
-            VeryfiedMessage veryfiedMessage = getMessageVeryfier().veryfieMessage(messageHeader,mail.getAttachmentPaths());
+            VeryfiedMessage veryfiedMessage = getMessageVeryfier().veryfieMessage(messageHeader,mail.getAttachments());
         }
         catch (Exception exception)
         {

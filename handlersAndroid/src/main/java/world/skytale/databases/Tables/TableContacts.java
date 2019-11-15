@@ -9,8 +9,8 @@ import java.security.spec.InvalidKeySpecException;
 
 import world.skytale.converters.PublickKeyConverter;
 import world.skytale.database.ContactsHandler;
-import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.databases.daos.ContactDAO;
+import world.skytale.model2.ID;
 
 public class TableContacts {
 
@@ -42,7 +42,7 @@ public class TableContacts {
         }
 
 
-        public static boolean addData(SQLiteDatabase db, Contact contact) {
+        public static boolean addData(SQLiteDatabase db, ContactDAO contact) {
                 ContentValues contentValues = putContactIntoContentValues(contact);
                 long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -53,15 +53,15 @@ public class TableContacts {
                 }
         }
 
-        private static ContentValues putContactIntoContentValues(Contact contact) {
+        private static ContentValues putContactIntoContentValues(ContactDAO contact) {
 
             ContentValues contentValues = new ContentValues();
 
-            contentValues.put(ID, contact.contactID.toLong());
+            contentValues.put(ID, contact.getID().toLong());
             contentValues.put(firstName, contact.firstName);
             contentValues.put(lastName, contact.lastName);
             contentValues.put(email, contact.address);
-            contentValues.put(picturePath, contact.picturePath);
+            contentValues.put(picturePath, contact.profilePicture.getFilePath());
             contentValues.put(publickKey, PublickKeyConverter.toString(contact.publicKey));
             contentValues.put(type, contact.contactType);
 
@@ -71,7 +71,7 @@ public class TableContacts {
 
 
 
-        public static Contact getContact(SQLiteDatabase db, long id) throws ContactsHandler.ContactNotFoundException {
+        public static ContactDAO getContact(SQLiteDatabase db, long id) throws ContactsHandler.ContactNotFoundException {
             String query = "SELECT  * FROM " + TABLE_NAME +
                     "\n WHERE " + ID + " = '" + id + "';";
 
@@ -82,13 +82,13 @@ public class TableContacts {
                 throw new ContactsHandler.ContactNotFoundException(new ID(id));
             }
             cursor.moveToFirst();
-            Contact contact = readFromCursor(cursor);
+            ContactDAO contact = readFromCursor(cursor);
             return contact;
 
 
         }
 
-        private static Contact readFromCursor(Cursor cursor) {
+        private static ContactDAO readFromCursor(Cursor cursor) {
             String first, last, email, picture, pub;
             int type = 0;
             PublicKey publickKey = null;
@@ -109,7 +109,7 @@ public class TableContacts {
             }
 
 
-            Contact contact = new Contact(new ID(ID), publickKey, first, last, email, picture, type);
+            ContactDAO contact = new ContactDAO(new ID(ID), publickKey, first, last, email, picture, type);
             return contact;
 
         }
@@ -122,7 +122,7 @@ public class TableContacts {
         }
 
 
-        public static int updateContact(SQLiteDatabase db, Contact contact) {
+        public static int updateContact(SQLiteDatabase db, ContactDAO contact) {
             ContentValues contentValues = putContactIntoContentValues(contact);
             return db.update(TableContacts.TABLE_NAME, contentValues, TableContacts.ID + "= " + contact.contactID.toLong() + "", null);
 

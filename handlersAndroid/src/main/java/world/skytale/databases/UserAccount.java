@@ -4,20 +4,20 @@ import java.security.KeyPair;
 import java.security.PrivateKey;
 
 import world.skytale.cyphers.AccountKey;
-import world.skytale.model.Account;
-import world.skytale.model.Contact;
+import world.skytale.model2.Account;
+import world.skytale.model.ContactImp;
 
 public class UserAccount extends Account  {
 
-    private Contact userContact;
+    private ContactImp userContact;
     private PrivateKey privateKey;
 
    private UserAccount(KeyPair keyPair, String firstName, String lastName, String email, String picturePath)
     {
         this.privateKey = keyPair.getPrivate();
-        this.userContact = new Contact(keyPair.getPublic(),firstName,lastName,email);
+        this.userContact = new ContactImp(keyPair.getPublic(),firstName,lastName,email);
         this.userContact.picturePath = picturePath;
-        this.userContact.contactType = Contact.TYPE_ME;
+        this.userContact.contactType = ContactImp.TYPE_ME;
     }
 
 
@@ -32,7 +32,7 @@ public class UserAccount extends Account  {
 
 
     @Override
-    public Contact getUserContact() {
+    public ContactImp getUserContact() {
         return this.userContact;
     }
 

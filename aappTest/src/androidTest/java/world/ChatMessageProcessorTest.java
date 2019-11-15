@@ -26,12 +26,11 @@ import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
 import world.skytale.databases.daos.ChatMessageDAO;
 import world.skytale.messages.DownloadedMail;
-import world.skytale.messages.MessagesHandler;
 import world.skytale.MessageProcessingException;
-import world.skytale.model.Account;
-import world.skytale.model.Chat;
-import world.skytale.model.ChatMessage;
-import world.skytale.model.ID;
+import world.skytale.model2.Account;
+import world.skytale.model.ChatImp;
+import world.skytale.model.ChatMessageImp;
+import world.skytale.model2.ID;
 
 import static org.junit.Assert.assertEquals;
 
@@ -83,7 +82,7 @@ public class ChatMessageProcessorTest {
         reciverDatabaseHandler.getTableContacts().addContact(sender.getUserContact());
 
         for(int i=0;i<1000;i++) {
-            Chat chat = Chat.startNewChat("TestChat", new ID[]{sender.getUserContact().contactID, reciver.getUserContact().contactID});
+            ChatImp chat = ChatImp.startNewChat("TestChat", new ID[]{sender.getUserContact().contactID, reciver.getUserContact().contactID});
             Log.i("chat ", "chatID : "+chat.chatID);
 
 
@@ -93,7 +92,7 @@ public class ChatMessageProcessorTest {
             reciverDatabaseHandler.getChatHandler().addChat(chat);
 
 
-            ChatMessage chatMessage = new ChatMessage(sender.getUserContact().contactID, new Date().getTime(), "Hello my new USer", null);
+            ChatMessageImp chatMessage = new ChatMessageImp(sender.getUserContact().contactID, new Date().getTime(), "Hello my new USer", null);
 
 
             sendersDatabase.addChatMessage(chatMessage, chat.chatID);
@@ -107,7 +106,7 @@ public class ChatMessageProcessorTest {
 
             assertEquals(1, reciverMessages.size());
 
-            ChatMessage message = reciverMessages.get(0);
+            ChatMessageImp message = reciverMessages.get(0);
 
             assertEquals(chatMessage.message, message.message);
             assertEquals(chatMessage.time, message.time);

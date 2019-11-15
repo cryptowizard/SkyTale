@@ -12,9 +12,9 @@ import javax.crypto.SecretKey;
 import world.skytale.cyphers.AES;
 import world.skytale.database.ChatHandler;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.model.Chat;
-import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.ChatImp;
+import world.skytale.model.ContactImp;
+import world.skytale.model2.ID;
 
 import static org.junit.Assert.assertTrue;
 import static world.skytale.databases.databes.TableContactsTest.makeNewContact;
@@ -26,15 +26,15 @@ public class TableChatListTest {
 
 
 
-    public static Chat makeNewChat()
+    public static ChatImp makeNewChat()
     {
         String name = "Hello";
         String imagePath = "bum";
         SecretKey conversationKey = AES.generateNewKey();
         ID chatID = ID.generateRandomID();
-        Contact participant1 = makeNewContact();
-        Contact participant2 = makeNewContact();
-        Chat chat = new Chat();
+        ContactImp participant1 = makeNewContact();
+        ContactImp participant2 = makeNewContact();
+        ChatImp chat = new ChatImp();
 
         chat.chatImagePath = imagePath;
         chat.participantIDs = new ID[]{participant1.contactID,participant2.contactID};
@@ -48,7 +48,7 @@ public class TableChatListTest {
     @Test
     public void addData() {
 
-        Chat chat = makeNewChat();
+        ChatImp chat = makeNewChat();
         boolean result = chatHandler.addChat(chat);
 
         assertTrue(result);
@@ -57,24 +57,24 @@ public class TableChatListTest {
     @Test
     public void updateChat() throws ChatHandler.ChatNotFoundException {
 
-        Chat chat = makeNewChat();
+        ChatImp chat = makeNewChat();
         chatHandler.addChat(chat);
 
         chat.chatName = "XDDDD";
         chatHandler.updateChat(chat);
-        Chat chat2 = chatHandler.getChat(chat.chatID);
+        ChatImp chat2 = chatHandler.getChat(chat.chatID);
         Assert.assertEquals(chat2.chatName,chat.chatName);
     }
 
     @Test
     public void getChat() throws ChatHandler.ChatNotFoundException {
 
-        Chat chat = makeNewChat();
+        ChatImp chat = makeNewChat();
         chatHandler.addChat(chat);
 
 
 
-        Chat chat2 = chatHandler.getChat(chat.chatID);
+        ChatImp chat2 = chatHandler.getChat(chat.chatID);
         Assert.assertEquals(chat2.chatName,chat.chatName);
         Assert.assertEquals(chat2.secretKey,chat.secretKey);
     }

@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.security.PublicKey;
 
 import world.skytale.message.Messages;
-import world.skytale.model.Contact;
+import world.skytale.model.ContactImp;
 import world.skytale.cyphers.AccountKey;
 
 import static org.junit.Assert.assertEquals;
@@ -21,7 +21,7 @@ public class MessagesTest {
 
 
         PublicKey publicKey = AccountKey.generateKeyPair().getPublic();
-        Contact  contact = new Contact(publicKey,"Maciek","MSD","MSD@gmail.com");
+        ContactImp contact = new ContactImp(publicKey,"Maciek","MSD","MSD@gmail.com");
         ByteString byteString = ByteString.copyFrom(contact.publicKey.getEncoded());
 
         Messages.Contact contact1 = Messages.Contact.newBuilder()
@@ -36,7 +36,7 @@ public class MessagesTest {
 
         Messages.Contact contact2 = Messages.Contact.parseFrom(contact1.toByteArray());
 
-        Contact contact3 = new Contact(AccountKey.fromBytes(contact2.getPublicKey().toByteArray()),contact2.getFirstName(),contact2.getLastName(),contact2.getAddress());
+        ContactImp contact3 = new ContactImp(AccountKey.fromBytes(contact2.getPublicKey().toByteArray()),contact2.getFirstName(),contact2.getLastName(),contact2.getAddress());
 
 
         assertEquals(contact.contactID,contact3.contactID);

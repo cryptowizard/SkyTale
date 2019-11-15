@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import world.skytale.converters.LongConverter;
-import world.skytale.model.ID;
+import world.skytale.model2.ID;
 import world.skytale.databases.daos.ChatMessageDAO;
 
 
@@ -66,8 +66,8 @@ public class TableChat {
 
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(senderID,msg.senderID.toLong());
-        contentValues.put(time,msg.time);
+        contentValues.put(senderID,msg.getLongID());
+        contentValues.put(time,msg.getTime());
         contentValues.put(message,msg.message);
         contentValues.put(recivedTime,msg.recivedTime);
         if(msg.attachments==null)

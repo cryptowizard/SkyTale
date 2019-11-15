@@ -9,8 +9,9 @@ import world.skytale.converters.PublickKeyConverter;
 import world.skytale.cyphers.RSASignature;
 import world.skytale.database.ContactsHandler;
 import world.skytale.messages.MessageHeader;
-import world.skytale.model.Contact;
-import world.skytale.model.attachments.Attachment;
+import world.skytale.model.ContactImp;
+import world.skytale.model2.Attachment;
+import world.skytale.model2.Contact;
 
 import static world.skytale.MailBuilder.MESSAGE_EXTENSION;
 import static world.skytale.MailBuilder.PUBLIC_KEY_EXTENSION;
@@ -31,14 +32,14 @@ public class MessageVerifier {
         byte [] signature = findAttachmentWithExtension(attachments, SIGNATURE_EXTENSION).getFileBytes();
 
         PublicKey publicKey;
-        int contactType = Contact.TYPE_DEFAULT;
+        int contactType = ContactImp.TYPE_DEFAULT;
         try {
             publicKey = PublickKeyConverter.fromBytes(findAttachmentWithExtension(attachments, PUBLIC_KEY_EXTENSION).getFileBytes());
         }catch ( AttachmentNotFoundException exception)
         {
             Contact contact = contactsHandler.getContact(messageHeader.getSenderID());
             contactType = contact.getContactType();
-            publicKey =  contact.publicKey;
+            publicKey =  contact.getPublicKey();
         }
 
         boolean isSignatureValid  = RSASignature.veryfiSignature(publicKey,message,signature);

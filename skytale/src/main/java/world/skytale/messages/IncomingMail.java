@@ -2,7 +2,7 @@ package world.skytale.messages;
 
 import java.util.ArrayList;
 
-import world.skytale.model.attachments.Attachment;
+import world.skytale.model2.Attachment;
 
 public class IncomingMail extends DownloadedMail {
 
