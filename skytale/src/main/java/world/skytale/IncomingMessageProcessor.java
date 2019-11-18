@@ -2,13 +2,13 @@ package world.skytale;
 
 
 import world.skytale.database.DatabaseHandler;
-import world.skytale.database.FilesHandler;
 import world.skytale.messages.IncomingMail;
 import world.skytale.messages.MessageHeader;
+import world.skytale.messages.processors.ChatMessageProcessor;
+import world.skytale.messages.processors.MessageProcessor;
 
 public abstract class IncomingMessageProcessor {
 
-    protected abstract FilesHandler getFilesHandler();
     protected abstract DatabaseHandler getDatabaseHandler();
 
 
@@ -21,7 +21,10 @@ public abstract class IncomingMessageProcessor {
     {
         MessageHeader messageHeader = MessageHeader.parseTitle(mail.getTitle());
         try{
-            VeryfiedMessage veryfiedMessage = getMessageVeryfier().veryfieMessage(messageHeader,mail.getAttachments());
+            VeryfiedMessage veryfiedMessage = getMessageVeryfier()
+                    .veryfieMessage(messageHeader,mail.getAttachments());
+            MessageProcessor messageProcessor = getMessageProcessor(veryfiedMessage.getMessageHeader().getMessageType());
+            messageProcessor.processIncoming(veryfiedMessage);
         }
         catch (Exception exception)
         {
@@ -34,8 +37,23 @@ public abstract class IncomingMessageProcessor {
         return new MessageVerifier(getDatabaseHandler().getTableContacts());
     }
 
+    public MessageProcessor getMessageProcessor(String type)
+    {
+        switch (type)
+        {
+            case ChatMessageProcessor
+                    .TYPE_TAG:
+                return getChatMessageHandler();
+
+        }
+        return null;
+    }
 
 
+    public ChatMessageProcessor getChatMessageHandler()
+    {
+        return new ChatMessageProcessor(getDatabaseHandler().getChatHandler(),getDatabaseHandler().getChatMessageHandler());
+    }
 
 
 

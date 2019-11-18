@@ -59,7 +59,7 @@ public class TableChatList {
         contentValues.put(participants,chat.participantsToString());
         contentValues.put(newMessages,chat.newMessages);
         contentValues.put(lastMessageTime,chat.lastMessageTime);
-        contentValues.put(chatImagePath,chat.chatImage.getFilePath());
+        contentValues.put(chatImagePath,chat.chatImage);
         contentValues.put(chatName,chat.getChatName());
 
         return contentValues;

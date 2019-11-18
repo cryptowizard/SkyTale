@@ -17,19 +17,23 @@ import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import world.skytale.MessageProcessingException;
+import world.skytale.MessagesHandler;
 import world.skytale.database.AccountProvider;
 import world.skytale.database.DatabaseHandler;
-import world.skytale.database.FilesHandler;
 import world.skytale.databases.FilesHandlerImpl;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
 import world.skytale.databases.daos.ChatMessageDAO;
 import world.skytale.messages.DownloadedMail;
-import world.skytale.MessageProcessingException;
-import world.skytale.model2.Account;
+import world.skytale.messages.IncomingMail;
+import world.skytale.messages.builders.ChatMessageBuilder;
 import world.skytale.model.ChatImp;
 import world.skytale.model.ChatMessageImp;
+import world.skytale.model2.Account;
+import world.skytale.model2.AttachmentFactory;
+import world.skytale.model2.ChatMessage;
 import world.skytale.model2.ID;
 
 import static org.junit.Assert.assertEquals;
@@ -60,7 +64,7 @@ public class ChatMessageProcessorTest {
     };
 
 
-    FilesHandler filesHandler;
+    FilesHandlerImpl filesHandler;
 
     @Rule
     public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -75,15 +79,15 @@ public class ChatMessageProcessorTest {
         DatabaseHandler reciverDatabaseHandler = new SkyTaleDatabaseHandler(reciversDatabase, revicerAccountProvider);
 
 
-        MessagesHandler sendersMessageProcessor = new MessagesHandler(sendersDatabaseHandler, filesHandler);
-        MessagesHandler reciversMessageProcessor = new MessagesHandler(reciverDatabaseHandler, filesHandler);
+        MessagesHandler sendersMessageProcessor = new MessagesHandler(sendersDatabaseHandler);
+        MessagesHandler reciversMessageProcessor = new MessagesHandler(reciverDatabaseHandler);
 
         sendersDatabaseHandler.getTableContacts().addContact(reciver.getUserContact());
         reciverDatabaseHandler.getTableContacts().addContact(sender.getUserContact());
 
-        for(int i=0;i<1000;i++) {
-            ChatImp chat = ChatImp.startNewChat("TestChat", new ID[]{sender.getUserContact().contactID, reciver.getUserContact().contactID});
-            Log.i("chat ", "chatID : "+chat.chatID);
+        for(int i=0;i<10;i++) {
+            ChatImp chat = ChatImp.startNewChat("TestChat", new ID[]{sender.getUserContact().getID(), reciver.getUserContact().getID()});
+            Log.i("chat ", "chatID : "+chat.getChatID());
 
 
 
@@ -92,24 +96,26 @@ public class ChatMessageProcessorTest {
             reciverDatabaseHandler.getChatHandler().addChat(chat);
 
 
-            ChatMessageImp chatMessage = new ChatMessageImp(sender.getUserContact().contactID, new Date().getTime(), "Hello my new USer", null);
+            ChatMessageImp chatMessage = new ChatMessageImp(sender.getUserContact().getID(), new Date().getTime(), "Hello my new USer", null);
 
 
-            sendersDatabase.addChatMessage(chatMessage, chat.chatID);
-            DownloadedMail downloadedMail = sendersMessageProcessor.getChatMessageProcessor().makeDownloadedMail(chatMessage, chat);
+            sendersDatabase.addChatMessage(chatMessage, chat.getChatID());
+            ChatMessageBuilder sendersMailBuilder = new ChatMessageBuilder((AttachmentFactory) filesHandler,sender);
+            DownloadedMail downloadedMail = sendersMailBuilder.makeDownloadedMail(chatMessage,chat);
 
 
-            reciversMessageProcessor.processIncoming(downloadedMail);
+            IncomingMail incomingMail = new IncomingMail(downloadedMail.getTitle(),downloadedMail.getAttachments(),sender.getUserContact().getAdress());
+            reciversMessageProcessor.processIncoming(incomingMail);
 
-            ArrayList<ChatMessageDAO> reciverMessages = reciversDatabase.getAllMessages(chat.chatID);
+            ArrayList<ChatMessageDAO> reciverMessages = reciversDatabase.getAllMessages(chat.getChatID());
 
 
             assertEquals(1, reciverMessages.size());
 
-            ChatMessageImp message = reciverMessages.get(0);
+            ChatMessage message = reciverMessages.get(0);
 
-            assertEquals(chatMessage.message, message.message);
-            assertEquals(chatMessage.time, message.time);
+            assertEquals(chatMessage.getMessage(), message.getMessage());
+            assertEquals(chatMessage.getTime(), message.getTime());
         }
 
 

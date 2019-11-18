@@ -49,6 +49,16 @@ public class ProtoAttachment implements Attachment {
         return attachments;
     }
 
+    public static ArrayList< Messages.Attachment> toProtoList(Attachment [] attachmentList) throws IOException
+    {
+        ArrayList< Messages.Attachment> attachments = new ArrayList<Messages.Attachment>();
+        for(Attachment attachment : attachmentList)
+        {
+            attachments.add(toProtoAttachment(attachment));
+        }
+        return attachments;
+    }
+
     public static ArrayList<Attachment> fromProtoList(List<Messages.Attachment> attachmentList)
     {
         ArrayList<Attachment> attachments = new ArrayList<Attachment>();

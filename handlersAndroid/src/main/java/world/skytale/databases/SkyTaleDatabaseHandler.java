@@ -25,7 +25,7 @@ public class SkyTaleDatabaseHandler implements DatabaseHandler {
 
     @Override
     public ContactsHandler getTableContacts() {
-        return databaseHelper;
+        return databaseHelper.getTableContacts();
     }
 
     @Override

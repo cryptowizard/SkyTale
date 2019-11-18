@@ -10,7 +10,7 @@ public class FileUtils {
      */
     public static String getExtension(String path)
     {
-        int i = path.lastIndexOf("/");
+        int i = path.lastIndexOf(".");
         return path.substring(i+1,path.length());
     }
 }

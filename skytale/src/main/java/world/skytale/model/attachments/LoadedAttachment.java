@@ -1,4 +1,7 @@
-package world.skytale.daos.attachments;
+package world.skytale.model.attachments;
+
+import world.skytale.model2.Attachment;
+import world.skytale.model2.AttachmentFactory;
 
 public class LoadedAttachment implements Attachment {
 
@@ -21,7 +24,7 @@ public class LoadedAttachment implements Attachment {
     }
 
 
-    public static class  LoadedAttachmentFactory implements  AttachmentFactory
+    public static class  LoadedAttachmentFactory implements AttachmentFactory
     {
         public static LoadedAttachmentFactory getInstance()
         {

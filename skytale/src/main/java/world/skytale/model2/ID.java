@@ -15,9 +15,9 @@ import world.skytale.cyphers.Sha256;
  */
 public class ID implements Serializable, Comparable {
 
-    static final  long serialVersionUID = 777L;
+    static final  long serialVersionUID = 777l;
 
-    private  long id;
+    private final long id;
 
 
     /**
@@ -123,9 +123,9 @@ public static final class PublicKeyID {
 
     private static long generateID(PublicKey publicKey)
     {
-        byte [] publickKeyBytes = publicKey.getEncoded();
+        byte [] publicKeyBytes = publicKey.getEncoded();
 
-        byte [] hashedKey = Sha256.hash(publickKeyBytes);
+        byte [] hashedKey = Sha256.hash(publicKeyBytes);
 
         byte [] truncatedBytes = truncateBytes(hashedKey);
 

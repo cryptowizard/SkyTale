@@ -2,22 +2,25 @@ package world.skytale.databases;
 
 import java.security.KeyPair;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 
 import world.skytale.cyphers.AccountKey;
+import world.skytale.databases.daos.ContactDAO;
 import world.skytale.model2.Account;
-import world.skytale.model.ContactImp;
+import world.skytale.model2.Contact;
+import world.skytale.model2.ID;
 
-public class UserAccount extends Account  {
+public class UserAccount implements Account {
 
-    private ContactImp userContact;
+    private ContactDAO userContact;
     private PrivateKey privateKey;
 
    private UserAccount(KeyPair keyPair, String firstName, String lastName, String email, String picturePath)
     {
         this.privateKey = keyPair.getPrivate();
-        this.userContact = new ContactImp(keyPair.getPublic(),firstName,lastName,email);
-        this.userContact.picturePath = picturePath;
-        this.userContact.contactType = ContactImp.TYPE_ME;
+        PublicKey publicKey = keyPair.getPublic();
+        ID id = ID.PublicKeyID.makeID(publicKey);
+        this.userContact = new ContactDAO(id,publicKey,email,firstName,lastName, Contact.TYPE_ME,picturePath);
     }
 
 
@@ -32,7 +35,7 @@ public class UserAccount extends Account  {
 
 
     @Override
-    public ContactImp getUserContact() {
+    public ContactDAO getUserContact() {
         return this.userContact;
     }
 

@@ -1,20 +1,31 @@
-package world.skytale.daos.attachments;
+package world.skytale.model.attachments;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import world.skytale.model2.Attachment;
 import world.skytale.utils.FileUtils;
 
-public class FileAttachment  implements Attachment{
+public class FileAttachment  implements Attachment {
     
     private String filePath;
-    
+
+
+    public static FileAttachment fromPath(String filePath)
+    {
+        if(filePath==null||filePath.length()==0)
+        {
+            return null;
+        }
+        else return new FileAttachment(filePath);
+    }
 
     public FileAttachment(String filePath)
     {
         this.filePath=filePath;
     }
+
     @Override
     public byte[] getFileBytes() throws IOException {
         return readFileBytes();

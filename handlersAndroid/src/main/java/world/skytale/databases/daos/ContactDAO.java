@@ -15,20 +15,21 @@ public class ContactDAO implements Contact {
     public final ID contactID;
     public final PublicKey publicKey;
     public final String address;
-    public int contactType;
+
     public String firstName;
     public String lastName;
-    public FileAttachment profilePicture;
+    public int contactType;
+    @Nullable
+    public String profilePicture;
 
-
-    public ContactDAO(ID id, PublicKey publickKey, String first, String last, String email, String picture, int type) {
-        this.contactID = id;
-        this.publicKey = publickKey;
-        this.firstName = first;
-        this.lastName = last;
-        this.address = email;
-        this.profilePicture = FileAttachment.fromPath(picture);
-        this.contactType = type;
+    public ContactDAO(ID contactID, PublicKey publicKey, String address, String firstName, String lastName, int contactType, String profilePicture) {
+        this.contactID = contactID;
+        this.publicKey = publicKey;
+        this.address = address;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.contactType = contactType;
+        this.profilePicture = profilePicture;
     }
 
     @NonNull
@@ -64,11 +65,11 @@ public class ContactDAO implements Contact {
      @Nullable
      @Override
      public FileAttachment getProfilePicture() {
-         return profilePicture;
+         return FileAttachment.fromPath(profilePicture);
      }
 
      @Override
      public int getContactType() {
-         return 0;
+         return this.contactType;
      }
  }

@@ -11,24 +11,23 @@ import java.util.ArrayList;
 import world.skytale.database.ChatHandler;
 import world.skytale.database.ChatMessageHandler;
 import world.skytale.database.ContactsHandler;
-import world.skytale.database.FilesHandler;
-import world.skytale.model.ChatImp;
-import world.skytale.model.ChatMessageImp;
-import world.skytale.model.ContactImp;
-import world.skytale.model2.ID;
 import world.skytale.databases.Tables.TableChat;
 import world.skytale.databases.Tables.TableChatList;
 import world.skytale.databases.Tables.TableContacts;
 import world.skytale.databases.daos.ChatDAO;
 import world.skytale.databases.daos.ChatMessageDAO;
+import world.skytale.model2.Chat;
+import world.skytale.model2.ChatMessage;
+import world.skytale.model2.ID;
 
 
-public class SQLDatabaseHelper extends SQLiteOpenHelper implements ContactsHandler, ChatHandler, ChatMessageHandler {
+public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler, ChatMessageHandler {
 
     public static final String DATABASE_NAME = "SkyTale.db";
-    public static final int VERSION = 3;
+    public static final int VERSION = 4;
 
-    FilesHandler filesHandler;
+    FilesHandlerImpl filesHandler;
+
 
 
 
@@ -70,52 +69,59 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements ContactsHandl
         onCreate(db);
     }
 
+    ContactsHandler getTableContacts()
+    {
+        return new TableContacts(this,filesHandler);
+    }
+
+//    @Override
+//    public ContactDAO getContact(ID contactID) throws ContactNotFoundException {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContactDAO tmp =  TableContacts.getContact(db,contactID.toLong());
+//        this.close();
+//        return tmp;
+//    }
+//
+//    @Override
+//    public boolean addContact(Contact contact) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        boolean result=  TableContacts.addData(db,contact);
+//        this.close();
+//        return result;
+//    }
+//
+//    @Override
+//    public boolean updateContact(ContactImp contact) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        int tmp=  TableContacts.updateContact(db,contact);
+//        boolean result = (tmp>0);
+//        this.close();
+//        return result;
+//    }
+//
+//    @Override
+//    public boolean changeContactType(ID contactID, int contactType) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        int tmp=  TableContacts.setContactType(db,contactID.toLong(),contactType);
+//        boolean result = (tmp>0);
+//        this.close();
+//        return result;
+//    }
+
     @Override
-    public ContactImp getContact(ID contactID) throws ContactNotFoundException {
+    public ChatDAO getChat(ID chatID) throws ChatNotFoundException {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContactImp tmp =  TableContacts.getContact(db,contactID.toLong());
+        ChatDAO tmp =  TableChatList.getChat(db,chatID.toLong());
         this.close();
         return tmp;
     }
 
     @Override
-    public boolean addContact(ContactImp contact) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        boolean result=  TableContacts.addData(db,contact);
-        this.close();
-        return result;
-    }
+    public boolean addChat(Chat chat) {
 
-    @Override
-    public boolean updateContact(ContactImp contact) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int tmp=  TableContacts.updateContact(db,contact);
-        boolean result = (tmp>0);
-        this.close();
-        return result;
-    }
 
-    @Override
-    public boolean changeContactType(ID contactID, int contactType) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int tmp=  TableContacts.setContactType(db,contactID.toLong(),contactType);
-        boolean result = (tmp>0);
-        this.close();
-        return result;
-    }
 
-    @Override
-    public ChatImp getChat(ID chatID) throws ChatNotFoundException {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ChatImp tmp =  TableChatList.getChat(db,chatID.toLong());
-        this.close();
-        return tmp;
-    }
-
-    @Override
-    public boolean addChat(ChatImp chat) {
-
-        ChatDAO chatDAO = new ChatDAO(chat);
+        ChatDAO chatDAO = ChatDAO.convertChatToDAO(chat,filesHandler);
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result=  TableChatList.addData(db,chatDAO);
         if( result)
@@ -126,21 +132,28 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements ContactsHandl
         return false;
     }
 
+
+
+
+
     @Override
-    public boolean updateChat(ChatImp chat) {
-        ChatDAO chatDAO = new ChatDAO(chat,filesHandler);
+    public boolean updateChat(Chat chat) {
+
+        ChatDAO chatDAO = ChatDAO.convertChatToDAO(chat,filesHandler);
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result=  TableChatList.updateChat(db,chatDAO);
         return result;
     }
 
+
     @Override
-    public boolean addChatMessage(ChatMessageImp chatMessage, ID chatID) {
+    public boolean addChatMessage(ChatMessage chatMessage, ID chatID) {
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result=  TableChat.addData(db, new ChatMessageDAO(chatMessage),chatID);
         this.close();
         return result;
     }
+
     public ArrayList<ChatMessageDAO> getAllMessages(ID chatID)
     {
         SQLiteDatabase db = this.getWritableDatabase();

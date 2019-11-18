@@ -13,9 +13,9 @@ import world.skytale.model.ContactImp;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.Contact;
 
-import static world.skytale.MailBuilder.MESSAGE_EXTENSION;
-import static world.skytale.MailBuilder.PUBLIC_KEY_EXTENSION;
-import static world.skytale.MailBuilder.SIGNATURE_EXTENSION;
+import static world.skytale.messages.builders.MailBuilder.MESSAGE_EXTENSION;
+import static world.skytale.messages.builders.MailBuilder.PUBLIC_KEY_EXTENSION;
+import static world.skytale.messages.builders.MailBuilder.SIGNATURE_EXTENSION;
 
 public class MessageVerifier {
 

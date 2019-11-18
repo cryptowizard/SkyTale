@@ -66,7 +66,7 @@ public class TableChat {
 
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(senderID,msg.getLongID());
+        contentValues.put(senderID,msg.getSenderID().toLong());
         contentValues.put(time,msg.getTime());
         contentValues.put(message,msg.message);
         contentValues.put(recivedTime,msg.recivedTime);
@@ -76,7 +76,7 @@ public class TableChat {
         }
         else
         {
-            contentValues.put(atachments,msg.aatachmentsToString());
+            contentValues.put(atachments,msg.atachmentsToString());
         }
         return contentValues;
     }

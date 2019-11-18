@@ -3,6 +3,7 @@ package world.skytale.databases.daos;
 import java.util.ArrayList;
 import java.util.Date;
 
+import world.skytale.model.attachments.FileAttachment;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.ChatMessage;
 import world.skytale.model2.ID;
@@ -14,24 +15,24 @@ public class ChatMessageDAO implements ChatMessage {
     public long time;
     public String message;
     public long recivedTime;
-    public ArrayList<Attachment> attachments;
+    public String[] attachments;
 
 
-
-
-    public ChatMessageDAO()
-    {
+    public ChatMessageDAO() {
         super();
         this.recivedTime = new Date().getTime();
     }
-    public ChatMessageDAO(ChatMessage chatMessage)
-    {
 
+    public ChatMessageDAO(ChatMessage chatMessage) {
+
+        this.senderID = chatMessage.getSenderID();
+        this.message = chatMessage.getMessage();
+        this.time = chatMessage.getTime();
+        this.attachments = new String[0];
         this.recivedTime = new Date().getTime();
     }
 
-    public String atachmentsToString()
-    {
+    public String atachmentsToString() {
 //        if(getAttachments()==null||getAttachments().size()==0)
 //        {
 //            return "";
@@ -45,14 +46,13 @@ public class ChatMessageDAO implements ChatMessage {
         return "";
     }
 
-    public static ChatMessageDAO recreateMessage(long senderID, String message, long time, String attachments, long recivedTime)
-    {
+    public static ChatMessageDAO recreateMessage(long senderID, String message, long time, String attachments, long recivedTime) {
 
         ChatMessageDAO tmp = new ChatMessageDAO();
-        tmp.senderID=new ID(senderID);
+        tmp.senderID = new ID(senderID);
         tmp.message = message;
         tmp.time = time;
-        //tmp.attachments = attachments.split(";");
+        tmp.attachments = attachments.split(";");
         tmp.recivedTime = recivedTime;
         return tmp;
     }
@@ -74,7 +74,23 @@ public class ChatMessageDAO implements ChatMessage {
     }
 
     @Override
-    public ArrayList<Attachment> getAttachments() {
-        return attachments;
+    public FileAttachment[] getAttachments() {
+        return fromPathList(this.attachments);
     }
-}
+
+
+    private static FileAttachment[] fromPathList(String[] filePaths) {
+        ArrayList<Attachment> list = new ArrayList<Attachment>();
+        for (String path : filePaths) {
+            FileAttachment fileAttachment = FileAttachment.fromPath(path);
+            if (fileAttachment != null) {
+                list.add(fileAttachment);
+
+
+            }
+
+        }
+        return (FileAttachment[]) list.toArray();
+    }
+
+    }

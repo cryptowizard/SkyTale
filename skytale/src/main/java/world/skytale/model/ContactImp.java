@@ -11,13 +11,13 @@ public class ContactImp implements world.skytale.model2.Contact {
 
 
 
-    protected ID contactID;
-    protected PublicKey publicKey;
-    protected String address;
-    protected int contactType;
-    protected String firstName;
-    protected String lastName;
-    protected Attachment profilePicture;
+    public ID contactID;
+    public PublicKey publicKey;
+    public String address;
+    public int contactType;
+    public String firstName;
+    public String lastName;
+    public Attachment profilePicture;
 
 
     public ContactImp(PublicKey publicKey) {

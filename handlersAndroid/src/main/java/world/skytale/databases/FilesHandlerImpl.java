@@ -14,16 +14,29 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
+import world.skytale.model.attachments.FileAttachment;
 import world.skytale.model2.Attachment;
+import world.skytale.model2.AttachmentFactory;
 
-public class FilesHandlerImpl implements world.skytale.database.FilesHandler {
+public class FilesHandlerImpl implements world.skytale.database.FilesHandler, AttachmentFactory {
 
 
     private static FilesHandlerImpl instance;
 
 
     public String saveAttachment(Attachment attachment) throws IOException {
+        if(attachment==null)
+        {
+            return "";
+        }
        return this.saveFile(attachment.getFileBytes(),attachment.getExtension());
+    }
+
+
+
+    public void deleteFile(String filePath)
+    {
+
     }
 
     public static FilesHandlerImpl getInstance(Context context) throws StoragePermissionDeniedException
@@ -83,7 +96,7 @@ public class FilesHandlerImpl implements world.skytale.database.FilesHandler {
     }
 
 
-    @Override
+
     public byte[] readFileBytes(String path) throws IOException {
 
         int end = path.lastIndexOf("/");
@@ -101,14 +114,13 @@ public class FilesHandlerImpl implements world.skytale.database.FilesHandler {
 
 
 
-    @Override
     public String writeTemporaryFile(byte[] fileBytes, String extension) throws IOException {
         String path = getTemporaryFolderPath()+"/"+generateTemporaryFileName(extension);
         writeFile(fileBytes,path);
         return path;
     }
 
-    @Override
+
     public String saveFile(byte[] fileBytes, String extension) throws IOException {
         String path = getLocalStorageFolderPath()+"/"+generateTemporaryFileName(extension);
         writeFile(fileBytes,path);
@@ -172,6 +184,11 @@ public class FilesHandlerImpl implements world.skytale.database.FilesHandler {
     {
         int i = path.lastIndexOf(".");
         return path.substring(i,path.length());
+    }
+
+    @Override
+    public Attachment makeAttachment(String extension, byte[] fileBytes) throws IOException {
+        return FileAttachment.fromPath(saveFile(fileBytes,extension));
     }
 
 

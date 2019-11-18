@@ -1,10 +1,14 @@
 package world.skytale.databases.daos;
 
 
+import java.io.IOException;
+
 import javax.crypto.SecretKey;
 
 import world.skytale.converters.SecretKeyConventer;
+import world.skytale.databases.FilesHandlerImpl;
 import world.skytale.model.attachments.FileAttachment;
+import world.skytale.model2.Chat;
 import world.skytale.model2.ID;
 
 public class ChatDAO implements world.skytale.model2.Chat {
@@ -15,7 +19,7 @@ public class ChatDAO implements world.skytale.model2.Chat {
     public ID [] participantIDs;
     public SecretKey secretKey;
     public String chatName;
-    public FileAttachment chatImage;
+    public String chatImage;
 
     @Override
     public ID getChatID() {
@@ -39,15 +43,14 @@ public class ChatDAO implements world.skytale.model2.Chat {
 
     @Override
     public FileAttachment getChatImage() {
-        return this.chatImage;
+        return FileAttachment.fromPath(this.chatImage);
     }
 
-    public ChatDAO()
+
+    private ChatDAO()
     {
-        this.newMessages=0;
-        this.lastMessageTime =0;
-    }
 
+    }
     public  ChatDAO(long id, String secretKey , String participants, long lastMessageTime, int newMessages, String picturePath, String name) {
         this.chatID = new ID(id);
         this.secretKey = SecretKeyConventer.fromString(secretKey);
@@ -55,7 +58,28 @@ public class ChatDAO implements world.skytale.model2.Chat {
         this.chatName = name;
         this.lastMessageTime = lastMessageTime;
         this.newMessages = newMessages;
-        this.chatImage =  FileAttachment.fromPath(picturePath);
+        this.chatImage =  picturePath;
+    }
+
+    public static ChatDAO convertChatToDAO(Chat chat, FilesHandlerImpl filesHandler)
+    {
+        String image="";
+
+        try {
+            image = filesHandler.saveAttachment(chat.getChatImage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ChatDAO chatDAO = new ChatDAO();
+        chatDAO.secretKey = chat.getSecretKey();
+        chatDAO.chatID = chat.getChatID();
+        chatDAO.participantIDs = chat.getParticipantIDs();
+        chatDAO.chatImage = image;
+        chatDAO.chatName = chat.getChatName();
+        chatDAO.newMessages = 0;
+        chatDAO.lastMessageTime = 0;
+        return chatDAO;
     }
     private static ID [] participantsFromString(String participantIDs){
         String [] split = participantIDs.split(";");
