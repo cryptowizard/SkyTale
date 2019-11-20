@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
 
-import world.skytale.VeryfiedMessage;
+import world.skytale.messages.VeryfiedMessage;
 import world.skytale.cyphers.AES;
 import world.skytale.database.ChatHandler;
 import world.skytale.database.ChatMessageHandler;

@@ -1,10 +1,11 @@
-package world.skytale;
+package world.skytale.messages.builders;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 
+import world.skytale.messages.VeryfiedMessage;
 import world.skytale.cyphers.RSASignature;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.model2.Account;

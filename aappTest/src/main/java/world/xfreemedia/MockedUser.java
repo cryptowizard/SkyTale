@@ -2,6 +2,10 @@ package world.xfreemedia;
 
 import android.content.Context;
 
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SignatureException;
 import java.util.Random;
 
 import world.skytale.IncomingMessageProcessor;
@@ -13,6 +17,7 @@ import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.IncomingMail;
+import world.skytale.messages.senders.MessageSender;
 import world.skytale.model2.Account;
 
 public class MockedUser implements MailSender, AccountProvider  {
@@ -30,6 +35,27 @@ public class MockedUser implements MailSender, AccountProvider  {
         SQLDatabaseHelper sqlDatabaseHelper = new SQLDatabaseHelper(context,account.getUserContact().getID().toString());
         SkyTaleDatabaseHandler skyTaleDatabaseHandler = new SkyTaleDatabaseHandler(sqlDatabaseHelper, this);
 
+        MessageSender messageSender = new MessageSender() {
+            @Override
+            protected boolean addToDatabase() {
+                return false;
+            }
+
+            @Override
+            protected boolean removeFromDatabase() {
+                return false;
+            }
+
+            @Override
+            protected DownloadedMail buildDownloadedMail() throws NoSuchAlgorithmException, SignatureException, InvalidKeyException, IOException {
+                return null;
+            }
+
+            @Override
+            protected String getRecipients() {
+                return null;
+            }
+        }
         this.skyTaleDatabaseHandler = skyTaleDatabaseHandler;
         this.incomingMessageProcessor = new IncomingMessageProcessor() {
             @Override
@@ -37,6 +63,10 @@ public class MockedUser implements MailSender, AccountProvider  {
                 return skyTaleDatabaseHandler;
             }
         };
+
+
+
+
 
     }
 

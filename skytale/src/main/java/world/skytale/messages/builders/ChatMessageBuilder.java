@@ -7,18 +7,18 @@ import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import world.skytale.VeryfiedMessage;
 import world.skytale.converters.ByteConverter;
 import world.skytale.cyphers.AES;
 import world.skytale.message.Messages;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
-import world.skytale.model2.Account;
-import world.skytale.model.ChatImp;
-import world.skytale.model.ChatMessageImp;
+import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.ContactImp;
-import world.skytale.model2.AttachmentFactory;
 import world.skytale.model.attachments.ProtoAttachment;
+import world.skytale.model2.Account;
+import world.skytale.model2.AttachmentFactory;
+import world.skytale.model2.Chat;
+import world.skytale.model2.ChatMessage;
 
 public class ChatMessageBuilder extends MailBuilder {
     public static final String TYPE_TAG = "CHAT_MSG";
@@ -29,7 +29,7 @@ public class ChatMessageBuilder extends MailBuilder {
         super(attachmentFactory, account);
     }
 
-    public DownloadedMail makeDownloadedMail(ChatMessageImp chatMessage, ChatImp chat) throws IOException, InvalidKeyException, SignatureException, NoSuchAlgorithmException {
+    public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException, SignatureException, NoSuchAlgorithmException {
         MessageHeader messageHeader = new MessageHeader(TYPE_TAG, getAccount().getUserContact().getID(),chatMessage.getTime());
 
 

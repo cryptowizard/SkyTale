@@ -4,6 +4,8 @@ package world.skytale;
 import world.skytale.database.DatabaseHandler;
 import world.skytale.messages.IncomingMail;
 import world.skytale.messages.MessageHeader;
+import world.skytale.messages.MessageVerifier;
+import world.skytale.messages.VeryfiedMessage;
 import world.skytale.messages.processors.ChatMessageProcessor;
 import world.skytale.messages.processors.MessageProcessor;
 
