@@ -3,7 +3,6 @@ package world.skytale.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import world.skytale.model.attachments.FileAttachment;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.ID;
 
@@ -51,12 +50,8 @@ public class ChatMessageImp implements world.skytale.model2.ChatMessage,  Serial
         return message;
     }
 
-    public FileAttachment[] getAttachments() {
-        if(this.attachments == null)
-        {
-           return new FileAttachment[0];
-        }
-        return (FileAttachment[]) attachments.toArray();
+    public ArrayList<Attachment> getAttachments() {
+        return this.attachments;
     }
 
     public void setSenderID(ID senderID) {

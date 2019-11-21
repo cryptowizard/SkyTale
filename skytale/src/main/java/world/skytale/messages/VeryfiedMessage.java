@@ -1,6 +1,6 @@
 package world.skytale.messages;
 
-import world.skytale.messages.MessageHeader;
+import world.skytale.model2.Contact;
 
 public class VeryfiedMessage {
 
@@ -19,6 +19,7 @@ public class VeryfiedMessage {
     public VeryfiedMessage(MessageHeader messageHeader, byte[] messageBytes) {
         this.messageHeader = messageHeader;
         this.messageBytes = messageBytes;
+        this.contactType = Contact.TYPE_DEFAULT;
     }
 
     public VeryfiedMessage(MessageHeader messageHeader, byte[] messageBytes, int contactType) {

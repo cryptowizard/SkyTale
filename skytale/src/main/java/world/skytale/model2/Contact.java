@@ -20,15 +20,16 @@ public interface Contact{
      */
     int TYPE_FRIEND =100;
 
+
+     int TYPE_SHARED=300;
+     int TYPE_CHAT = 400;
+     int TYPE_REQUEST=500;
     /**
      * Type Followed is two way relation user that identifies Contact as a Followed expects
      * to receive posts from them and be identified by the other party as Follower
      * @See Follower
      */
-     int TYPE_FOLLOWED=200;
-     int TYPE_SHARED=300;
-     int TYPE_CHAT = 400;
-     int TYPE_REQUEST=500;
+     int TYPE_FOLLOWED=600;
      int TYPE_DEFAULT=1000;
 
 

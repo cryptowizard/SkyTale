@@ -74,13 +74,13 @@ public class ChatMessageDAO implements ChatMessage {
     }
 
     @Override
-    public FileAttachment[] getAttachments() {
+    public ArrayList<Attachment> getAttachments() {
         return fromPathList(this.attachments);
     }
 
 
-    private static FileAttachment[] fromPathList(String[] filePaths) {
-        ArrayList<Attachment> list = new ArrayList<Attachment>();
+    private static ArrayList<Attachment> fromPathList(String[] filePaths) {
+        ArrayList<Attachment> list = new ArrayList<>();
         for (String path : filePaths) {
             FileAttachment fileAttachment = FileAttachment.fromPath(path);
             if (fileAttachment != null) {
@@ -90,7 +90,7 @@ public class ChatMessageDAO implements ChatMessage {
             }
 
         }
-        return (FileAttachment[]) list.toArray();
+        return list;
     }
 
     }

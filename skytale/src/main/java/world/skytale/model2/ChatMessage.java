@@ -2,11 +2,11 @@ package world.skytale.model2;
 
 import androidx.annotation.NonNull;
 
-import world.skytale.model.attachments.FileAttachment;
+import java.util.ArrayList;
 
 public interface ChatMessage {
     @NonNull ID getSenderID();
-    long getTime();
+    @NonNull  long getTime();
     String getMessage();
-    FileAttachment[] getAttachments();
+    ArrayList <Attachment> getAttachments();
 }
