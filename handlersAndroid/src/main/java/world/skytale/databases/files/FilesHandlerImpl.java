@@ -1,4 +1,4 @@
-package world.skytale.databases;
+package world.skytale.databases.files;
 
 import android.Manifest;
 import android.content.Context;
@@ -12,9 +12,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
-import world.skytale.model.attachments.FileAttachment;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.AttachmentFactory;
 
@@ -23,6 +23,26 @@ public class FilesHandlerImpl implements world.skytale.database.FilesHandler, At
 
     private static FilesHandlerImpl instance;
 
+
+    public String [] saveAttachments(ArrayList<Attachment> attachments)  {
+        ArrayList<String> paths = new ArrayList<String >();
+        if(attachments==null)
+        {
+            return new String[0];
+        }
+        for(Attachment attachment : attachments)
+        {
+            try {
+                String path = saveAttachment(attachment);
+                paths.add(path);
+            }
+            catch (IOException exce)
+            {
+                exce.printStackTrace();
+            }
+        }
+        return (String[]) paths.toArray();
+    }
 
     public String saveAttachment(Attachment attachment) throws IOException {
         if(attachment==null)

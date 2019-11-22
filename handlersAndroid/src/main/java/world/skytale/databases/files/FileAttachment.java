@@ -1,4 +1,4 @@
-package world.skytale.model.attachments;
+package world.skytale.databases.files;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -53,7 +53,6 @@ public class FileAttachment  implements Attachment {
         FileInputStream inp = new FileInputStream(source);
         byte [] qx = new byte [size];
         inp.read(qx);
-
         return qx;
     }
 }
