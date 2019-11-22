@@ -6,6 +6,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 
+import world.skytale.database.DatabaseHandler;
 import world.skytale.database.MailTransporter;
 import world.skytale.messages.DownloadedMail;
 
@@ -22,6 +23,7 @@ public abstract class MessageSender {
     protected abstract String getRecipients();
 
     private MailTransporter mailTransporter;
+    protected DatabaseHandler databaseHandler;
 
     public boolean send()
     {

@@ -18,6 +18,7 @@ public class ChatMessageSender extends MessageSender{
 
     ChatMessageBuilder chatMessageBuilder;
 
+
     public ChatMessageSender(ChatMessage chatMessage, Chat chat)
     {
 
@@ -27,7 +28,7 @@ public class ChatMessageSender extends MessageSender{
 
     @Override
     protected boolean addToDatabase() {
-        return false;
+        return this.databaseHandler.getChatMessageHandler().addChatMessage(this.chatMessage, this.chat.getChatID());
     }
 
     @Override

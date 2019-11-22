@@ -30,6 +30,7 @@ message Post{
     string postText =1;
     repeated Attachment attachments=2;
     string link=3;
+    int64 orginalSendersID = 4;
 }
 
 

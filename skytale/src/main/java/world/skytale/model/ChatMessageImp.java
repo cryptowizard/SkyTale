@@ -30,14 +30,6 @@ public class ChatMessageImp implements world.skytale.model2.ChatMessage,  Serial
     }
 
 
-    public ChatMessageImp(ChatMessageImp chatMessage)
-    {
-        this.senderID = chatMessage.senderID;
-        this.time = chatMessage.time;
-        this.message = chatMessage.message;
-        this.attachments = (ArrayList<Attachment>) chatMessage.attachments.clone();
-    }
-
     public ID getSenderID() {
         return senderID;
     }

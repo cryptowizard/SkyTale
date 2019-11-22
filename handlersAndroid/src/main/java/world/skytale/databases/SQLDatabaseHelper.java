@@ -14,8 +14,10 @@ import world.skytale.database.ContactsHandler;
 import world.skytale.databases.Tables.TableChat;
 import world.skytale.databases.Tables.TableChatList;
 import world.skytale.databases.Tables.TableContacts;
+import world.skytale.databases.Tables.TablePosts;
 import world.skytale.databases.daos.ChatDAO;
 import world.skytale.databases.daos.ChatMessageDAO;
+import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.model2.Chat;
 import world.skytale.model2.ChatMessage;
 import world.skytale.model2.ID;
@@ -54,6 +56,7 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
     {
         db.execSQL(TableContacts.CreateTable());
         db.execSQL(TableChatList.createTable());
+        db.execSQL(TablePosts.createTable());
     }
 
     @Override
@@ -66,6 +69,7 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
 
         db.execSQL("DROP TABLE IF EXISTS " + TableContacts.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TableChatList.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TablePosts.TABLE_NAME);
         onCreate(db);
     }
 

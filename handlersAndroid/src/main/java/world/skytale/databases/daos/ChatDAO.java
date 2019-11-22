@@ -6,8 +6,8 @@ import java.io.IOException;
 import javax.crypto.SecretKey;
 
 import world.skytale.converters.SecretKeyConventer;
-import world.skytale.databases.FilesHandlerImpl;
-import world.skytale.model.attachments.FileAttachment;
+import world.skytale.databases.files.FilesHandlerImpl;
+import world.skytale.databases.files.FileAttachment;
 import world.skytale.model2.Chat;
 import world.skytale.model2.ID;
 

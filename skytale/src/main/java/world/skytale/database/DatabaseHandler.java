@@ -6,4 +6,5 @@ public interface DatabaseHandler {
      ContactsHandler getTableContacts();
      ChatHandler getChatHandler();
      ChatMessageHandler getChatMessageHandler();
+     PostHandler getPostHandler();
 }

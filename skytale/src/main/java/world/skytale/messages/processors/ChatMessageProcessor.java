@@ -20,7 +20,7 @@ import world.skytale.model2.ID;
 
 public class ChatMessageProcessor implements MessageProcessor {
 
-    public static final String TYPE_TAG = "CHAT_MSG";
+
     private final  ChatHandler chatHandler;
     private final ChatMessageHandler chatMessageHandler;
 
@@ -45,7 +45,7 @@ public class ChatMessageProcessor implements MessageProcessor {
         chatMessageHandler.addChatMessage(message , chat.getChatID());
     }
 
-    private ChatMessageImp buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader) throws IOException {
+    private ChatMessage buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader) throws IOException {
         ArrayList<Attachment> attachments  =ProtoAttachment.fromProtoList(chatMessage.getAttachmentsList());
 
         ChatMessageImp message = new ChatMessageImp(messageHeader.getSenderID(), messageHeader.getTime(), chatMessage.getMessageText(),attachments);

@@ -8,6 +8,7 @@ import world.skytale.messages.VeryfiedMessage;
 import world.skytale.database.ChatHandler;
 
 public interface MessageProcessor {
+
     void processIncoming(VeryfiedMessage message) throws MessageProcessingException, IOException, ChatHandler.ChatNotFoundException, InvalidKeyException;
 
 

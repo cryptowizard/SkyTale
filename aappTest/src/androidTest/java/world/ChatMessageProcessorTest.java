@@ -21,7 +21,7 @@ import world.skytale.MessageProcessingException;
 import world.skytale.MessagesHandler;
 import world.skytale.database.AccountProvider;
 import world.skytale.database.DatabaseHandler;
-import world.skytale.databases.FilesHandlerImpl;
+import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;

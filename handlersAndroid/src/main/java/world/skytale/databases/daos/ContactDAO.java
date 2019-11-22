@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 
 import java.security.PublicKey;
 
-import world.skytale.model.attachments.FileAttachment;
+import world.skytale.databases.files.FileAttachment;
 import world.skytale.model2.Contact;
 import world.skytale.model2.ID;
 

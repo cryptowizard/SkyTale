@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface Post {
 
         @NonNull
-        ID getSendersID();
+        ID getSenderID();
         long getTime();
 
     /**
@@ -15,7 +15,7 @@ public interface Post {
      *  if the post is reshared returns ID of the orginal sender
      * @return
      */
-         ID getOrginalSendersID();
+         ID getOrdinalSendersID();
 
 
          String getText();

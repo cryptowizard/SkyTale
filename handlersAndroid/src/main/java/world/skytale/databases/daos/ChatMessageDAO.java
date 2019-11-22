@@ -3,7 +3,7 @@ package world.skytale.databases.daos;
 import java.util.ArrayList;
 import java.util.Date;
 
-import world.skytale.model.attachments.FileAttachment;
+import world.skytale.databases.files.FileAttachment;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.ChatMessage;
 import world.skytale.model2.ID;

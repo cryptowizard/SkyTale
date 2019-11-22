@@ -4,7 +4,7 @@ import androidx.annotation.Nullable;
 
 import java.io.File;
 
-import world.skytale.model.attachments.FileAttachment;
+import world.skytale.databases.files.FileAttachment;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.ID;
 

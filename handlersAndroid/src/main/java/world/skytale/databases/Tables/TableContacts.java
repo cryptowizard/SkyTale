@@ -10,7 +10,7 @@ import java.security.spec.InvalidKeySpecException;
 
 import world.skytale.converters.PublickKeyConverter;
 import world.skytale.database.ContactsHandler;
-import world.skytale.databases.FilesHandlerImpl;
+import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.ContactDAO;
 import world.skytale.model2.Contact;
