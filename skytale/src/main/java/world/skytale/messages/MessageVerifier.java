@@ -9,7 +9,6 @@ import world.skytale.MessageProcessingException;
 import world.skytale.converters.PublickKeyConverter;
 import world.skytale.cyphers.RSASignature;
 import world.skytale.database.ContactsHandler;
-import world.skytale.model.ContactImp;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.Contact;
 
@@ -32,7 +31,7 @@ public class MessageVerifier {
         byte [] signature = findAttachmentWithExtension(attachments, SIGNATURE_EXTENSION).getFileBytes();
 
         PublicKey publicKey;
-        int contactType = ContactImp.TYPE_DEFAULT;
+        int contactType = Contact.TYPE_DEFAULT;
         try {
             publicKey = PublickKeyConverter.fromBytes(findAttachmentWithExtension(attachments, PUBLIC_KEY_EXTENSION).getFileBytes());
         }catch ( AttachmentNotFoundException exception)

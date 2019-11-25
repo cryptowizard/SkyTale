@@ -81,11 +81,8 @@ public class TableContacts implements ContactsHandler {
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         sqlDatabaseHelper.close();
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        if(result < 0) return false;
+        return true;
     }
 
     @Override

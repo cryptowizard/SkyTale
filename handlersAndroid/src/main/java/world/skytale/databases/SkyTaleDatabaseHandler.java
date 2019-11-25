@@ -5,6 +5,7 @@ import world.skytale.database.ChatHandler;
 import world.skytale.database.ChatMessageHandler;
 import world.skytale.database.ContactsHandler;
 import world.skytale.database.DatabaseHandler;
+import world.skytale.database.PostHandler;
 
 public class SkyTaleDatabaseHandler implements DatabaseHandler {
 
@@ -36,5 +37,10 @@ public class SkyTaleDatabaseHandler implements DatabaseHandler {
     @Override
     public ChatMessageHandler getChatMessageHandler() {
         return databaseHelper;
+    }
+
+    @Override
+    public PostHandler getPostHandler() {
+        return null;
     }
 }

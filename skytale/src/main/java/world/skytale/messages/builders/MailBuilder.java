@@ -5,13 +5,13 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 
-import world.skytale.messages.VeryfiedMessage;
 import world.skytale.cyphers.RSASignature;
 import world.skytale.messages.DownloadedMail;
+import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model2.Account;
-import world.skytale.model.ContactImp;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.AttachmentFactory;
+import world.skytale.model2.Contact;
 
 
 public class MailBuilder {
@@ -36,7 +36,7 @@ public class MailBuilder {
 
 
     public DownloadedMail makeDownloadedMail(VeryfiedMessage veryfiedMessage) throws SignatureException, NoSuchAlgorithmException, InvalidKeyException, IOException {
-        if(veryfiedMessage.getContactType()< ContactImp.TYPE_FOLLOWED)
+        if(veryfiedMessage.getContactType()< Contact.TYPE_FOLLOWED)
         {
             return buildSignedMessage(veryfiedMessage);
         }

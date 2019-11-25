@@ -15,7 +15,10 @@ public class AES {
     public static SecretKey generateNewKey()
     {
         try {
-            return  KeyGenerator.getInstance("AES").generateKey();
+            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+            keyGen.init(KEY_SIZE);
+            SecretKey secretKey = keyGen.generateKey();
+            return secretKey;
         } catch (NoSuchAlgorithmException e) {
             throw  new RuntimeException(e.getMessage());
         }

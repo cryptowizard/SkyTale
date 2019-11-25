@@ -40,7 +40,12 @@ public interface Contact{
      @Nullable String getFirstName();
      @Nullable String getLastName();
      @Nullable Attachment getProfilePicture();
-     public int getContactType();
+
+    /**
+     *  Contact type
+     * @return
+     */
+    int getContactType();
 
 
 
