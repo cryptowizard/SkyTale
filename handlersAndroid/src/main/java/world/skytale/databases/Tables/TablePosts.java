@@ -236,7 +236,7 @@ public class TablePosts implements PostHandler {
     {
 
         String query = "SELECT  * FROM " + TABLE_NAME  +
-                "\n WHERE "+TablePosts.senderID+" = '"+senderID.toLong()+"'"+
+                "\n WHERE "+TablePosts.senderID+" "+senderID.toLong()+""+
                 "\n order BY " + recivedTime + " DESC;";
 
 

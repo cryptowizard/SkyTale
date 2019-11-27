@@ -18,7 +18,7 @@ import java.util.Date;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.AttachmentFactory;
 
-public class FilesHandlerImpl implements world.skytale.database.FilesHandler, AttachmentFactory {
+public class FilesHandlerImpl implements AttachmentFactory {
 
 
     private static FilesHandlerImpl instance;

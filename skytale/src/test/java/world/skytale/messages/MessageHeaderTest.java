@@ -5,8 +5,8 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.Random;
 
-import world.skytale.messages.processors.ChatMessageProcessor;
 import world.skytale.MessageProcessingException;
+import world.skytale.messages.builders.ChatMessageBuilder;
 import world.skytale.model2.ID;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +18,7 @@ public class MessageHeaderTest {
 
         long time = new Date().getTime();
         ID ID = new ID(new Random().nextLong());
-        String type = ChatMessageProcessor.TYPE_TAG;
+        String type = ChatMessageBuilder.TYPE_TAG;
 
        MessageHeader header = new MessageHeader(type,ID,time);
 

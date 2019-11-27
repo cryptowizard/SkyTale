@@ -1,7 +1,6 @@
 package world.skytale.model2;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.security.PublicKey;
 
@@ -30,26 +29,35 @@ public interface Contact{
      * @See Follower
      */
      int TYPE_FOLLOWED=600;
+
+     int TYPE_FOLLOWER=700;
      int TYPE_DEFAULT=1000;
 
 
-     @NonNull ID getID();
-     @NonNull PublicKey getPublicKey();
+     @NonNull
+     ID getID();
+     @NonNull
+     PublicKey getPublicKey();
      @NonNull String getAdress();
 
-     @Nullable String getFirstName();
-     @Nullable String getLastName();
-     @Nullable Attachment getProfilePicture();
+
 
     /**
-     *  Contact type
-     * @return
+     *
+     * @return true if contact is a Friend
      */
-    int getContactType();
+    boolean isFriend();
+
+    /**
+     *
+     * @return true if contact is current Users follower
+     */
+    boolean isFollower();
 
 
-
-
-
-
+    /**
+     *
+     * @return true if current User is observing contact
+     */
+    boolean isObserved();
 }

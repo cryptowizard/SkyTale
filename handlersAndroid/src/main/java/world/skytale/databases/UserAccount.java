@@ -15,19 +15,19 @@ public class UserAccount implements Account {
     private ContactDAO userContact;
     private PrivateKey privateKey;
 
-   private UserAccount(KeyPair keyPair, String firstName, String lastName, String email, String picturePath)
+   private UserAccount(KeyPair keyPair, String email)
     {
         this.privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
         ID id = ID.PublicKeyID.makeID(publicKey);
-        this.userContact = new ContactDAO(id,publicKey,email,firstName,lastName, Contact.TYPE_ME,picturePath);
+        this.userContact = new ContactDAO(id,publicKey,email, Contact.TYPE_ME);
     }
 
 
-    public static Account makeNewAccount(String firstName, String lastName, String email, String picturePath)
+    public static Account makeNewAccount(String email)
     {
         KeyPair keyPair = AccountKey.generateKeyPair();
-        Account account = new UserAccount(keyPair,firstName,lastName,email,picturePath);
+        Account account = new UserAccount(keyPair,email);
         return account;
     }
 

@@ -15,15 +15,20 @@ message Attachment
 message Contact {
     bytes publicKey = 1;
     string address=2;
-    string firstName =3;
-    string lastName = 4;
-    Attachment profilePicture=5;
 }
+
+message ProfilePage
+{
+    string userName=1;
+    Attachment profilePicture=2;
+    string profileDescription=3;
+    repeated string profileLinks=4;
+}
+
 
 message PublicProfile{
     Contact contact=1;
-    string description=2;
-    repeated string links=3;
+    ProfilePage profilePage=2;
 }
 
 message Post{

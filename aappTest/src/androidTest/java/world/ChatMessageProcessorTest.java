@@ -1,13 +1,10 @@
 package world;
 
-import android.Manifest;
 import android.content.Context;
 import android.util.Log;
 
 import androidx.test.InstrumentationRegistry;
-import androidx.test.rule.GrantPermissionRule;
 
-import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -21,16 +18,17 @@ import world.skytale.MessageProcessingException;
 import world.skytale.MessagesHandler;
 import world.skytale.database.AccountProvider;
 import world.skytale.database.DatabaseHandler;
-import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
 import world.skytale.databases.daos.ChatMessageDAO;
+import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.IncomingMail;
 import world.skytale.messages.builders.ChatMessageBuilder;
 import world.skytale.model.ChatImp;
 import world.skytale.model.ChatMessageImp;
+import world.skytale.model.attachments.LoadedAttachment;
 import world.skytale.model2.Account;
 import world.skytale.model2.AttachmentFactory;
 import world.skytale.model2.ChatMessage;
@@ -40,10 +38,15 @@ import static org.junit.Assert.assertEquals;
 
 public class ChatMessageProcessorTest {
 
+
+
     Context context  =  InstrumentationRegistry.getTargetContext();
 
-    Account sender = UserAccount.makeNewAccount("Maciej","Sender","sender@gmail.com","");
-    Account reciver = UserAccount.makeNewAccount("Maciej","Sender","sender@gmail.com","");
+    Account sender = UserAccount.makeNewAccount("sender@gmail.com");
+    Account reciver = UserAccount.makeNewAccount("reciver@gmail.com");
+//
+//    @Rule
+//    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
 
     SQLDatabaseHelper sendersDatabase = new SQLDatabaseHelper(context,"sender");
@@ -66,8 +69,6 @@ public class ChatMessageProcessorTest {
 
     FilesHandlerImpl filesHandler;
 
-    @Rule
-    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     @Test
     public void test() throws FilesHandlerImpl.StoragePermissionDeniedException, IOException, InvalidKeyException, MessageProcessingException, SignatureException, NoSuchAlgorithmException {
@@ -100,7 +101,7 @@ public class ChatMessageProcessorTest {
 
 
             sendersDatabase.addChatMessage(chatMessage, chat.getChatID());
-            ChatMessageBuilder sendersMailBuilder = new ChatMessageBuilder((AttachmentFactory) filesHandler,sender);
+            ChatMessageBuilder sendersMailBuilder = new ChatMessageBuilder((AttachmentFactory) new LoadedAttachment.LoadedAttachmentFactory(),sender);
             DownloadedMail downloadedMail = sendersMailBuilder.makeDownloadedMail(chatMessage,chat);
 
 

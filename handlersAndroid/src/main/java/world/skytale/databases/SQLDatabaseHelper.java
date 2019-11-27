@@ -14,6 +14,7 @@ import world.skytale.database.ContactsHandler;
 import world.skytale.databases.Tables.TableChat;
 import world.skytale.databases.Tables.TableChatList;
 import world.skytale.databases.Tables.TableContacts;
+import world.skytale.databases.Tables.TableEncryptionKeys;
 import world.skytale.databases.Tables.TablePosts;
 import world.skytale.databases.daos.ChatDAO;
 import world.skytale.databases.daos.ChatMessageDAO;
@@ -26,7 +27,7 @@ import world.skytale.model2.ID;
 public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler, ChatMessageHandler {
 
     public static final String DATABASE_NAME = "SkyTale.db";
-    public static final int VERSION = 4;
+    public static final int VERSION = 5;
 
     FilesHandlerImpl filesHandler;
 
@@ -39,6 +40,7 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
             this.filesHandler = FilesHandlerImpl.getInstance(context);
         } catch (FilesHandlerImpl.StoragePermissionDeniedException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -57,6 +59,7 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
         db.execSQL(TableContacts.CreateTable());
         db.execSQL(TableChatList.createTable());
         db.execSQL(TablePosts.createTable());
+        db.execSQL(TableEncryptionKeys.createTable());
     }
 
     @Override
@@ -70,12 +73,13 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
         db.execSQL("DROP TABLE IF EXISTS " + TableContacts.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TableChatList.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TablePosts.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TableEncryptionKeys.TABLE_NAME);
         onCreate(db);
     }
 
-    ContactsHandler getTableContacts()
+    public ContactsHandler getTableContacts()
     {
-        return new TableContacts(this,filesHandler);
+        return new TableContacts(this);
     }
 
 //    @Override

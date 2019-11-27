@@ -6,80 +6,87 @@ import android.content.Context;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.rule.GrantPermissionRule;
 
-import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
-import world.skytale.database.ContactsHandler;
-import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.UserAccount;
-import world.skytale.model.ContactImp;
+import java.security.KeyPair;
 
+import world.skytale.cyphers.AccountKey;
+import world.skytale.database.ContactsHandler;
+import world.skytale.database.ItemNotFoundException;
+import world.skytale.databases.SQLDatabaseHelper;
+import world.skytale.databases.daos.ContactDAO;
+import world.skytale.model2.Contact;
+import world.skytale.model2.ID;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TableContactsTest {
 
     Context context  =  InstrumentationRegistry.getTargetContext();
-    ContactsHandler contactsHandler = new SQLDatabaseHelper(context);
+    ContactsHandler contactsHandler = new SQLDatabaseHelper(context).getTableContacts();
 
 
     @Rule
     public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-    public static ContactImp makeNewContact()
+    public static ContactDAO makeNewContact()
     {
-        ContactImp contact = UserAccount.makeNewAccount("Maciej", "Solecki", "MaciejFW@gmail.com","Image").getUserContact();
-        return contact;
+        KeyPair keyPair = AccountKey.generateKeyPair();
+        ID id = ID.PublicKeyID.makeID(keyPair.getPublic());
+        ContactDAO contactDAO = new ContactDAO(id,keyPair.getPublic(),"email.com@com",1);
+        return contactDAO;
     }
 
     @Test
     public void addData() {
 
-        ContactImp contact = makeNewContact();
+        Contact contact = makeNewContact();
        boolean result1 =  contactsHandler.addContact(contact);
 
        assertTrue(result1);
     }
 
     @Test
-    public void getContact() throws ContactsHandler.ContactNotFoundException {
+    public void getContact() throws ItemNotFoundException, ContactsHandler.ContactNotFoundException {
 
-        ContactImp contact = makeNewContact();
+        Contact contact = makeNewContact();
         contactsHandler.addContact(contact);
-        ContactImp tmp = contactsHandler.getContact(contact.contactID);
+        Contact tmp = contactsHandler.getContact(contact.getID());
 
-        Assert.assertEquals(tmp.contactID,contact.contactID);
+        assertEquals(tmp.getID(),contact.getID());
     }
 
     @Test
-    public void setContactType() throws ContactsHandler.ContactNotFoundException {
-        ContactImp contact = makeNewContact();
+    public void setContactType() throws ContactsHandler.ContactNotFoundException, ItemNotFoundException {
+        Contact contact = makeNewContact();
         contactsHandler.addContact(contact);
 
-        int type = ContactImp.TYPE_CHAT;
-        contactsHandler.changeContactType(contact.contactID,type);
+        int type = Contact.TYPE_CHAT;
+        contactsHandler.changeContactType(contact.getID(),type);
 
-        ContactImp tmp = contactsHandler.getContact(contact.contactID);
+        Contact tmp = contactsHandler.getContact(contact.getID());
 
-        Assert.assertEquals(tmp.contactID,contact.contactID);
-        Assert.assertEquals(tmp.contactType,type);
+        assertEquals(tmp.getID(),contact.getID());
+        assertEquals(type,tmp.getContactType());
 
     }
 
     @Test
-    public void updateContact() throws ContactsHandler.ContactNotFoundException {
+    public void changeEmail() throws ContactsHandler.ContactNotFoundException, ItemNotFoundException {
 
-        ContactImp contact = makeNewContact();
+        ContactDAO contact = makeNewContact();
         contactsHandler.addContact(contact);
 
-        String name = "newName";
-        contact.firstName = name;
+        String mail = "Hello@newMail.com";
 
-        contactsHandler.updateContact(contact);
-        ContactImp tmp = contactsHandler.getContact(contact.contactID);
 
-        Assert.assertEquals(tmp.contactID,contact.contactID);
-        Assert.assertEquals(name,tmp.firstName);
+        contactsHandler.changeContactEmail(contact.contactID,mail);
+        Contact tmp = contactsHandler.getContact(contact.getID());
+
+        assertEquals(tmp.getID(),contact.getID());
+        assertEquals(mail,tmp.getAdress());
 
 
     }

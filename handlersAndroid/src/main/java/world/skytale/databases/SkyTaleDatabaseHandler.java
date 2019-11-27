@@ -5,7 +5,9 @@ import world.skytale.database.ChatHandler;
 import world.skytale.database.ChatMessageHandler;
 import world.skytale.database.ContactsHandler;
 import world.skytale.database.DatabaseHandler;
+import world.skytale.database.EncryptionKeyHandler;
 import world.skytale.database.PostHandler;
+import world.skytale.databases.Tables.TableEncryptionKeys;
 
 public class SkyTaleDatabaseHandler implements DatabaseHandler {
 
@@ -42,5 +44,10 @@ public class SkyTaleDatabaseHandler implements DatabaseHandler {
     @Override
     public PostHandler getPostHandler() {
         return null;
+    }
+
+    @Override
+    public EncryptionKeyHandler getEncryptionKeyHandler() {
+     return   new TableEncryptionKeys(databaseHelper);
     }
 }

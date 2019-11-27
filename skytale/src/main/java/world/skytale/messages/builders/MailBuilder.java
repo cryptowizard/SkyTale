@@ -1,12 +1,9 @@
 package world.skytale.messages.builders;
 
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
 
-import world.skytale.cyphers.RSASignature;
 import world.skytale.messages.DownloadedMail;
+import world.skytale.messages.MessageSignature;
 import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model2.Account;
 import world.skytale.model2.Attachment;
@@ -35,7 +32,7 @@ public class MailBuilder {
     }
 
 
-    public DownloadedMail makeDownloadedMail(VeryfiedMessage veryfiedMessage) throws SignatureException, NoSuchAlgorithmException, InvalidKeyException, IOException {
+    public DownloadedMail makeDownloadedMail(VeryfiedMessage veryfiedMessage) throws IOException {
         if(veryfiedMessage.getContactType()< Contact.TYPE_FOLLOWED)
         {
             return buildSignedMessage(veryfiedMessage);
@@ -46,9 +43,9 @@ public class MailBuilder {
         }
     }
 
-    private  DownloadedMail buildSignedMessage(VeryfiedMessage veryfiedMessage) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException, IOException {
+    private  DownloadedMail buildSignedMessage(VeryfiedMessage veryfiedMessage) throws IOException {
         String title = veryfiedMessage.getMessageHeader().makeTitle();
-        byte [] signatureBytes = RSASignature.sign(account.getPrivateKey() , veryfiedMessage.getMessageBytes());
+        byte [] signatureBytes = MessageSignature.singMessageWithHeader(veryfiedMessage.getMessageHeader(),veryfiedMessage.getMessageBytes(),account.getPrivateKey());
 
         Attachment message = attachmentFactory.makeAttachment(MESSAGE_EXTENSION, veryfiedMessage.getMessageBytes());
         Attachment signature = attachmentFactory.makeAttachment(SIGNATURE_EXTENSION, signatureBytes);
@@ -61,7 +58,7 @@ public class MailBuilder {
         return downloadedMail;
     }
 
-    private DownloadedMail buildSignedMailWithPublicKey(VeryfiedMessage veryfiedMessage) throws IOException, NoSuchAlgorithmException, InvalidKeyException, SignatureException {
+    private DownloadedMail buildSignedMailWithPublicKey(VeryfiedMessage veryfiedMessage) throws IOException {
         DownloadedMail downloadedMail = buildSignedMessage(veryfiedMessage);
         byte [] publicKeyBytes = account.getUserContact().getPublicKey().getEncoded();
         Attachment publicKey = attachmentFactory.makeAttachment(PUBLIC_KEY_EXTENSION, publicKeyBytes);

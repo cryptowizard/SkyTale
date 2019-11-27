@@ -9,12 +9,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import world.skytale.model.ChatImp;
-import world.skytale.model.ChatMessageImp;
-import world.skytale.model.ContactImp;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.databes.TableChatListTest;
 import world.skytale.databases.daos.ChatMessageDAO;
+import world.skytale.databases.databes.TableChatListTest;
+import world.skytale.model.ChatImp;
+import world.skytale.model2.Contact;
 
 import static org.junit.Assert.assertEquals;
 import static world.skytale.databases.databes.TableContactsTest.makeNewContact;
@@ -34,9 +33,9 @@ public class TableChatTest {
             sqlDatabaseHelper.addChat(chat);
 
 
-            ContactImp contact = makeNewContact();
-            ChatMessageImp chatMessage = new ChatMessageImp();
-            chatMessage.senderID = contact.contactID;
+            Contact contact = makeNewContact();
+            ChatMessageDAO chatMessage = new ChatMessageDAO();
+            chatMessage.senderID = contact.getID();
             chatMessage.message = "Hello";
             chatMessage.time = 100;
             chatMessage.attachments = new String[0];

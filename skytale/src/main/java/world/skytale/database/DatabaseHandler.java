@@ -7,4 +7,5 @@ public interface DatabaseHandler {
      ChatHandler getChatHandler();
      ChatMessageHandler getChatMessageHandler();
      PostHandler getPostHandler();
+     EncryptionKeyHandler getEncryptionKeyHandler();
 }

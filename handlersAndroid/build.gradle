@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
@@ -26,6 +28,8 @@ android {
 
 dependencies {
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    compile "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -41,4 +45,12 @@ dependencies {
 //
 dependencies {
     implementation project(':skytale')
+}
+
+dependencies {
+    implementation 'androidx.room:room-runtime:2.2.0'
+    annotationProcessor 'androidx.room:room-compiler:2.2.0'
+}
+repositories {
+    mavenCentral()
 }

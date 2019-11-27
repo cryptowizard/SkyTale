@@ -7,9 +7,9 @@ import org.junit.Test;
 
 import java.security.PublicKey;
 
-import world.skytale.message.Messages;
-import world.skytale.model.ContactImp;
 import world.skytale.cyphers.AccountKey;
+import world.skytale.message.Messages;
+import world.skytale.model.ContactProto;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,14 +20,16 @@ public class MessagesTest {
     public void testProtos() throws InvalidProtocolBufferException {
 
 
+        String adress = "msdskytale@gmail.com";
+
+
         PublicKey publicKey = AccountKey.generateKeyPair().getPublic();
-        ContactImp contact = new ContactImp(publicKey,"Maciek","MSD","MSD@gmail.com");
-        ByteString byteString = ByteString.copyFrom(contact.publicKey.getEncoded());
+
+        ByteString byteString = ByteString.copyFrom(publicKey.getEncoded());
 
         Messages.Contact contact1 = Messages.Contact.newBuilder()
-                .setAddress(contact.address)
+                .setAddress(adress)
                 .setPublicKey(byteString)
-                .setFirstName(contact.firstName)
                 .build();
 
 
@@ -36,10 +38,10 @@ public class MessagesTest {
 
         Messages.Contact contact2 = Messages.Contact.parseFrom(contact1.toByteArray());
 
-        ContactImp contact3 = new ContactImp(AccountKey.fromBytes(contact2.getPublicKey().toByteArray()),contact2.getFirstName(),contact2.getLastName(),contact2.getAddress());
+      ContactProto contactProto = new ContactProto(contact2);
 
 
-        assertEquals(contact.contactID,contact3.contactID);
+        assertEquals(adress,contactProto.getAdress());
 
 
 

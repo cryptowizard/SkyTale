@@ -16,7 +16,7 @@ public interface ContactsHandler {
      * @throws ContactNotFoundException
      */
 
-     Contact getContact(ID contactID) throws ContactNotFoundException;
+     Contact getContact(ID contactID) throws ContactNotFoundException, ItemNotFoundException;
 
 
     /**
@@ -29,10 +29,10 @@ public interface ContactsHandler {
 
     /**
      *
-     * @param contact contact with updated information
+     * @param contactID
      * @return true if contact was updated succesfully  / false if contact was not found
      */
-     boolean updateContact(Contact contact);
+     boolean changeContactEmail(ID contactID, String newAddress);
 
 
     /**

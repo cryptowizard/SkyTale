@@ -1,7 +1,6 @@
 package world.skytale.model;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
@@ -9,8 +8,6 @@ import java.security.spec.InvalidKeySpecException;
 import world.skytale.MessageProcessingException;
 import world.skytale.converters.PublickKeyConverter;
 import world.skytale.message.Messages;
-import world.skytale.model.attachments.ProtoAttachment;
-import world.skytale.model2.Attachment;
 import world.skytale.model2.Contact;
 import world.skytale.model2.ID;
 
@@ -18,12 +15,10 @@ public class ContactProto implements Contact {
 
 
     private final Messages.Contact prtoMessage;
-    private int contactType = Contact.TYPE_DEFAULT;
 
 
     public ContactProto(Messages.Contact prtoMessage, int contactType) throws MessageProcessingException {
         this(prtoMessage);
-        this.contactType = contactType;
     }
 
     public ContactProto(Messages.Contact prtoMessage) {
@@ -53,30 +48,19 @@ public class ContactProto implements Contact {
         return prtoMessage.getAddress();
     }
 
-    @Nullable
     @Override
-    public String getFirstName() {
-        return prtoMessage.getFirstName();
-    }
-
-    @Nullable
-    @Override
-    public String getLastName() {
-        return prtoMessage.getLastName();
-    }
-
-    @Nullable
-    @Override
-    public Attachment getProfilePicture() {
-        return new ProtoAttachment(prtoMessage.getProfilePicture());
+    public boolean isFriend() {
+        return false;
     }
 
     @Override
-    public int getContactType() {
-        return contactType;
+    public boolean isFollower() {
+        return false;
     }
 
-    public void setContactType(int contactType) {
-        this.contactType = contactType;
+    @Override
+    public boolean isObserved() {
+        return false;
     }
+
 }

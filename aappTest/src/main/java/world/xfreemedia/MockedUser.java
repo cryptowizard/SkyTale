@@ -26,7 +26,7 @@ public class MockedUser implements MailTransporter, AccountProvider  {
     public MockedUser (MockedNetwork mockedNetwork, String email, Context context, String picturePath)
     {
         this.mockedNetwork = mockedNetwork;
-        account = UserAccount.makeNewAccount(randomName(),randomName(),email,picturePath);
+        account = UserAccount.makeNewAccount(email);
         SQLDatabaseHelper sqlDatabaseHelper = new SQLDatabaseHelper(context,account.getUserContact().getID().toString());
         SkyTaleDatabaseHandler skyTaleDatabaseHandler = new SkyTaleDatabaseHandler(sqlDatabaseHelper, this);
 

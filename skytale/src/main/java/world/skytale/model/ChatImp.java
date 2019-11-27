@@ -9,11 +9,11 @@ import world.skytale.model2.ID;
 
 public class ChatImp implements Chat {
 
-    protected ID chatID;
-    protected ID [] participantIDs;
-    protected String chatName;
-    protected  SecretKey secretKey;
-    protected Attachment chatImage;
+    public ID chatID;
+    public ID [] participantIDs;
+    public String chatName;
+    public  SecretKey secretKey;
+    public Attachment chatImage;
 
 
     public ChatImp(ID chatID, ID[] participantIDs, String chatName, SecretKey secretKey) {

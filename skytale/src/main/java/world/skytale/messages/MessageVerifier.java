@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import world.skytale.MessageProcessingException;
 import world.skytale.converters.PublickKeyConverter;
-import world.skytale.cyphers.RSASignature;
 import world.skytale.database.ContactsHandler;
+import world.skytale.database.ItemNotFoundException;
 import world.skytale.model2.Attachment;
 import world.skytale.model2.Contact;
 
@@ -24,7 +24,7 @@ public class MessageVerifier {
         this.contactsHandler = contactsHandler;
     }
 
-    public VeryfiedMessage veryfieMessage(MessageHeader messageHeader , ArrayList<Attachment> attachments) throws ContactsHandler.ContactNotFoundException, InvalidKeySpecException, MessageProcessingException, IOException, AttachmentNotFoundException {
+    public VeryfiedMessage veryfieMessage(MessageHeader messageHeader , ArrayList<Attachment> attachments) throws ContactsHandler.ContactNotFoundException, InvalidKeySpecException, MessageProcessingException, IOException, AttachmentNotFoundException, ItemNotFoundException {
 
 
         byte [] message = findAttachmentWithExtension(attachments,MESSAGE_EXTENSION).getFileBytes();
@@ -41,7 +41,7 @@ public class MessageVerifier {
             publicKey =  contact.getPublicKey();
         }
 
-        boolean isSignatureValid  = RSASignature.veryfiSignature(publicKey,message,signature);
+        boolean isSignatureValid  =  MessageSignature.checkSingatureOfMessageandHeadder(messageHeader,message,signature,publicKey);
         if(!isSignatureValid)
         {
             throw new MessageProcessingException("Invalid Signature");
