@@ -26,13 +26,13 @@ import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.IncomingMail;
 import world.skytale.messages.builders.ChatMessageBuilder;
-import world.skytale.model.ChatImp;
-import world.skytale.model.ChatMessageImp;
-import world.skytale.model.attachments.LoadedAttachment;
-import world.skytale.model2.Account;
-import world.skytale.model2.AttachmentFactory;
-import world.skytale.model2.ChatMessage;
-import world.skytale.model2.ID;
+import world.skytale.proto.ChatImp;
+import world.skytale.proto.ChatMessageImp;
+import world.skytale.proto.attachments.LoadedAttachment;
+import world.skytale.model.Account;
+import world.skytale.model.AttachmentFactory;
+import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;
 
@@ -97,7 +97,7 @@ public class ChatMessageProcessorTest {
             reciverDatabaseHandler.getChatHandler().addChat(chat);
 
 
-            ChatMessageImp chatMessage = new ChatMessageImp(sender.getUserContact().getID(), new Date().getTime(), "Hello my new USer", null);
+            ChatMessageImp chatMessage = new ChatMessageImp(chatID, sender.getUserContact().getID(), new Date().getTime(), "Hello my new USer", null);
 
 
             sendersDatabase.addChatMessage(chatMessage, chat.getChatID());

@@ -10,12 +10,12 @@ import world.skytale.database.ChatHandler;
 import world.skytale.database.ChatMessageHandler;
 import world.skytale.message.Messages;
 import world.skytale.messages.MessageHeader;
-import world.skytale.model.ChatMessageImp;
-import world.skytale.model.attachments.ProtoAttachment;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.Chat;
-import world.skytale.model2.ChatMessage;
-import world.skytale.model2.ID;
+import world.skytale.proto.ChatMessageImp;
+import world.skytale.proto.attachments.ProtoAttachment;
+import world.skytale.model.Attachment;
+import world.skytale.model.Chat;
+import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.ID;
 
 
 public class ChatMessageProcessor implements MessageProcessor {
@@ -40,15 +40,15 @@ public class ChatMessageProcessor implements MessageProcessor {
 
         Messages.ChatMessage chatMessage = Messages.ChatMessage.parseFrom(decryptedMessageBytes);
 
-        ChatMessage message = buildChatMessage(chatMessage,veryfiedMessage.getMessageHeader());
+        ChatMessage message = buildChatMessage(chatMessage,veryfiedMessage.getMessageHeader(), chat.getChatID());
 
-        chatMessageHandler.addChatMessage(message , chat.getChatID());
+        chatMessageHandler.addChatMessage(message );
     }
 
-    private ChatMessage buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader) throws IOException {
+    private ChatMessage buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader, ID chatID) throws IOException {
         ArrayList<Attachment> attachments  =ProtoAttachment.fromProtoList(chatMessage.getAttachmentsList());
 
-        ChatMessageImp message = new ChatMessageImp(messageHeader.getSenderID(), messageHeader.getTime(), chatMessage.getMessageText(),attachments);
+        ChatMessageImp message = new ChatMessageImp(chatID, messageHeader.getSenderID(), messageHeader.getTime(), chatMessage.getMessageText(),attachments);
         return message;
     }
 

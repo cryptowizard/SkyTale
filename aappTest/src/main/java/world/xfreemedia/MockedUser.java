@@ -13,7 +13,7 @@ import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.IncomingMail;
-import world.skytale.model2.Account;
+import world.skytale.model.Account;
 
 public class MockedUser implements MailTransporter, AccountProvider  {
 

@@ -6,9 +6,9 @@ import java.security.PublicKey;
 
 import world.skytale.cyphers.AccountKey;
 import world.skytale.databases.daos.ContactDAO;
-import world.skytale.model2.Account;
-import world.skytale.model2.Contact;
-import world.skytale.model2.ID;
+import world.skytale.model.Account;
+import world.skytale.model.ID;
+import world.skytale.model.ProfilePage;
 
 public class UserAccount implements Account {
 
@@ -20,7 +20,7 @@ public class UserAccount implements Account {
         this.privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
         ID id = ID.PublicKeyID.makeID(publicKey);
-        this.userContact = new ContactDAO(id,publicKey,email, Contact.TYPE_ME);
+        this.userContact = new ContactDAO(id,publicKey,email);
     }
 
 
@@ -42,5 +42,10 @@ public class UserAccount implements Account {
     @Override
     public PrivateKey getPrivateKey() {
         return this.privateKey;
+    }
+
+    @Override
+    public ProfilePage getUserProfilePage() {
+        return null;
     }
 }

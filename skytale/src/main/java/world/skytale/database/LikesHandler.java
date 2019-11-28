@@ -1,6 +1,6 @@
 package world.skytale.database;
 
-import world.skytale.model2.Like;
+import world.skytale.model.AvaiableMessages.Like;
 
 public interface LikesHandler {
     boolean addLike(Like like);

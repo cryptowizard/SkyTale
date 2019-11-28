@@ -1,6 +1,6 @@
 package world.skytale.messages;
 
-import world.skytale.model2.Contact;
+import world.skytale.model.Contact;
 
 public class VeryfiedMessage {
 

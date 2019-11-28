@@ -2,20 +2,24 @@ package world.skytale.messages.builders;
 
 import java.io.IOException;
 
+import world.skytale.database.DatabaseHandler;
 import world.skytale.messages.DownloadedMail;
+import world.skytale.messages.MessageHeader;
 import world.skytale.messages.MessageSignature;
 import world.skytale.messages.VeryfiedMessage;
-import world.skytale.model2.Account;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.AttachmentFactory;
-import world.skytale.model2.Contact;
+import world.skytale.model.Account;
+import world.skytale.model.Attachment;
+import world.skytale.model.AttachmentFactory;
+import world.skytale.model.AvaiableMessages.Sendable;
+import world.skytale.model.Contact;
 
 
-public class MailBuilder {
+public abstract class MailBuilder<Message extends Sendable> {
 
     public static final String SIGNATURE_EXTENSION = "signature";
     public static final String MESSAGE_EXTENSION = "message";
     public static final String PUBLIC_KEY_EXTENSION = "pub";
+
 
 
 
@@ -24,13 +28,25 @@ public class MailBuilder {
 
     /**
      * @param attachmentFactory The provided attachment factory provides the choice of how large attachments will be passed to downloaded mail
-     * @param account user account with who's private key message will be signed
+     *
      */
-    public MailBuilder(AttachmentFactory attachmentFactory, Account account) {
+    public MailBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
         this.attachmentFactory = attachmentFactory;
-        this.account = account;
+        this.account = databaseHandler.getAccountProvider().getCurrentAccount();
     }
 
+
+    public DownloadedMail makeDownloadedMail(Message message)
+    {
+        MessageHeader messageHeader = buildMessageHeader(message);
+        byte [] 
+    }
+    private MessageHeader buildMessageHeader(Message message)
+    {
+
+    }
+
+    protected  abstract  String getTypeTag();
 
     public DownloadedMail makeDownloadedMail(VeryfiedMessage veryfiedMessage) throws IOException {
         if(veryfiedMessage.getContactType()< Contact.TYPE_FOLLOWED)
@@ -66,13 +82,15 @@ public class MailBuilder {
         return downloadedMail;
     }
 
-   protected AttachmentFactory getAttachmentFactory() {
+    protected AttachmentFactory getAttachmentFactory() {
         return attachmentFactory;
     }
-
     protected Account getAccount() {
+
         return account;
     }
+
+
 
 
 

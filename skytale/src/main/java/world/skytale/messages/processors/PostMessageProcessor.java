@@ -10,12 +10,12 @@ import world.skytale.database.PostHandler;
 import world.skytale.message.Messages;
 import world.skytale.messages.MessageHeader;
 import world.skytale.messages.VeryfiedMessage;
-import world.skytale.model.PostImp;
-import world.skytale.model.attachments.ProtoAttachment;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.Contact;
-import world.skytale.model2.ID;
-import world.skytale.model2.Post;
+import world.skytale.proto.PostImp;
+import world.skytale.proto.attachments.ProtoAttachment;
+import world.skytale.model.Attachment;
+import world.skytale.model.Contact;
+import world.skytale.model.ID;
+import world.skytale.model.AvaiableMessages.Post;
 
 public class PostMessageProcessor implements MessageProcessor {
 

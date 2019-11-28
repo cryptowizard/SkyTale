@@ -1,9 +1,8 @@
 package world.skytale.database;
 
-import world.skytale.model2.ChatMessage;
-import world.skytale.model2.ID;
+import world.skytale.model.AvaiableMessages.ChatMessage;
 
 public interface ChatMessageHandler {
 
-   boolean addChatMessage(ChatMessage chatMessage, ID chatID);
+   boolean addChatMessage(ChatMessage chatMessage);
 }

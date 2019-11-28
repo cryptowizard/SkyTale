@@ -9,7 +9,7 @@ import java.security.PublicKey;
 
 import world.skytale.cyphers.AccountKey;
 import world.skytale.message.Messages;
-import world.skytale.model.ContactProto;
+import world.skytale.proto.ContactProto;
 
 import static org.junit.Assert.assertEquals;
 

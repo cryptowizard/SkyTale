@@ -6,20 +6,25 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 import java.util.ArrayList;
 
+import world.skytale.database.DatabaseHandler;
 import world.skytale.message.Messages;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
 import world.skytale.messages.VeryfiedMessage;
-import world.skytale.model.attachments.ProtoAttachment;
-import world.skytale.model2.Account;
-import world.skytale.model2.AttachmentFactory;
-import world.skytale.model2.Post;
+import world.skytale.proto.attachments.ProtoAttachment;
+import world.skytale.model.AttachmentFactory;
+import world.skytale.model.AvaiableMessages.Post;
 
 public class PostMessageBuilder extends MailBuilder {
     public static final String TYPE_TAG = "POST";
 
-    public PostMessageBuilder(AttachmentFactory attachmentFactory, Account account) {
-        super(attachmentFactory, account);
+    /**
+     * @param attachmentFactory The provided attachment factory provides the choice of how large attachments will be passed to downloaded mail
+     * @param databaseHandler
+     */
+    public PostMessageBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
+        super(attachmentFactory, databaseHandler);
+
     }
 
 
@@ -40,4 +45,6 @@ public class PostMessageBuilder extends MailBuilder {
         DownloadedMail downloadedMail = super.makeDownloadedMail(veryfiedMessage);
         return downloadedMail;
     }
+
+
 }

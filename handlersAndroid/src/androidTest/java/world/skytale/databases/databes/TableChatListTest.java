@@ -15,10 +15,10 @@ import javax.crypto.SecretKey;
 import world.skytale.cyphers.AES;
 import world.skytale.database.ChatHandler;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.model.ChatImp;
-import world.skytale.model2.Chat;
-import world.skytale.model2.Contact;
-import world.skytale.model2.ID;
+import world.skytale.proto.ChatImp;
+import world.skytale.model.Chat;
+import world.skytale.model.Contact;
+import world.skytale.model.ID;
 
 import static org.junit.Assert.assertTrue;
 import static world.skytale.databases.databes.TableContactsTest.makeNewContact;

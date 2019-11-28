@@ -12,8 +12,8 @@ import world.skytale.database.ContactsHandler;
 import world.skytale.database.ItemNotFoundException;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.ContactDAO;
-import world.skytale.model2.Contact;
-import world.skytale.model2.ID;
+import world.skytale.model.Contact;
+import world.skytale.model.ID;
 
 public class TableContacts extends Table<ContactDAO, ID> implements ContactsHandler {
 
@@ -23,8 +23,13 @@ public class TableContacts extends Table<ContactDAO, ID> implements ContactsHand
 
         public static final String ID = "ID";
         public static final String email = "email";
-        public static final String type = "contactType";
         public static final String publickKey = "publicKey";
+        public static final String IS_FRIEND = "isFriend";
+        public static final String IS_OBSERVED = "isObserved";
+        public static final String IS_FOLLOWER = "isFollower";
+
+
+
 
     public TableContacts(SQLDatabaseHelper sqlDatabaseHelper) {
         super(sqlDatabaseHelper);
@@ -35,15 +40,17 @@ public class TableContacts extends Table<ContactDAO, ID> implements ContactsHand
             String createTableContacts = "CREATE TABLE " + TableContacts.TABLE_NAME + " (\r\n" +
                     "	" + TableContacts.ID + "	INTEGER NOT NULL,\r\n" +
                     "	" + TableContacts.email + "	TEXT NOT NULL,\r\n" +
-                    "	" + TableContacts.type + "	INTEGER DEFAULT 1,\r\n" +
-                    "	" + TableContacts.publickKey + "	TEXT NOT NULL,\r\n" +
+                    "	" + TableContacts.publickKey + "	TEXT NOT NULL,\r\n"+
+                    "	" + TableContacts.IS_FRIEND + "	INTEGER DEFAULT 0,\r\n" +
+                    "	" + TableContacts.IS_FOLLOWER + "	INTEGER DEFAULT 0,\r\n" +
+                    "	" + TableContacts.IS_OBSERVED + "	INTEGER DEFAULT 0,\r\n" +
                     "	PRIMARY KEY(" + TableContacts.ID + ")\r\n" +
                     ");";
             return createTableContacts;
         }
 
     @Override
-    public Contact getContact(world.skytale.model2.ID contactID) throws ItemNotFoundException {
+    public Contact getContact(world.skytale.model.ID contactID) throws ItemNotFoundException {
         return this.getData(contactID);
     }
 
@@ -53,7 +60,7 @@ public class TableContacts extends Table<ContactDAO, ID> implements ContactsHand
     }
 
     @Override
-    public boolean changeContactEmail(world.skytale.model2.ID contactID, String newAddress) {
+    public boolean changeContactEmail(world.skytale.model.ID contactID, String newAddress) {
         SQLiteDatabase db = sqlDatabaseHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TableContacts.email, newAddress);
@@ -68,36 +75,52 @@ public class TableContacts extends Table<ContactDAO, ID> implements ContactsHand
 
     public ContactDAO makeDAO(Contact contact)
     {
-        ContactDAO contactDAO = new ContactDAO(contact.getID(),contact.getPublicKey(),contact.getAdress(),contact.getContactType());
+        ContactDAO contactDAO = new ContactDAO(contact.getID(),contact.getPublicKey(),contact.getAdress(),contact.isFriend(),contact.isFollower(),contact.isFriend());
         return contactDAO;
     }
 
+    @Override
+    public boolean setContactIsFriend(world.skytale.model.ID contactID, boolean isFriend) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(IS_FRIEND, isFriend);
+        return updateContact(contactID, contentValues);
+    }
 
     @Override
-    public boolean changeContactType(world.skytale.model2.ID contactID, int contactType) {
-        SQLiteDatabase db = sqlDatabaseHelper.getWritableDatabase();
+    public boolean setContactIsFollower(world.skytale.model.ID contactID, boolean isFollower) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(TableContacts.type, contactType);
-        int result =  db.update(TableContacts.TABLE_NAME, contentValues, getWhereCondition(contactID) + "", null);
+        contentValues.put(IS_FOLLOWER, isFollower);
+        return updateContact(contactID, contentValues);
+    }
+
+    @Override
+    public boolean setContactIsObserved(world.skytale.model.ID contactID, boolean isObserved) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(IS_OBSERVED, isObserved);
+        return updateContact(contactID, contentValues);
+    }
+
+    private boolean updateContact(ID contactID, ContentValues contentValues)
+    {
+        SQLiteDatabase db = sqlDatabaseHelper.getWritableDatabase();
+        int result =  db.update(TableContacts.TABLE_NAME, contentValues, getWhereCondition(contactID), null);
         sqlDatabaseHelper.close();
-        if(result>0)
-        {
-            return true;
-        }
-        return false;
+        return (result>0);
     }
     @Override
        protected ContactDAO readFromCursor(Cursor cursor) {
             String email, pub;
-            int type = 0;
             PublicKey publickKey = null;
             long ID;
+            int isFriend,isFollower,isObserved;
 
 
             ID = cursor.getLong(cursor.getColumnIndex(TableContacts.ID));
             email = cursor.getString(cursor.getColumnIndex(TableContacts.email));
             pub = cursor.getString(cursor.getColumnIndex(TableContacts.publickKey));
-            type = cursor.getInt(cursor.getColumnIndex(TableContacts.type));
+            isFriend = cursor.getInt(cursor.getColumnIndex(IS_FRIEND));
+            isFollower = cursor.getInt(cursor.getColumnIndex(IS_FOLLOWER));
+            isObserved = cursor.getInt(cursor.getColumnIndex(IS_OBSERVED));
             try {
                 publickKey = PublickKeyConverter.fromString(pub);
             } catch (InvalidKeySpecException e) {
@@ -105,7 +128,10 @@ public class TableContacts extends Table<ContactDAO, ID> implements ContactsHand
             }
 
 
-            ContactDAO contact = new ContactDAO(new ID(ID), publickKey, email,type);
+            ContactDAO contact = new ContactDAO(new ID(ID), publickKey, email);
+            contact.setFriend(isFriend);
+            contact.setFollower(isFollower);
+            contact.setObserved(isObserved);
             return contact;
 
         }
@@ -116,7 +142,9 @@ public class TableContacts extends Table<ContactDAO, ID> implements ContactsHand
         contentValues.put(ID, contact.getID().toLong());
         contentValues.put(email, contact.getAdress());
         contentValues.put(publickKey, PublickKeyConverter.toString(contact.getPublicKey()));
-        contentValues.put(type, contact.getContactType());
+        contentValues.put(IS_FRIEND, contact.isFriend());
+        contentValues.put(IS_FOLLOWER, contact.isFollower());
+        contentValues.put(IS_OBSERVED, contact.isObserved());
         return contentValues;
     }
 
@@ -128,7 +156,7 @@ public class TableContacts extends Table<ContactDAO, ID> implements ContactsHand
     }
 
     @Override
-    protected String getWhereCondition(world.skytale.model2.ID id) {
+    protected String getWhereCondition(world.skytale.model.ID id) {
         String condition = ID +" = "+id.toLong();
         return condition;
     }

@@ -1,7 +1,7 @@
 package world.skytale.database;
 
-import world.skytale.model2.Chat;
-import world.skytale.model2.ID;
+import world.skytale.model.Chat;
+import world.skytale.model.ID;
 
 public interface ChatHandler {
 

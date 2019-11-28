@@ -11,8 +11,8 @@ import world.skytale.database.PostHandler;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.PostDAO;
-import world.skytale.model2.ID;
-import world.skytale.model2.Post;
+import world.skytale.model.ID;
+import world.skytale.model.AvaiableMessages.Post;
 
 public class TablePosts implements PostHandler {
 

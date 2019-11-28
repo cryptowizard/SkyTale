@@ -6,7 +6,7 @@ import java.security.PublicKey;
 import java.util.HashMap;
 
 import world.skytale.cyphers.AccountKey;
-import world.skytale.model2.ID;
+import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

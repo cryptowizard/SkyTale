@@ -5,8 +5,8 @@ import androidx.annotation.Nullable;
 import java.io.File;
 
 import world.skytale.databases.files.FileAttachment;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.ID;
+import world.skytale.model.Attachment;
+import world.skytale.model.ID;
 
 public class ProfilePictureStore {
 

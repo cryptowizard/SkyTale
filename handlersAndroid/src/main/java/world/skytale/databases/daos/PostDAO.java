@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import world.skytale.databases.files.FileAttachment;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.ID;
-import world.skytale.model2.Post;
+import world.skytale.model.Attachment;
+import world.skytale.model.ID;
+import world.skytale.model.AvaiableMessages.Post;
 
 public class PostDAO implements Post {
 

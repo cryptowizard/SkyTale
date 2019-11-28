@@ -3,7 +3,7 @@ package world.skytale.messages;
 
 import java.util.ArrayList;
 
-import world.skytale.model2.Attachment;
+import world.skytale.model.Attachment;
 
 /**
  *  Class DownloadedMail represents email message with downloaded attachments as list of files

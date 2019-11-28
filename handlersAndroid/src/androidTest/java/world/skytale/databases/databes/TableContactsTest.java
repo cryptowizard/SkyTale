@@ -16,10 +16,11 @@ import world.skytale.database.ContactsHandler;
 import world.skytale.database.ItemNotFoundException;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.ContactDAO;
-import world.skytale.model2.Contact;
-import world.skytale.model2.ID;
+import world.skytale.model.Contact;
+import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TableContactsTest {
@@ -35,7 +36,7 @@ public class TableContactsTest {
     {
         KeyPair keyPair = AccountKey.generateKeyPair();
         ID id = ID.PublicKeyID.makeID(keyPair.getPublic());
-        ContactDAO contactDAO = new ContactDAO(id,keyPair.getPublic(),"email.com@com",1);
+        ContactDAO contactDAO = new ContactDAO(id,keyPair.getPublic(),"email.com@com");
         return contactDAO;
     }
 
@@ -49,7 +50,7 @@ public class TableContactsTest {
     }
 
     @Test
-    public void getContact() throws ItemNotFoundException, ContactsHandler.ContactNotFoundException {
+    public void getContact() throws ItemNotFoundException {
 
         Contact contact = makeNewContact();
         contactsHandler.addContact(contact);
@@ -59,22 +60,24 @@ public class TableContactsTest {
     }
 
     @Test
-    public void setContactType() throws ContactsHandler.ContactNotFoundException, ItemNotFoundException {
+    public void setContactType() throws ItemNotFoundException {
         Contact contact = makeNewContact();
         contactsHandler.addContact(contact);
 
-        int type = Contact.TYPE_CHAT;
-        contactsHandler.changeContactType(contact.getID(),type);
+
+        contactsHandler.setContactIsFriend(contact.getID(), true);
 
         Contact tmp = contactsHandler.getContact(contact.getID());
 
         assertEquals(tmp.getID(),contact.getID());
-        assertEquals(type,tmp.getContactType());
+        assertTrue(tmp.isFriend());
+        assertFalse(tmp.isFollower());
+        assertFalse(tmp.isObserved());
 
     }
 
     @Test
-    public void changeEmail() throws ContactsHandler.ContactNotFoundException, ItemNotFoundException {
+    public void changeEmail() throws ItemNotFoundException {
 
         ContactDAO contact = makeNewContact();
         contactsHandler.addContact(contact);

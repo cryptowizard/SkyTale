@@ -7,8 +7,8 @@ import java.security.SignatureException;
 
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.builders.ChatMessageBuilder;
-import world.skytale.model2.Chat;
-import world.skytale.model2.ChatMessage;
+import world.skytale.model.Chat;
+import world.skytale.model.AvaiableMessages.ChatMessage;
 
 public class ChatMessageSender extends MessageSender{
 
@@ -28,7 +28,7 @@ public class ChatMessageSender extends MessageSender{
 
     @Override
     protected boolean addToDatabase() {
-        return this.databaseHandler.getChatMessageHandler().addChatMessage(this.chatMessage, this.chat.getChatID());
+        return this.databaseHandler.getChatMessageHandler().addChatMessage(this.chatMessage);
     }
 
     @Override

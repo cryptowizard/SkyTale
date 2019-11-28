@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import world.skytale.model2.Attachment;
-import world.skytale.model2.AttachmentFactory;
+import world.skytale.model.Attachment;
+import world.skytale.model.AttachmentFactory;
 
 public class FilesHandlerImpl implements AttachmentFactory {
 

@@ -2,34 +2,32 @@ package world.skytale.messages.builders;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Random;
 
 import world.skytale.converters.ByteConverter;
 import world.skytale.cyphers.AES;
+import world.skytale.database.DatabaseHandler;
 import world.skytale.message.Messages;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
 import world.skytale.messages.VeryfiedMessage;
-import world.skytale.model.attachments.ProtoAttachment;
-import world.skytale.model2.Account;
-import world.skytale.model2.AttachmentFactory;
-import world.skytale.model2.Chat;
-import world.skytale.model2.ChatMessage;
-import world.skytale.model2.Contact;
+import world.skytale.model.AttachmentFactory;
+import world.skytale.model.Chat;
+import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.Contact;
+import world.skytale.proto.attachments.ProtoAttachment;
 
 public class ChatMessageBuilder extends MailBuilder {
     public static final String TYPE_TAG = "CHAT_MSG";
 
 
 
-    public ChatMessageBuilder(AttachmentFactory attachmentFactory, Account account) {
-        super(attachmentFactory, account);
+    public ChatMessageBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
+        super(attachmentFactory, databaseHandler);
     }
 
-    public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException, SignatureException, NoSuchAlgorithmException {
+    public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException {
         MessageHeader messageHeader = new MessageHeader(TYPE_TAG, getAccount().getUserContact().getID(),chatMessage.getTime());
 
 

@@ -1,14 +1,14 @@
 package world.skytale.database;
 
-import world.skytale.model2.ID;
-import world.skytale.model2.ProfilePage;
+import world.skytale.model.ID;
+import world.skytale.model.ProfilePage;
 
 public interface ProfilePageHandler {
 
     /**
-     *
+     *  Adds profile Page to the databa
      * @param profilePage
-     * @return true if added successfully false if couldnt add profilePage to database
+     * @return
      */
     boolean addProfilePage(ProfilePage profilePage);
     boolean updateProfilePage(ProfilePage profilePage) throws ItemNotFoundException;

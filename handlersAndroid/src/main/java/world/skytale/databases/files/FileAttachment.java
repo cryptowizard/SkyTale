@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import world.skytale.model2.Attachment;
+import world.skytale.model.Attachment;
 import world.skytale.utils.FileUtils;
 
 public class FileAttachment  implements Attachment {

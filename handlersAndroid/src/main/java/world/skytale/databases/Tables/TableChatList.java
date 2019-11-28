@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import world.skytale.database.ChatHandler;
-import world.skytale.model2.ID;
+import world.skytale.model.ID;
 import world.skytale.databases.daos.ChatDAO;
 
 

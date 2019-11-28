@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import world.skytale.databases.files.FileAttachment;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.ChatMessage;
-import world.skytale.model2.ID;
+import world.skytale.model.Attachment;
+import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.ID;
 
-public class ChatMessageDAO implements ChatMessage {
+public class ChatMessageDAO{
 
 
     public ID senderID;
@@ -58,22 +58,21 @@ public class ChatMessageDAO implements ChatMessage {
     }
 
 
-    @Override
+
     public ID getSenderID() {
         return senderID;
     }
 
-    @Override
+
     public long getTime() {
         return time;
     }
 
-    @Override
     public String getMessage() {
         return message;
     }
 
-    @Override
+
     public ArrayList<Attachment> getAttachments() {
         return fromPathList(this.attachments);
     }

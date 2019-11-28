@@ -7,7 +7,7 @@ import java.util.Random;
 
 import world.skytale.MessageProcessingException;
 import world.skytale.messages.builders.ChatMessageBuilder;
-import world.skytale.model2.ID;
+import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;
 

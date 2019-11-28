@@ -19,15 +19,15 @@ import world.skytale.databases.Tables.TablePosts;
 import world.skytale.databases.daos.ChatDAO;
 import world.skytale.databases.daos.ChatMessageDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
-import world.skytale.model2.Chat;
-import world.skytale.model2.ChatMessage;
-import world.skytale.model2.ID;
+import world.skytale.model.Chat;
+import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.ID;
 
 
 public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler, ChatMessageHandler {
 
     public static final String DATABASE_NAME = "SkyTale.db";
-    public static final int VERSION = 5;
+    public static final int VERSION = 6;
 
     FilesHandlerImpl filesHandler;
 
@@ -155,9 +155,9 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
 
 
     @Override
-    public boolean addChatMessage(ChatMessage chatMessage, ID chatID) {
+    public boolean addChatMessage(ChatMessage chatMessage) {
         SQLiteDatabase db = this.getWritableDatabase();
-        boolean result=  TableChat.addData(db, new ChatMessageDAO(chatMessage),chatID);
+        boolean result=  TableChat.addData(db, new ChatMessageDAO(chatMessage),chatMessage.getChatID());
         this.close();
         return result;
     }

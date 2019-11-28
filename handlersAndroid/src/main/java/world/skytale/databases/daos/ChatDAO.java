@@ -8,10 +8,10 @@ import javax.crypto.SecretKey;
 import world.skytale.converters.SecretKeyConventer;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.databases.files.FileAttachment;
-import world.skytale.model2.Chat;
-import world.skytale.model2.ID;
+import world.skytale.model.Chat;
+import world.skytale.model.ID;
 
-public class ChatDAO implements world.skytale.model2.Chat {
+public class ChatDAO implements world.skytale.model.Chat {
     public long lastMessageTime;
     public int newMessages;
 

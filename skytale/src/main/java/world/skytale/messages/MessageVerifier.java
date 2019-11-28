@@ -9,8 +9,8 @@ import world.skytale.MessageProcessingException;
 import world.skytale.converters.PublickKeyConverter;
 import world.skytale.database.ContactsHandler;
 import world.skytale.database.ItemNotFoundException;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.Contact;
+import world.skytale.model.Attachment;
+import world.skytale.model.Contact;
 
 import static world.skytale.messages.builders.MailBuilder.MESSAGE_EXTENSION;
 import static world.skytale.messages.builders.MailBuilder.PUBLIC_KEY_EXTENSION;
@@ -24,7 +24,7 @@ public class MessageVerifier {
         this.contactsHandler = contactsHandler;
     }
 
-    public VeryfiedMessage veryfieMessage(MessageHeader messageHeader , ArrayList<Attachment> attachments) throws ContactsHandler.ContactNotFoundException, InvalidKeySpecException, MessageProcessingException, IOException, AttachmentNotFoundException, ItemNotFoundException {
+    public VeryfiedMessage veryfieMessage(MessageHeader messageHeader , ArrayList<Attachment> attachments) throws InvalidKeySpecException, MessageProcessingException, IOException, AttachmentNotFoundException, ItemNotFoundException {
 
 
         byte [] message = findAttachmentWithExtension(attachments,MESSAGE_EXTENSION).getFileBytes();
@@ -37,7 +37,7 @@ public class MessageVerifier {
         }catch ( AttachmentNotFoundException exception)
         {
             Contact contact = contactsHandler.getContact(messageHeader.getSenderID());
-            contactType = contact.getContactType();
+
             publicKey =  contact.getPublicKey();
         }
 

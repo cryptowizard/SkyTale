@@ -11,9 +11,9 @@ import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.conventers.StringListConventer;
 import world.skytale.databases.daos.ProfilePageDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
-import world.skytale.model2.Attachment;
-import world.skytale.model2.ID;
-import world.skytale.model2.ProfilePage;
+import world.skytale.model.Attachment;
+import world.skytale.model.ID;
+import world.skytale.model.ProfilePage;
 
 public class ProfilePageTable extends Table<ProfilePageDAO, ID> implements ProfilePageHandler {
 

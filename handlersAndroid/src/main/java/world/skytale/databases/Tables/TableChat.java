@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import world.skytale.converters.LongConverter;
-import world.skytale.model2.ID;
+import world.skytale.model.ID;
 import world.skytale.databases.daos.ChatMessageDAO;
 
 
