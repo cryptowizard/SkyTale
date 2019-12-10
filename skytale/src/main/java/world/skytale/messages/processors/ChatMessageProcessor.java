@@ -14,7 +14,7 @@ import world.skytale.proto.ChatMessageImp;
 import world.skytale.proto.attachments.ProtoAttachment;
 import world.skytale.model.Attachment;
 import world.skytale.model.Chat;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
 
 

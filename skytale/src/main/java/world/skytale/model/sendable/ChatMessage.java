@@ -1,4 +1,4 @@
-package world.skytale.model.AvaiableMessages;
+package world.skytale.model.sendable;
 
 import androidx.annotation.NonNull;
 
@@ -10,8 +10,6 @@ import world.skytale.model.ID;
 public interface ChatMessage extends Sendable {
     @NonNull
     ID getChatID();
-    @NonNull ID getSenderID();
-    @NonNull  long getTime();
     String getMessage();
     ArrayList <Attachment> getAttachments();
 }

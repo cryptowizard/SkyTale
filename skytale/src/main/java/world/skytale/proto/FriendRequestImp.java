@@ -1,6 +1,6 @@
 package world.skytale.proto;
 
-import world.skytale.model.AvaiableMessages.FriendRequest;
+import world.skytale.model.sendable.FriendRequest;
 import world.skytale.model.ID;
 
 public class FriendRequestImp implements FriendRequest {

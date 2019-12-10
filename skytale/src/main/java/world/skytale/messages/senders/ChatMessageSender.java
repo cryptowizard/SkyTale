@@ -8,7 +8,7 @@ import java.security.SignatureException;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.builders.ChatMessageBuilder;
 import world.skytale.model.Chat;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 
 public class ChatMessageSender extends MessageSender{
 

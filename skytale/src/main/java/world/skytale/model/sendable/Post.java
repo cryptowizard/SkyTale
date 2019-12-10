@@ -1,17 +1,13 @@
-package world.skytale.model.AvaiableMessages;
-
-import androidx.annotation.NonNull;
+package world.skytale.model.sendable;
 
 import java.util.ArrayList;
 
 import world.skytale.model.Attachment;
 import world.skytale.model.ID;
 
-public interface Post {
+public interface Post  extends Sendable{
 
-        @NonNull
-        ID getSenderID();
-        long getTime();
+
 
     /**
      *  If the post is shared for the first time returns sendersID

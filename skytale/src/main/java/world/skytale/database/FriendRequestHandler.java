@@ -1,6 +1,6 @@
 package world.skytale.database;
 
-import world.skytale.model.AvaiableMessages.FriendRequest;
+import world.skytale.model.sendable.FriendRequest;
 
 public interface FriendRequestHandler {
 

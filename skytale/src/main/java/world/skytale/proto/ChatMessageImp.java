@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import world.skytale.model.Attachment;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
 
 public class ChatMessageImp implements ChatMessage,  Serializable {

@@ -1,6 +1,6 @@
 package world.skytale.database;
 
-import world.skytale.model.AvaiableMessages.EncryptionKey;
+import world.skytale.model.sendable.EncryptionKey;
 import world.skytale.model.ID;
 
 public interface EncryptionKeyHandler {

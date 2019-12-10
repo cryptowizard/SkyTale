@@ -1,8 +1,8 @@
-package world.skytale.model.AvaiableMessages;
+package world.skytale.model.sendable;
 
 import world.skytale.model.ID;
 
-public interface Like {
+public interface Like extends Sendable{
     ID getSenderID();
     long getTime();
 

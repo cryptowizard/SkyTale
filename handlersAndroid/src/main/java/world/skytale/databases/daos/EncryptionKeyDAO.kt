@@ -1,7 +1,7 @@
 package world.skytale.databases.daos
 
 import world.skytale.converters.SecretKeyConventer
-import world.skytale.model.AvaiableMessages.EncryptionKey
+import world.skytale.model.sendable.EncryptionKey
 import world.skytale.model.ID
 import javax.crypto.SecretKey
 

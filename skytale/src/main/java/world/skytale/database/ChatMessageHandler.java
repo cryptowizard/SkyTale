@@ -1,6 +1,6 @@
 package world.skytale.database;
 
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 
 public interface ChatMessageHandler {
 

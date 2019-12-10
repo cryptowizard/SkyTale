@@ -20,7 +20,7 @@ import world.skytale.database.ItemNotFoundException;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.Tables.TableEncryptionKeys;
 import world.skytale.databases.daos.EncryptionKeyDAO;
-import world.skytale.model.AvaiableMessages.EncryptionKey;
+import world.skytale.model.sendable.EncryptionKey;
 import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;

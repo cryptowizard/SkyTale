@@ -14,7 +14,7 @@ import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.ChatMessageDAO;
 import world.skytale.databases.databes.TableChatListTest;
 import world.skytale.model.Attachment;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.Contact;
 import world.skytale.model.ID;
 import world.skytale.proto.ChatImp;

@@ -15,7 +15,7 @@ import world.skytale.proto.attachments.ProtoAttachment;
 import world.skytale.model.Attachment;
 import world.skytale.model.Contact;
 import world.skytale.model.ID;
-import world.skytale.model.AvaiableMessages.Post;
+import world.skytale.model.sendable.Post;
 
 public class PostMessageProcessor implements MessageProcessor {
 

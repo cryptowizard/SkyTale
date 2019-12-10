@@ -1,6 +1,8 @@
 package world.skytale.model;
 
 
+import java.util.Date;
+
 /**
  * Each message like ChatMessage, Post, Comment or FriendRequest can be uniquelly identified by
  * sender ID and tie
@@ -10,6 +12,11 @@ public class MessageID {
     private final ID senderID;
     private final long time;
 
+    public MessageID (ID senderID)
+    {
+        this.senderID = senderID;
+        this.time = new Date().getTime();
+    }
     public MessageID(ID senderID, long time) {
         this.senderID = senderID;
         this.time = time;

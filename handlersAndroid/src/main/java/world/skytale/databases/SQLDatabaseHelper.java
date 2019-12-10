@@ -20,7 +20,7 @@ import world.skytale.databases.daos.ChatDAO;
 import world.skytale.databases.daos.ChatMessageDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.model.Chat;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
 
 

@@ -1,4 +1,4 @@
-package world.skytale.model.attachments;
+package world.skytale.proto.attachments;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import world.skytale.converters.ByteConverter;
 import world.skytale.message.Messages;
-import world.skytale.model2.Attachment;
+import world.skytale.model.Attachment;
 
 
 /**
@@ -31,15 +31,20 @@ public class ProtoAttachment implements Attachment {
         return attachment.getFileExtension();
     }
 
-    public static Messages.Attachment toProtoAttachment(Attachment attachment) throws IOException {
-        Messages.Attachment proto = Messages.Attachment.newBuilder()
-                .setFileBytes(ByteConverter.toByteString(attachment.getFileBytes()))
-                .setFileExtension(attachment.getExtension())
-                .build();
+    public static Messages.Attachment toProtoAttachment(Attachment attachment) {
+        Messages.Attachment proto = null;
+        try {
+            proto = Messages.Attachment.newBuilder()
+                    .setFileBytes(ByteConverter.toByteString(attachment.getFileBytes()))
+                    .setFileExtension(attachment.getExtension())
+                    .build();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return proto;
     }
 
-    public static ArrayList< Messages.Attachment> toProtoList(List<Attachment> attachmentList) throws IOException
+    public static ArrayList< Messages.Attachment> toProtoList(List<Attachment> attachmentList)
     {
 
         ArrayList< Messages.Attachment> attachments = new ArrayList<Messages.Attachment>();
@@ -54,7 +59,7 @@ public class ProtoAttachment implements Attachment {
         return attachments;
     }
 
-    public static ArrayList< Messages.Attachment> toProtoList(Attachment [] attachmentList) throws IOException
+    public static ArrayList< Messages.Attachment> toProtoList(Attachment [] attachmentList)
     {
         ArrayList< Messages.Attachment> attachments = new ArrayList<Messages.Attachment>();
         for(Attachment attachment : attachmentList)

@@ -4,7 +4,8 @@ import world.skytale.database.DatabaseHandler;
 import world.skytale.messages.MessageHeader;
 import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.AttachmentFactory;
-import world.skytale.model.AvaiableMessages.FriendRequest;
+import world.skytale.model.sendable.FriendRequest;
+import world.skytale.model.sendable.Sendable;
 
 public class FriendRequestResponseBuilder extends MailBuilder {
 
@@ -16,6 +17,16 @@ public class FriendRequestResponseBuilder extends MailBuilder {
      */
     public FriendRequestResponseBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
         super(attachmentFactory, databaseHandler);
+    }
+
+    @Override
+    protected String getTypeTag() {
+        return TYPE_TAG;
+    }
+
+    @Override
+    protected byte[] buildMessageBytes(Sendable sendable) {
+        return new byte[0];
     }
 
     private VeryfiedMessage buildVerifiedMessage(FriendRequest friendRequest)

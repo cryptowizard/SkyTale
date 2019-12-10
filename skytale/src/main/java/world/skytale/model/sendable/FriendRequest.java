@@ -1,4 +1,4 @@
-package world.skytale.model.AvaiableMessages;
+package world.skytale.model.sendable;
 
 import world.skytale.model.ID;
 

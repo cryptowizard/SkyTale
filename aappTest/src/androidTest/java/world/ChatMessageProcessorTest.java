@@ -31,7 +31,7 @@ import world.skytale.proto.ChatMessageImp;
 import world.skytale.proto.attachments.LoadedAttachment;
 import world.skytale.model.Account;
 import world.skytale.model.AttachmentFactory;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
 
 import static org.junit.Assert.assertEquals;

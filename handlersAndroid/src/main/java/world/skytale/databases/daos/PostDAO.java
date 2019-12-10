@@ -6,7 +6,7 @@ import java.util.Date;
 import world.skytale.databases.files.FileAttachment;
 import world.skytale.model.Attachment;
 import world.skytale.model.ID;
-import world.skytale.model.AvaiableMessages.Post;
+import world.skytale.model.sendable.Post;
 
 public class PostDAO implements Post {
 

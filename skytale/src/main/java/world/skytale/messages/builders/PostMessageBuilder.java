@@ -11,9 +11,10 @@ import world.skytale.message.Messages;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
 import world.skytale.messages.VeryfiedMessage;
+import world.skytale.model.sendable.Sendable;
 import world.skytale.proto.attachments.ProtoAttachment;
 import world.skytale.model.AttachmentFactory;
-import world.skytale.model.AvaiableMessages.Post;
+import world.skytale.model.sendable.Post;
 
 public class PostMessageBuilder extends MailBuilder {
     public static final String TYPE_TAG = "POST";
@@ -25,6 +26,16 @@ public class PostMessageBuilder extends MailBuilder {
     public PostMessageBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
         super(attachmentFactory, databaseHandler);
 
+    }
+
+    @Override
+    protected String getTypeTag() {
+        return null;
+    }
+
+    @Override
+    protected byte[] buildMessageBytes(Sendable sendable) {
+        return new byte[0];
     }
 
 

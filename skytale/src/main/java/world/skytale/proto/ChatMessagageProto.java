@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import world.skytale.message.Messages;
 import world.skytale.model.Attachment;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
 
 public class ChatMessagageProto implements ChatMessage {

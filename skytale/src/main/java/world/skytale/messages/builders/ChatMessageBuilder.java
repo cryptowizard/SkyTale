@@ -14,17 +14,27 @@ import world.skytale.messages.MessageHeader;
 import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.AttachmentFactory;
 import world.skytale.model.Chat;
-import world.skytale.model.AvaiableMessages.ChatMessage;
+import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.Contact;
 import world.skytale.proto.attachments.ProtoAttachment;
 
-public class ChatMessageBuilder extends MailBuilder {
+public class ChatMessageBuilder extends MailBuilder <ChatMessage> {
     public static final String TYPE_TAG = "CHAT_MSG";
 
 
 
     public ChatMessageBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
         super(attachmentFactory, databaseHandler);
+    }
+
+    @Override
+    protected String getTypeTag() {
+        return TYPE_TAG;
+    }
+
+    @Override
+    protected byte[] buildMessageBytes(ChatMessage chatMessage) {
+        return new byte[0];
     }
 
     public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException {
