@@ -1,4 +1,4 @@
-package world.skytale.cyphers;
+package world.cyphers;
 
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -10,7 +10,7 @@ import java.security.spec.X509EncodedKeySpec;
 
 public final class AccountKey {
 
-    public static final int KEY_SIZE = 4096;
+    public static final int KEY_SIZE = 2048;
 
     public static final  KeyPair generateKeyPair()
     {

@@ -7,17 +7,12 @@ import androidx.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import world.skytale.MessageProcessingException;
 import world.skytale.MessagesHandler;
-import world.skytale.database.AccountProvider;
-import world.skytale.database.DatabaseHandler;
+import world.database.AccountProvider;
+import world.database.DatabaseHandler;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
@@ -26,13 +21,12 @@ import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.IncomingMail;
 import world.skytale.messages.builders.ChatMessageBuilder;
-import world.skytale.proto.ChatImp;
-import world.skytale.proto.ChatMessageImp;
-import world.skytale.proto.attachments.LoadedAttachment;
 import world.skytale.model.Account;
 import world.skytale.model.AttachmentFactory;
-import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
+import world.skytale.model.implementations.ChatImp;
+import world.skytale.model.implementations.ChatMessageImp;
+import world.skytale.model.implementations.LoadedAttachment;
 
 import static org.junit.Assert.assertEquals;
 
@@ -71,13 +65,13 @@ public class ChatMessageProcessorTest {
 
 
     @Test
-    public void test() throws FilesHandlerImpl.StoragePermissionDeniedException, IOException, InvalidKeyException, MessageProcessingException, SignatureException, NoSuchAlgorithmException {
+    public void test() throws Exception {
 
         filesHandler = FilesHandlerImpl.getInstance(context);
         Log.i("worked", "worked");
 
-        DatabaseHandler sendersDatabaseHandler = new SkyTaleDatabaseHandler(sendersDatabase, senderAccountProvider);
-        DatabaseHandler reciverDatabaseHandler = new SkyTaleDatabaseHandler(reciversDatabase, revicerAccountProvider);
+        DatabaseHandler sendersDatabaseHandler = new SkyTaleDatabaseHandler(sendersDatabase, senderAccountProvider.getCurrentAccount(),context);
+        DatabaseHandler reciverDatabaseHandler = new SkyTaleDatabaseHandler(reciversDatabase, revicerAccountProvider.getCurrentAccount(),context);
 
 
         MessagesHandler sendersMessageProcessor = new MessagesHandler(sendersDatabaseHandler);
@@ -97,12 +91,12 @@ public class ChatMessageProcessorTest {
             reciverDatabaseHandler.getChatHandler().addChat(chat);
 
 
-            ChatMessageImp chatMessage = new ChatMessageImp(chatID, sender.getUserContact().getID(), new Date().getTime(), "Hello my new USer", null);
+            ChatMessageImp chatMessage = new ChatMessageImp(chat.chatID, sender.getUserContact().getID(), new Date().getTime());
 
 
-            sendersDatabase.addChatMessage(chatMessage, chat.getChatID());
+            sendersDatabase.addChatMessage(chatMessage);
             ChatMessageBuilder sendersMailBuilder = new ChatMessageBuilder((AttachmentFactory) new LoadedAttachment.LoadedAttachmentFactory(),sender);
-            DownloadedMail downloadedMail = sendersMailBuilder.makeDownloadedMail(chatMessage,chat);
+            DownloadedMail downloadedMail = sendersMailBuilder.setMessage(chat,chatMessage).makeDownloadedMail();
 
 
             IncomingMail incomingMail = new IncomingMail(downloadedMail.getTitle(),downloadedMail.getAttachments(),sender.getUserContact().getAdress());
@@ -113,10 +107,10 @@ public class ChatMessageProcessorTest {
 
             assertEquals(1, reciverMessages.size());
 
-            ChatMessage message = reciverMessages.get(0);
+            ChatMessageDAO message = reciverMessages.get(0);
 
-            assertEquals(chatMessage.getMessage(), message.getMessage());
-            assertEquals(chatMessage.getTime(), message.getTime());
+            //assertEquals(chatMessage.getMessage(), message.getMessage());
+            assertEquals(chatMessage.getMessageID().getTime(), message.getMessageID().getTime());
         }
 
 

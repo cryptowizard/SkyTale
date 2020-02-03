@@ -2,20 +2,16 @@ package world.skytale.messages.processors;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.util.ArrayList;
 
-import world.skytale.messages.VeryfiedMessage;
+import world.database.ChatHandler;
+import world.database.ChatMessageHandler;
+import world.database.ItemNotFoundException;
 import world.skytale.cyphers.AES;
-import world.skytale.database.ChatHandler;
-import world.skytale.database.ChatMessageHandler;
 import world.skytale.message.Messages;
-import world.skytale.messages.MessageHeader;
-import world.skytale.proto.ChatMessageImp;
-import world.skytale.proto.attachments.ProtoAttachment;
-import world.skytale.model.Attachment;
+import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.Chat;
-import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
+import world.skytale.model.proto.ChatMessageProto;
 
 
 public class ChatMessageProcessor implements MessageProcessor {
@@ -31,26 +27,20 @@ public class ChatMessageProcessor implements MessageProcessor {
 
 
     @Override
-    public void processIncoming(VeryfiedMessage veryfiedMessage) throws IOException, ChatHandler.ChatNotFoundException, InvalidKeyException {
+    public void processIncoming(VeryfiedMessage veryfiedMessage) throws IOException, ItemNotFoundException, InvalidKeyException  {
         Messages.EncryptedChatMessage encryptedChatMessage = Messages.EncryptedChatMessage.parseFrom(veryfiedMessage.getMessageBytes());
 
         Chat chat = chatHandler.getChat(new ID(encryptedChatMessage.getChatID()));
 
-        byte [] decryptedMessageBytes = AES.decrypt(chat.getSecretKey(), encryptedChatMessage.getEncryptedChatMessageBytes().toByteArray());
+        byte [] decryptedMessageBytes = AES.decrypt(chat.getSecretKey(), encryptedChatMessage.getEncryptedChatMessageBytes().toByteArray(),veryfiedMessage.getMessageHeader().getMessageID());
 
         Messages.ChatMessage chatMessage = Messages.ChatMessage.parseFrom(decryptedMessageBytes);
 
-        ChatMessage message = buildChatMessage(chatMessage,veryfiedMessage.getMessageHeader(), chat.getChatID());
-
+        ChatMessageProto message = new ChatMessageProto(chatMessage,chat.getChatID(), veryfiedMessage.getMessageHeader().getMessageID());
         chatMessageHandler.addChatMessage(message );
     }
 
-    private ChatMessage buildChatMessage(Messages.ChatMessage chatMessage, MessageHeader messageHeader, ID chatID) throws IOException {
-        ArrayList<Attachment> attachments  =ProtoAttachment.fromProtoList(chatMessage.getAttachmentsList());
 
-        ChatMessageImp message = new ChatMessageImp(chatID, messageHeader.getSenderID(), messageHeader.getTime(), chatMessage.getMessageText(),attachments);
-        return message;
-    }
 
 
 

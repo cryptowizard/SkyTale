@@ -23,6 +23,7 @@ public class DownloadedMail {
     }
 
     public DownloadedMail(String title, ArrayList<Attachment> attachments) {
+       super();
         this.title = title;
         this.attachments = attachments;
     }

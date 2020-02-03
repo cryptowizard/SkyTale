@@ -6,26 +6,24 @@ public class VeryfiedMessage {
 
     private final MessageHeader messageHeader;
     private  final byte [] messageBytes;
-
-
-    /**
-     *  contactType is either recipients type when sending new message
-     *  or sendersType when processing incoming message
-     */
-    private int contactType;
+    private final Contact sender;
 
 
 
-    public VeryfiedMessage(MessageHeader messageHeader, byte[] messageBytes) {
+
+
+
+    public VeryfiedMessage(MessageHeader messageHeader, byte[] messageBytes, Contact sender) {
         this.messageHeader = messageHeader;
         this.messageBytes = messageBytes;
-        this.contactType = Contact.TYPE_DEFAULT;
+        this.sender = sender;
+
     }
 
-    public VeryfiedMessage(MessageHeader messageHeader, byte[] messageBytes, int contactType) {
+    public VeryfiedMessage(MessageHeader messageHeader, byte[] messageBytes, int contactType, Contact sender) {
         this.messageHeader = messageHeader;
         this.messageBytes = messageBytes;
-        this.contactType = contactType;
+        this.sender = sender;
     }
 
     public MessageHeader getMessageHeader() {
@@ -36,11 +34,8 @@ public class VeryfiedMessage {
         return messageBytes;
     }
 
-    public int getContactType() {
-        return contactType;
-    }
-
-    public void setContactType(int contactType) {
-        this.contactType = contactType;
-    }
+  public Contact getSender()
+  {
+      return sender;
+  }
 }

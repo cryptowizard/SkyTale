@@ -6,13 +6,14 @@ import java.util.Arrays;
 
 import world.skytale.converters.ByteConverter;
 import world.skytale.cyphers.Sha256;
+import world.skytale.cyphers.ECSignature;
 
 public class MessageSignature {
 
     public static byte [] singMessageWithHeader(MessageHeader messageHeader, byte [] message, PrivateKey privateKey) {
         byte [] headerAndMessageHash = addHeaderAndMessageHashes(messageHeader,message);
         try {
-            return world.skytale.cyphers.RSASignature.sign(privateKey, headerAndMessageHash);
+            return ECSignature.sign(privateKey, headerAndMessageHash);
         }
         catch (Exception e)
         {
@@ -24,7 +25,7 @@ public class MessageSignature {
     public static boolean checkSingatureOfMessageandHeadder(MessageHeader messageHeader, byte [] message, byte [] signature, PublicKey publicKey)
     {
         byte [] headerAndMessageHash = addHeaderAndMessageHashes(messageHeader,message);
-        return world.skytale.cyphers.RSASignature.veryfiSignature(publicKey,headerAndMessageHash,signature);
+        return ECSignature.veryfiSignature(publicKey,headerAndMessageHash,signature);
     }
 
 

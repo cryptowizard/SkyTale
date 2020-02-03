@@ -1,11 +1,11 @@
 package world.skytale.databases.daos;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
-import world.skytale.databases.files.FileAttachment;
-import world.skytale.model.Attachment;
 import world.skytale.model.ID;
+import world.skytale.model.MessageID;
 import world.skytale.model.sendable.Post;
 
 public class PostDAO implements Post {
@@ -16,9 +16,15 @@ public class PostDAO implements Post {
 
     public ID ordinalSenderID;
 
-    public String [] attachments = new String[0];
-    public String link = "";
-    public String text = "";
+    public DisplayableDAO getDisplayableDAO() {
+        return displayableDAO;
+    }
+
+    public void setDisplayableDAO(DisplayableDAO displayableDAO) {
+        this.displayableDAO = displayableDAO;
+    }
+
+    public DisplayableDAO displayableDAO;
 
     public long receivedTime;
     public int numberOfComments =0;
@@ -51,48 +57,17 @@ public class PostDAO implements Post {
         return ordinalSenderID;
     }
 
-    public String getText() {
-        return text;
+    @Override
+    public DisplayableDAO getDisplayable() {
+        return displayableDAO;
     }
 
-    public ArrayList<Attachment> getAttachments() {
-        return fromPathList(this.attachments);
-    }
 
-    public String getLink() {
-        return link;
-    }
 
     public void setOrdinalSenderID(ID ordinalSenderID) {
         this.ordinalSenderID = ordinalSenderID;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setAttachments(String [] attachments)
-    {
-        this.attachments = attachments;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    private static ArrayList<Attachment> fromPathList(String[] filePaths) {
-        ArrayList<Attachment> list = new ArrayList<>();
-        for (String path : filePaths) {
-            FileAttachment fileAttachment = FileAttachment.fromPath(path);
-            if (fileAttachment != null) {
-                list.add(fileAttachment);
-
-
-            }
-
-        }
-        return list;
-    }
 
     public boolean isLiked()
     {
@@ -110,5 +85,11 @@ public class PostDAO implements Post {
 
     public void setLiked(boolean liked) {
         this.liked = liked;
+    }
+
+    @NonNull
+    @Override
+    public MessageID getMessageID() {
+        return       new MessageID(sendersID,time);
     }
 }

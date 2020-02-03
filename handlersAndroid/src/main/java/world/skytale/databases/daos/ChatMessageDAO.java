@@ -1,95 +1,69 @@
 package world.skytale.databases.daos;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
-import world.skytale.databases.files.FileAttachment;
-import world.skytale.model.Attachment;
-import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.ID;
+import world.skytale.model.MessageID;
+import world.skytale.model.sendable.ChatMessage;
 
-public class ChatMessageDAO{
+public class ChatMessageDAO implements ChatMessage {
+
+    private final ID senderID;
+    private final long time;
+    private final ID chatID;
+
+    private DisplayableDAO displayable;
+
+    private long recivedTime;
 
 
-    public ID senderID;
-    public long time;
-    public String message;
-    public long recivedTime;
-    public String[] attachments;
+    public long getRecivedTime() {
+        return recivedTime;
+    }
 
+    public void setRecivedTime(long recivedTime) {
+        this.recivedTime = recivedTime;
+    }
 
-    public ChatMessageDAO() {
-        super();
+  ;
+
+    public ChatMessageDAO(ID senderID, long time, ID chatID, DisplayableDAO displayable) {
+        this.senderID = senderID;
+        this.time = time;
+        this.chatID = chatID;
+        this.displayable = displayable;
+        this.recivedTime = new Date().getTime();
+
+    }
+
+    public ChatMessageDAO(ID senderID, long time, ID chatID) {
+        this.senderID = senderID;
+        this.time = time;
+        this.chatID = chatID;
         this.recivedTime = new Date().getTime();
     }
 
-    public ChatMessageDAO(ChatMessage chatMessage) {
-
-        this.senderID = chatMessage.getSenderID();
-        this.message = chatMessage.getMessage();
-        this.time = chatMessage.getTime();
-        this.attachments = new String[0];
-        this.recivedTime = new Date().getTime();
+    public void setDisplayable(DisplayableDAO displayable) {
+        this.displayable = displayable;
     }
 
-    public String atachmentsToString() {
-//        if(getAttachments()==null||getAttachments().size()==0)
-//        {
-//            return "";
-//        }
-//        String tmp = "";
-//        for(String attachment : getAttachments())
-//        {
-//            tmp+=";"+attachment;
-//        }
-//            return tmp.substring(1);
-        return "";
-    }
-
-    public static ChatMessageDAO recreateMessage(long senderID, String message, long time, String attachments, long recivedTime) {
-
-        ChatMessageDAO tmp = new ChatMessageDAO();
-        tmp.senderID = new ID(senderID);
-        tmp.message = message;
-        tmp.time = time;
-        tmp.attachments = attachments.split(";");
-        tmp.recivedTime = recivedTime;
-        return tmp;
+    @Override
+    public DisplayableDAO getDisplayable() {
+        return displayable;
     }
 
 
-
-    public ID getSenderID() {
-        return senderID;
+    @NonNull
+    @Override
+    public ID getChatID() {
+        return chatID;
     }
 
-
-    public long getTime() {
-        return time;
+    @NonNull
+    @Override
+    public MessageID getMessageID() {
+        return  new MessageID(senderID,time);
     }
-
-    public String getMessage() {
-        return message;
-    }
-
-
-    public ArrayList<Attachment> getAttachments() {
-        return fromPathList(this.attachments);
-    }
-
-
-    private static ArrayList<Attachment> fromPathList(String[] filePaths) {
-        ArrayList<Attachment> list = new ArrayList<>();
-        for (String path : filePaths) {
-            FileAttachment fileAttachment = FileAttachment.fromPath(path);
-            if (fileAttachment != null) {
-                list.add(fileAttachment);
-
-
-            }
-
-        }
-        return list;
-    }
-
-    }
+}

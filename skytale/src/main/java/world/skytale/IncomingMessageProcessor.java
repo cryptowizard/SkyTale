@@ -1,14 +1,20 @@
 package world.skytale;
 
 
-import world.skytale.database.DatabaseHandler;
+import world.database.DatabaseHandler;
 import world.skytale.messages.IncomingMail;
 import world.skytale.messages.MessageHeader;
 import world.skytale.messages.MessageVerifier;
 import world.skytale.messages.VeryfiedMessage;
 import world.skytale.messages.builders.ChatMessageBuilder;
+import world.skytale.messages.builders.FriendRequestBuilder;
+import world.skytale.messages.builders.FriendRequestResponseBuilder;
+import world.skytale.messages.builders.PostMessageBuilder;
 import world.skytale.messages.processors.ChatMessageProcessor;
+import world.skytale.messages.processors.FriendRequestProcessor;
+import world.skytale.messages.processors.FriendRequestResponseProcessor;
 import world.skytale.messages.processors.MessageProcessor;
+import world.skytale.messages.processors.PostMessageProcessor;
 
 public abstract class IncomingMessageProcessor {
 
@@ -25,7 +31,7 @@ public abstract class IncomingMessageProcessor {
         MessageHeader messageHeader = MessageHeader.parseTitle(mail.getTitle());
         try{
             VeryfiedMessage veryfiedMessage = getMessageVeryfier()
-                    .veryfieMessage(messageHeader,mail.getAttachments());
+                    .veryfieMessage(messageHeader,mail.getAttachments(),mail.getSendersEmail());
             MessageProcessor messageProcessor = getMessageProcessor(veryfiedMessage.getMessageHeader().getMessageType());
             messageProcessor.processIncoming(veryfiedMessage);
         }
@@ -45,17 +51,33 @@ public abstract class IncomingMessageProcessor {
         switch (type)
         {
             case ChatMessageBuilder.TYPE_TAG:
-                return getChatMessageHandler();
+                return getChatMessageProcessor();
+            case FriendRequestBuilder
+                   .TYPE_TAG:
+                return getFriendRequestProcessor();
+            case FriendRequestResponseBuilder
+                    .TYPE_TAG:
+                return new FriendRequestResponseProcessor(getDatabaseHandler());
+            case  PostMessageBuilder.TYPE_TAG:
+                return new PostMessageProcessor(getDatabaseHandler().getPostHandler());
+
+
 
         }
         return null;
     }
 
 
-    public ChatMessageProcessor getChatMessageHandler()
+    public ChatMessageProcessor getChatMessageProcessor()
     {
         return new ChatMessageProcessor(getDatabaseHandler().getChatHandler(),getDatabaseHandler().getChatMessageHandler());
     }
+
+public FriendRequestProcessor getFriendRequestProcessor()
+{
+    return new FriendRequestProcessor(getDatabaseHandler());
+}
+
 
 
 

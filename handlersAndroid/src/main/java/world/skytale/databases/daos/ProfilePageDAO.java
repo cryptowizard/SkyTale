@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import world.skytale.databases.files.FileAttachment;
 import world.skytale.model.ID;
 import world.skytale.model.ProfilePage;
 
@@ -41,7 +40,7 @@ public class ProfilePageDAO implements ProfilePage {
     @Nullable
     @Override
     public FileAttachment getProfilePicture() {
-        return new FileAttachment(this.profilePicturePath);
+        return FileAttachment.fromPath(this.profilePicturePath);
     }
 
     @Override

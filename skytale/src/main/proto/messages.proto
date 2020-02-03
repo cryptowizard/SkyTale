@@ -16,6 +16,7 @@ message Contact {
     bytes publicKey = 1;
     string address=2;
 }
+
 message FriendRequest
 {
     string reciversEmail = 1;  // Recivers email required only for singing in
@@ -24,14 +25,12 @@ message FriendRequest
 
 message FriendRequestAcceptRespone
 {
-    int64 friendRequestTime =1;
-    FriendChatRequest chatRequest=2;
-    repeated EncryptionKey encryptionKeys=3;
-
+    bytes chatEncryptionKey=1;
+    ProfilePage profilePage =3;
+    repeated EncryptionKey postEncryptionKeys=4;
 }
 // Friend chat request dont include picture or list of participants
 message FriendChatRequest{
-    int64 chatID =1;
     bytes encryptedChatKey =2; // Secret chat key encrypted with chat
 }
 
@@ -55,7 +54,10 @@ message ProfilePage
     Attachment profilePicture=2;
     string profileDescription=3;
     repeated string profileLinks=4;
+    string configuration=5;
 }
+
+
 
 
 message PublicProfile {
@@ -63,18 +65,33 @@ message PublicProfile {
     ProfilePage profilePage=2;
 }
 
+message Displayable {
+    string text = 1;
+    string configuration = 2;
+    repeated Attachment attachments=3;
+    string link=4;
+}
+
+message Comment {
+    int64 postSenderID=1;
+    int64 postTime=2;
+
+
+    int64 replyID =3;
+    int64 replyTime=4;
+
+    Displayable displayable = 5;
+}
+
 message Post {
-    string postText =1;
-    repeated Attachment attachments=2;
-    string link=3;
-    int64 orginalSendersID = 4;
+    int64 orginalSendersID = 1;
+    Displayable displayable =2;
 }
 
 
 message ChatMessage {
-    string messageText=1;
-    repeated Attachment attachments=2;
-    bytes randomBytes=3;
+    Displayable displayable=1;
+    bytes randomBytes=2;
 }
 
 message EncryptedChatMessage {

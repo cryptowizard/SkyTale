@@ -1,13 +1,10 @@
 package world.skytale.databases.daos;
 
 
-import java.io.IOException;
-
 import javax.crypto.SecretKey;
 
 import world.skytale.converters.SecretKeyConventer;
 import world.skytale.databases.files.FilesHandlerImpl;
-import world.skytale.databases.files.FileAttachment;
 import world.skytale.model.Chat;
 import world.skytale.model.ID;
 
@@ -67,7 +64,7 @@ public class ChatDAO implements world.skytale.model.Chat {
 
         try {
             image = filesHandler.saveAttachment(chat.getChatImage());
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

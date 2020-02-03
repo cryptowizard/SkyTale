@@ -3,6 +3,7 @@ package world.skytale.messages;
 import world.skytale.converters.LongConverter;
 import world.skytale.MessageProcessingException;
 import world.skytale.model.ID;
+import world.skytale.model.MessageID;
 
 public class MessageHeader {
 
@@ -35,12 +36,20 @@ public class MessageHeader {
                 + LongConverter.toBase32String(time);
         return title;
     }
+    public MessageHeader(String messageType, MessageID messageID)
+    {
+        this.messageType = messageType;
+        this.senderID=messageID.getSenderID();
+        this.time = messageID.getTime();
+    }
 
     public MessageHeader(String messageType, ID senderID, long time) {
         this.messageType = messageType;
         this.senderID = senderID;
         this.time = time;
     }
+
+
 
     public String getMessageType() {
         return messageType;
@@ -64,6 +73,12 @@ public class MessageHeader {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+
+    public MessageID getMessageID()
+    {
+        return new MessageID(senderID,time);
     }
 
 }

@@ -2,6 +2,7 @@ package world.skytale.databases.files;
 
 import java.io.IOException;
 
+import world.skytale.databases.daos.FileAttachment;
 import world.skytale.model.AttachmentFactory;
 
 public class FilesStore implements AttachmentFactory {

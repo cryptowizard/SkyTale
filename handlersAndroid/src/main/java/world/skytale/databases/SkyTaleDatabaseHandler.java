@@ -1,29 +1,58 @@
 package world.skytale.databases;
 
-import world.skytale.database.AccountProvider;
-import world.skytale.database.ChatHandler;
-import world.skytale.database.ChatMessageHandler;
-import world.skytale.database.ContactsHandler;
-import world.skytale.database.DatabaseHandler;
-import world.skytale.database.EncryptionKeyHandler;
-import world.skytale.database.PostHandler;
-import world.skytale.databases.Tables.TableEncryptionKeys;
+import android.content.Context;
 
-public class SkyTaleDatabaseHandler implements DatabaseHandler {
+import world.database.AccountProvider;
+import world.database.ChatHandler;
+import world.database.ChatMessageHandler;
+import world.database.CommentsHandler;
+import world.database.ContactsHandler;
+import world.database.DatabaseHandler;
+import world.database.EncryptionKeyHandler;
+import world.database.FriendRequestHandler;
+import world.database.PostHandler;
+import world.database.ProfilePageHandler;
+import world.database.Tables.ProfilePageTable;
+import world.database.Tables.TableComments;
+import world.database.Tables.TableEncryptionKeys;
+import world.database.Tables.TableFriendRequest;
+import world.database.Tables.TablePosts;
+import world.skytale.databases.files.FilesHandlerImpl;
+import world.skytale.model.Account;
+
+public class SkyTaleDatabaseHandler implements DatabaseHandler, AccountProvider {
 
 
 
     SQLDatabaseHelper databaseHelper;
-    AccountProvider accountProvider;
+    Account account;
+    FilesHandlerImpl filesHandler;
 
-    public SkyTaleDatabaseHandler(SQLDatabaseHelper databaseHelper, AccountProvider accountProvider) {
+
+    public SkyTaleDatabaseHandler(Context context, Account account)
+    {
+        this.account = account;
+        this.databaseHelper = new SQLDatabaseHelper(context);
+        try {
+            this.filesHandler = FilesHandlerImpl.getInstance(context);
+        } catch (FilesHandlerImpl.StoragePermissionDeniedException e) {
+            e.printStackTrace();
+        }
+    }
+    public SkyTaleDatabaseHandler(SQLDatabaseHelper databaseHelper, Account account, Context context) {
         this.databaseHelper = databaseHelper;
-        this.accountProvider = accountProvider;
+        this.account=account;
+
+        try {
+            this.filesHandler = FilesHandlerImpl.getInstance(context);
+        } catch (FilesHandlerImpl.StoragePermissionDeniedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public AccountProvider getAccountProvider() {
-      return accountProvider;
+      return this;
     }
 
     @Override
@@ -43,11 +72,31 @@ public class SkyTaleDatabaseHandler implements DatabaseHandler {
 
     @Override
     public PostHandler getPostHandler() {
-        return null;
+        return new TablePosts(databaseHelper, filesHandler);
     }
 
     @Override
     public EncryptionKeyHandler getEncryptionKeyHandler() {
      return   new TableEncryptionKeys(databaseHelper);
+    }
+
+    @Override
+    public FriendRequestHandler getFriendRequestHandler() {
+        return new TableFriendRequest(databaseHelper);
+    }
+
+    @Override
+    public ProfilePageHandler getProfilePageHandler() {
+        return new ProfilePageTable(databaseHelper);
+    }
+
+    @Override
+    public CommentsHandler getCommentsHandler() {
+        return new TableComments(databaseHelper,filesHandler);
+    }
+
+    @Override
+    public Account getCurrentAccount() {
+        return account;
     }
 }

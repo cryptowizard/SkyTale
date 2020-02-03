@@ -45,3 +45,8 @@ dependencies {
 dependencies {
     implementation project(':handlersAndroid')
 }
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:+'
+    implementation 'androidx.constraintlayout:constraintlayout:+'
+}

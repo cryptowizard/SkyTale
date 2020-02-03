@@ -1,56 +1,60 @@
 package world.skytale.messages.builders;
 
-import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.util.ArrayList;
-import java.util.Random;
 
 import world.skytale.converters.ByteConverter;
 import world.skytale.cyphers.AES;
-import world.skytale.database.DatabaseHandler;
 import world.skytale.message.Messages;
-import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
-import world.skytale.messages.VeryfiedMessage;
+import world.skytale.model.Account;
 import world.skytale.model.AttachmentFactory;
 import world.skytale.model.Chat;
+import world.skytale.model.proto.ChatMessageProto;
 import world.skytale.model.sendable.ChatMessage;
-import world.skytale.model.Contact;
-import world.skytale.proto.attachments.ProtoAttachment;
 
-public class ChatMessageBuilder extends MailBuilder <ChatMessage> {
+public class ChatMessageBuilder extends MailBuilder  {
     public static final String TYPE_TAG = "CHAT_MSG";
 
+    private Chat chat;
+    private ChatMessage chatMessage;
+
+    public ChatMessageBuilder(AttachmentFactory attachmentFactory, Account account) {
+        super(attachmentFactory, account);
+    }
 
 
-    public ChatMessageBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
-        super(attachmentFactory, databaseHandler);
+    public ChatMessageBuilder setMessage(Chat chat, ChatMessage chatMessage)
+    {
+        this.chatMessage=chatMessage;
+        this.chat=chat;
+        return this;
+    }
+    public void setChat(Chat chat) {
+        this.chat = chat;
+    }
+
+    public ChatMessageBuilder setChatMessage(ChatMessage chatMessage) {
+        this.chatMessage = chatMessage;
+        return this;
     }
 
     @Override
-    protected String getTypeTag() {
-        return TYPE_TAG;
+    protected void checkIfMessageIsSet() throws Exception {
+        if(this.chat == null) throw new Exception("Hello");
+        if(this.chatMessage == null) throw new Exception("Chat Message Not set ");
+    }
+
+
+    @Override
+    protected MessageHeader buildMessageHeader() {
+        MessageHeader messageHeader = new MessageHeader(TYPE_TAG, chatMessage.getMessageID());
+        return messageHeader;
     }
 
     @Override
-    protected byte[] buildMessageBytes(ChatMessage chatMessage) {
-        return new byte[0];
-    }
-
-    public DownloadedMail makeDownloadedMail(ChatMessage chatMessage, Chat chat) throws IOException, InvalidKeyException {
-        MessageHeader messageHeader = new MessageHeader(TYPE_TAG, getAccount().getUserContact().getID(),chatMessage.getTime());
-
-
-        ArrayList<Messages.Attachment> attachemtns  = ProtoAttachment.toProtoList(chatMessage.getAttachments());
-
-        Messages.ChatMessage chatMessageProto = Messages.ChatMessage.newBuilder()
-                .setMessageText(chatMessage.getMessage())
-                .setRandomBytes(ByteConverter.toByteString(getRandomBytes()))
-                .addAllAttachments(attachemtns)
-                .build();
-
-        byte [] messageBytes = chatMessageProto.toByteArray();
-        byte [] encryptedMessage = AES.encrypt(chat.getSecretKey(),messageBytes);
+    protected byte[] buildMessageBytes() throws InvalidKeyException {
+        byte [] messageBytes = ChatMessageProto.toProtoMessage(chatMessage).toByteArray();
+        byte [] encryptedMessage = AES.encrypt(chat.getSecretKey(),messageBytes, chatMessage.getMessageID());
 
 
         Messages.EncryptedChatMessage encryptedChatMessage = Messages.EncryptedChatMessage.newBuilder()
@@ -58,19 +62,10 @@ public class ChatMessageBuilder extends MailBuilder <ChatMessage> {
                 .setChatID(chat.getChatID().toLong())
                 .build();
 
-
-        VeryfiedMessage veryfiedMessage = new VeryfiedMessage(messageHeader,encryptedChatMessage.toByteArray(), Contact.TYPE_CHAT);
-        DownloadedMail downloadedMail = super.makeDownloadedMail(veryfiedMessage);
-        return downloadedMail;
+        return encryptedChatMessage.toByteArray();
     }
 
 
-    private static byte [] getRandomBytes()
-    {
-        Random random = new Random();
-        int size = random.nextInt(118)+10;
-        byte [] randomBytes = new byte[size];
-        random.nextBytes(randomBytes);
-        return randomBytes;
-    }
+
+
 }

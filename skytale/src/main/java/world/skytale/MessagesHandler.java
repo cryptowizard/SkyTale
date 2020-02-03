@@ -1,6 +1,6 @@
 package world.skytale;
 
-import world.skytale.database.DatabaseHandler;
+import world.database.DatabaseHandler;
 
 public class MessagesHandler extends IncomingMessageProcessor {
 

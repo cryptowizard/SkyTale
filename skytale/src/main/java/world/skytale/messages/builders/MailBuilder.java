@@ -2,18 +2,15 @@ package world.skytale.messages.builders;
 
 import java.io.IOException;
 
-import world.skytale.database.DatabaseHandler;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.MessageHeader;
 import world.skytale.messages.MessageSignature;
-import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.Account;
 import world.skytale.model.Attachment;
 import world.skytale.model.AttachmentFactory;
-import world.skytale.model.sendable.Sendable;
 
 
-public abstract class MailBuilder<Message extends Sendable> {
+public abstract class MailBuilder {
 
     public static final String SIGNATURE_EXTENSION = "signature";
     public static final String MESSAGE_EXTENSION = "message";
@@ -24,47 +21,47 @@ public abstract class MailBuilder<Message extends Sendable> {
     private final Account account;
 
 
-    protected  abstract  String getTypeTag();
-    protected abstract byte [] buildMessageBytes(Message message);
 
-    /**
-     * @param attachmentFactory The provided attachment factory provides the choice of how large attachments will be passed to downloaded mail
-     *
-     */
-    public MailBuilder(AttachmentFactory attachmentFactory, DatabaseHandler databaseHandler) {
+    protected abstract void checkIfMessageIsSet() throws Exception;
+    protected  abstract MessageHeader buildMessageHeader();
+    protected abstract byte [] buildMessageBytes() throws Exception;
+
+    public MailBuilder(AttachmentFactory attachmentFactory, Account account) {
         this.attachmentFactory = attachmentFactory;
-        this.account = databaseHandler.getAccountProvider().getCurrentAccount();
-    }
-
-    public DownloadedMail makeDownloadedMail(Message message) throws IOException {
-        MessageHeader messageHeader = buildMessageHeader(message);
-        byte [] messageBytes = buildMessageBytes(message);
-
-        VeryfiedMessage veryfiedMessage = new VeryfiedMessage(messageHeader, messageBytes);
-        return makeDownloadedMail(veryfiedMessage);
-    }
-    private MessageHeader buildMessageHeader(Message message) {
-        return new MessageHeader(getTypeTag(), message.getSenderID(), message.getTime());
+        this.account = account;
     }
 
 
-    private DownloadedMail makeDownloadedMail(VeryfiedMessage veryfiedMessage) throws IOException {
+    public DownloadedMail makeDownloadedMail() throws Exception {
 
-        String typeTag= veryfiedMessage.getMessageHeader().getMessageType();
+        checkIfMessageIsSet();
+        MessageHeader messageHeader = buildMessageHeader();
+        byte [] messageBytes = buildMessageBytes();
 
-        if(typeTag.equals(FriendRequestResponseBuilder.TYPE_TAG))
+        return makeDownloadedMail(messageHeader, messageBytes);
+    }
+//    protected MessageHeader buildMessageHeader(Sendable sendable, ) {
+//        return new MessageHeader(getTypeTag(), message.getSenderID(), message.getTime());
+//    }
+
+
+    private DownloadedMail makeDownloadedMail(MessageHeader messageHeader, byte [] messageBytes) throws IOException {
+
+        String typeTag= messageHeader.getMessageType();
+
+        if(typeTag.equals(FriendRequestResponseBuilder.TYPE_TAG)||typeTag.equals(FriendRequestBuilder.TYPE_TAG))
         {
-            return buildSignedMailWithPublicKey(veryfiedMessage);
+            return buildSignedMailWithPublicKey(messageHeader, messageBytes);
         }
-        return buildSignedMessage(veryfiedMessage);
+        return buildSignedMessage(messageHeader,messageBytes);
 
     }
 
-    private  DownloadedMail buildSignedMessage(VeryfiedMessage veryfiedMessage) throws IOException {
-        String title = veryfiedMessage.getMessageHeader().makeTitle();
-        byte [] signatureBytes = MessageSignature.singMessageWithHeader(veryfiedMessage.getMessageHeader(),veryfiedMessage.getMessageBytes(),account.getPrivateKey());
+    private  DownloadedMail buildSignedMessage(MessageHeader messageHeader, byte [] messageBytes) throws IOException {
+        String title = messageHeader.makeTitle();
+        byte [] signatureBytes = MessageSignature.singMessageWithHeader(messageHeader ,messageBytes,account.getPrivateKey());
 
-        Attachment message = attachmentFactory.makeAttachment(MESSAGE_EXTENSION, veryfiedMessage.getMessageBytes());
+        Attachment message = attachmentFactory.makeAttachment(MESSAGE_EXTENSION, messageBytes);
         Attachment signature = attachmentFactory.makeAttachment(SIGNATURE_EXTENSION, signatureBytes);
 
         DownloadedMail downloadedMail = new DownloadedMail();
@@ -75,8 +72,8 @@ public abstract class MailBuilder<Message extends Sendable> {
         return downloadedMail;
     }
 
-    private DownloadedMail buildSignedMailWithPublicKey(VeryfiedMessage veryfiedMessage) throws IOException {
-        DownloadedMail downloadedMail = buildSignedMessage(veryfiedMessage);
+    private DownloadedMail buildSignedMailWithPublicKey(MessageHeader messageHeader, byte [] messageBytes) throws IOException {
+        DownloadedMail downloadedMail = buildSignedMessage(messageHeader,messageBytes);
         byte [] publicKeyBytes = account.getUserContact().getPublicKey().getEncoded();
         Attachment publicKey = attachmentFactory.makeAttachment(PUBLIC_KEY_EXTENSION, publicKeyBytes);
         downloadedMail.addAttachment(publicKey);

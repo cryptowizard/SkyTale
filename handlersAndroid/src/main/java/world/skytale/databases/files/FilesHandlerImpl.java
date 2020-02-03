@@ -9,12 +9,12 @@ import androidx.core.content.ContextCompat;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import world.skytale.databases.daos.FileAttachment;
 import world.skytale.model.Attachment;
 import world.skytale.model.AttachmentFactory;
 
@@ -22,6 +22,7 @@ public class FilesHandlerImpl implements AttachmentFactory {
 
 
     private static FilesHandlerImpl instance;
+
 
 
     public String [] saveAttachments(ArrayList<Attachment> attachments)  {
@@ -41,7 +42,7 @@ public class FilesHandlerImpl implements AttachmentFactory {
                 exce.printStackTrace();
             }
         }
-        return (String[]) paths.toArray();
+        return (String[]) paths.toArray(new String[paths.size()]);
     }
 
     public String saveAttachment(Attachment attachment) throws IOException {
@@ -68,7 +69,7 @@ public class FilesHandlerImpl implements AttachmentFactory {
         return instance;
     }
 
-    private FilesHandlerImpl(Context context) throws StoragePermissionDeniedException
+    public FilesHandlerImpl(Context context) throws StoragePermissionDeniedException
     {
         if(!checkStoragePermission(context))
         {
@@ -117,28 +118,11 @@ public class FilesHandlerImpl implements AttachmentFactory {
 
 
 
-    public byte[] readFileBytes(String path) throws IOException {
-
-        int end = path.lastIndexOf("/");
-        String str1 = path.substring(0, end);
-        String str2 = path.substring(end+1);
-        File source = new File(str1, str2);
-        long a= source.length();
-        int size = Integer.valueOf(Long.toString(a));
-        FileInputStream inp = new FileInputStream(source);
-        byte [] qx = new byte [size];
-        inp.read(qx);
-
-        return qx;
-    }
 
 
 
-    public String writeTemporaryFile(byte[] fileBytes, String extension) throws IOException {
-        String path = getTemporaryFolderPath()+"/"+generateTemporaryFileName(extension);
-        writeFile(fileBytes,path);
-        return path;
-    }
+
+
 
 
     public String saveFile(byte[] fileBytes, String extension) throws IOException {

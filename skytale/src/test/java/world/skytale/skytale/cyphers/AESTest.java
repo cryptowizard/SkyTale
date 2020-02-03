@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 import javax.crypto.SecretKey;
 
@@ -25,6 +26,13 @@ public class AESTest {
 
 
     SecretKey aesKey;
+
+    private static byte [] randomIvVector()
+    {
+        byte [] randomBytes = new byte[16];
+        new Random().nextBytes(randomBytes);
+        return randomBytes;
+    }
 
     @Before
     public void generateNewKey() throws NoSuchAlgorithmException {
@@ -57,10 +65,12 @@ public class AESTest {
     }
 
     private void testForMessage(String message) {
-        try {
-         byte[] c = encrypt(aesKey, message.getBytes(ISO_8859_15));
+        byte  [] ivVector = randomIvVector();
 
-         byte[] m = decrypt(aesKey, c);
+        try {
+         byte[] c = encrypt(aesKey, message.getBytes(ISO_8859_15),ivVector);
+
+         byte[] m = decrypt(aesKey, c,ivVector);
 
         String encryptedMessage = new String(m, ISO_8859_15);
             assertTrue(encryptedMessage.equals(message));
@@ -74,17 +84,19 @@ public class AESTest {
 
     @Test(expected = InvalidKeyException.class)
     public void testWrongKey () throws UnsupportedEncodingException, InvalidKeyException {
+        byte  [] ivVector = randomIvVector();
         SecretKey secondKey = AES.generateNewKey();
         byte [] m = SHORT_MESSAGE.getBytes(ISO_8859_15);
 
-        byte [] c = AES.encrypt(aesKey,m);
-        AES.decrypt(secondKey,c);
+        byte [] c = AES.encrypt(aesKey,m,ivVector);
+        AES.decrypt(secondKey,c,ivVector);
     }
 
     @Test(expected = InvalidKeyException.class)
     public void testWrongMessage () throws UnsupportedEncodingException, InvalidKeyException {
+        byte  [] ivVector = randomIvVector();
         byte [] m = SHORT_MESSAGE.getBytes(ISO_8859_15);
-        AES.decrypt(aesKey,m);
+        AES.decrypt(aesKey,m,ivVector);
     }
 
 

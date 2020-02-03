@@ -1,12 +1,31 @@
 package world.skytale.model.sendable;
 
-import world.skytale.model.ID;
+import androidx.annotation.NonNull;
 
-public interface Comment extends Sendable {
+import world.skytale.model.Displayable;
+import world.skytale.model.MessageID;
 
-    ID getSenderID();
-    long getTime();
+/**
+ * Comment is a displayable message that is created in a reply to a Post or another comment
+ */
+public interface Comment extends Sendable{
 
-    ID getPostID();
-    long getPosTime();
+    @NonNull
+    MessageID getPostID();
+
+
+    /**
+     * @ToDo better Names for those variables
+     * <p>
+     * IF the comment is a reply to another
+     * ReplySenderID and ReplyTime are used in oreder to identyfy this comment
+     */
+    MessageID getReplyID();
+
+    Displayable getDisplayable();
+
+
+
+
+
 }
