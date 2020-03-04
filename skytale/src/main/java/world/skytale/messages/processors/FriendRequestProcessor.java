@@ -13,7 +13,7 @@ import world.skytale.model.Account;
 import world.skytale.model.sendable.FriendRequest;
 import world.skytale.model.ID;
 import world.skytale.model.ProfilePage;
-import world.skytale.model.proto.FriendRequestImp;
+import world.skytale.model.implementations.FriendRequestImp;
 import world.skytale.model.proto.ProfilePageProto;
 
 public class FriendRequestProcessor  implements MessageProcessor{
@@ -28,7 +28,7 @@ public class FriendRequestProcessor  implements MessageProcessor{
         this.userAccount = databaseHandler.getAccountProvider().getCurrentAccount();
         this.friendRequestHandler = databaseHandler.getFriendRequestHandler();
         this.profilePageHandler = databaseHandler.getProfilePageHandler();
-        this.contactsHandler = databaseHandler.getTableContacts();
+        this.contactsHandler = databaseHandler.getContactsHandler();
     }
 
     @Override

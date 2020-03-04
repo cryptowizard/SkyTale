@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class ContactTableTest {
 
     public  static void testIFcontactIsInDatabase(Contact contact, DatabaseHandler databaseHandler) throws ItemNotFoundException {
-        Contact databaseContact = databaseHandler.getTableContacts().getContact(contact.getID());
+        Contact databaseContact = databaseHandler.getContactsHandler().getContact(contact.getID());
 
         assertEquals(contact.getID(), databaseContact.getID());
         assertEquals(contact.getAdress(), databaseContact.getAdress());

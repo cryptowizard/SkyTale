@@ -43,7 +43,7 @@ public abstract class IncomingMessageProcessor {
 
     private MessageVerifier getMessageVeryfier()
     {
-        return new MessageVerifier(getDatabaseHandler().getTableContacts());
+        return new MessageVerifier(getDatabaseHandler().getContactsHandler());
     }
 
     public MessageProcessor getMessageProcessor(String type)

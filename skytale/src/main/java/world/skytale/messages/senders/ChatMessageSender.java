@@ -65,7 +65,7 @@ public class ChatMessageSender extends MessageSender{
         for(ID id : participantIDs)
         {
             try {
-                Contact recipent = databaseHandler.getTableContacts().getContact(id);
+                Contact recipent = databaseHandler.getContactsHandler().getContact(id);
                 if(!recipent.getID().equals(account.getUserContact().getID()))
                 {
                    adresses.add(recipent.getAdress());

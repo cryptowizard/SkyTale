@@ -45,9 +45,15 @@ public abstract class MessageSender {
         }
         DownloadedMail downloadedMail;
 
+        try {
             downloadedMail = buildDownloadedMail();
-
+        }catch (Exception e)
+        {
+            removeFromDatabase();
+            return false;
+        }
         String recipients = toString(getRecipientAdresses());
+
 
         boolean sendSuccessfully = mailTransporter.sendMail(downloadedMail,recipients);
 

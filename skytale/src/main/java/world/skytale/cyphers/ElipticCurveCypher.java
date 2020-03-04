@@ -19,7 +19,7 @@ import javax.crypto.NoSuchPaddingException;
 public class ElipticCurveCypher {
 
     public static final String SPEC = "secp256k1";
-    public static final String ALGO = "SHA256withECDSA";
+
     public static final String PROVIDER = "SC";
     static {
         Security.insertProviderAt(new org.spongycastle.jce.provider.BouncyCastleProvider(), 1);

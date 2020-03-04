@@ -17,6 +17,7 @@ import world.skytale.messages.IncomingMail;
 import world.skytale.model.Account;
 import world.skytale.model.ID;
 import world.skytale.model.implementations.LoadedAttachment;
+import world.skytale.model.sendable.EncryptionKey;
 
 public class MockedUser implements MailTransporter, AccountProvider  {
 
@@ -31,7 +32,7 @@ public class MockedUser implements MailTransporter, AccountProvider  {
     public MockedUser (MailTransporter mockedNetwork, String email, Context context)
     {
         this.mockedNetwork = mockedNetwork;
-        Account account = UserAccount.makeNewAccount(email);
+       UserAccount account = UserAccount.makeNewAccount(email);
         SQLDatabaseHelper sqlDatabaseHelper = new SQLDatabaseHelper(context,account.getUserContact().getID().toString());
         SkyTaleDatabaseHandler skyTaleDatabaseHandler = new SkyTaleDatabaseHandler(sqlDatabaseHelper, account, context);
         outgoinMessageProcessor = new OutgoingMessageProcessor(this,skyTaleDatabaseHandler,new LoadedAttachment.LoadedAttachmentFactory());
@@ -79,6 +80,11 @@ public class MockedUser implements MailTransporter, AccountProvider  {
     @Override
     public Account getCurrentAccount() {
         return skyTaleDatabaseHandler.getAccountProvider().getCurrentAccount();
+    }
+
+    @Override
+    public boolean updatePostEncryptionKeys(EncryptionKey friendsPostEncryptionKey, EncryptionKey followersEncryptionKey) {
+        return skyTaleDatabaseHandler.getAccountProvider().updatePostEncryptionKeys(friendsPostEncryptionKey,followersEncryptionKey);
     }
 
     public ID getUserID()

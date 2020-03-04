@@ -40,7 +40,7 @@ public class FriendRequestResponseProcessor implements MessageProcessor {
     public FriendRequestResponseProcessor (DatabaseHandler databaseHandler)
     {
             friendRequestHandler = databaseHandler.getFriendRequestHandler();
-            contactsHandler = databaseHandler.getTableContacts();
+            contactsHandler = databaseHandler.getContactsHandler();
             profilePageHandler = databaseHandler.getProfilePageHandler();
             chatHandler = databaseHandler.getChatHandler();
             account = databaseHandler.getAccountProvider().getCurrentAccount();

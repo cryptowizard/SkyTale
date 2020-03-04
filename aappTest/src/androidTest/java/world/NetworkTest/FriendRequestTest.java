@@ -13,7 +13,7 @@ import world.skytale.model.Chat;
 import world.skytale.model.Contact;
 import world.skytale.model.ID;
 import world.skytale.model.implementations.FriendsChat;
-import world.skytale.model.proto.FriendRequestImp;
+import world.skytale.model.implementations.FriendRequestImp;
 import world.skytale.model.sendable.FriendRequest;
 import world.testMethods.ContactTableTest;
 import world.testMethods.ProfilePageHandlerTests;
@@ -75,11 +75,11 @@ public class FriendRequestTest {
     }
 
     public void usersAreFriends() throws ItemNotFoundException {
-        Contact friend1 = mockedUser0.skyTaleDatabaseHandler.getTableContacts().getContact(mockedUser1.getCurrentAccount().getUserContact().getID());
+        Contact friend1 = mockedUser0.skyTaleDatabaseHandler.getContactsHandler().getContact(mockedUser1.getCurrentAccount().getUserContact().getID());
 
         assertTrue(friend1.isFriend());
 
-        Contact friend0 = mockedUser1.skyTaleDatabaseHandler.getTableContacts().getContact(mockedUser0.getCurrentAccount().getUserContact().getID());
+        Contact friend0 = mockedUser1.skyTaleDatabaseHandler.getContactsHandler().getContact(mockedUser0.getCurrentAccount().getUserContact().getID());
         assertTrue(friend0.isFriend());
 
     }

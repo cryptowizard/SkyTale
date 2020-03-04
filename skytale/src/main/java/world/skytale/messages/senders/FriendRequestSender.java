@@ -9,7 +9,7 @@ import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.builders.FriendRequestBuilder;
 import world.skytale.model.AttachmentFactory;
 import world.skytale.model.sendable.FriendRequest;
-import world.skytale.model.proto.FriendRequestImp;
+import world.skytale.model.implementations.FriendRequestImp;
 
 public class FriendRequestSender extends MessageSender {
 

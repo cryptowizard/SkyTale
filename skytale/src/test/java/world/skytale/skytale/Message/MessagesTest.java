@@ -38,16 +38,10 @@ public class MessagesTest {
 
         Messages.Contact contact2 = Messages.Contact.parseFrom(contact1.toByteArray());
 
-      ContactProto contactProto = new ContactProto(contact2);
+        ContactProto contactProto = new ContactProto(contact2);
 
 
         assertEquals(adress,contactProto.getAdress());
-
-
-
-
-
-
     }
 
 

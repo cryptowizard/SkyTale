@@ -41,12 +41,16 @@ message ChatRequest
     Attachment chatImage=3;
     string chatName=4;
 }
-
+message PostEncryptionKeys
+{
+  repeated bytes encryptedEncryptionKeys =1;
+}
 message EncryptionKey
 {
-    bytes encryptedKeyBytes=1;
+    bytes secretKeyBytes=1;
     int64 time=2;
-    int64 senderID=3;
+   // int64 senderID=3;
+    // senderID is always the ID of the message sender
 }
 message ProfilePage
 {

@@ -1,6 +1,6 @@
 package world.xfreemedia;
 
-import world.skytale.model.proto.FriendRequestImp;
+import world.skytale.model.implementations.FriendRequestImp;
 import world.skytale.model.sendable.FriendRequest;
 
 public class FriendRelation {

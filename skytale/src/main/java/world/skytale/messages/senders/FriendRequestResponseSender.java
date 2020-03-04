@@ -34,7 +34,7 @@ public class FriendRequestResponseSender extends MessageSender {
     }
 
     private void setFriendsContact(ID friedsID) throws ItemNotFoundException {
-        this.newFriendsContact = databaseHandler.getTableContacts().getContact(friedsID);
+        this.newFriendsContact = databaseHandler.getContactsHandler().getContact(friedsID);
     }
 
     private void setFriendsChat(ID friendsID) throws ItemNotFoundException {
@@ -57,14 +57,14 @@ public class FriendRequestResponseSender extends MessageSender {
 
     @Override
     protected boolean addToDatabase() {
-        databaseHandler.getTableContacts().setContactIsFriend(newFriendsContact.getID(),true);
+        databaseHandler.getContactsHandler().setContactIsFriend(newFriendsContact.getID(),true);
         databaseHandler.getChatHandler().addChat(friendsChat);
         return true;
     }
 
     @Override
     protected boolean removeFromDatabase() {
-        databaseHandler.getTableContacts().setContactIsFriend(newFriendsContact.getID(),false);
+        databaseHandler.getContactsHandler().setContactIsFriend(newFriendsContact.getID(),false);
         databaseHandler.getChatHandler().removeChat(friendsChat);
         return true;
     }

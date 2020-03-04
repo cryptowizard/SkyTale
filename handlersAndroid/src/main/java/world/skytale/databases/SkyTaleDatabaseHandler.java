@@ -19,17 +19,18 @@ import world.database.Tables.TableFriendRequest;
 import world.database.Tables.TablePosts;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.model.Account;
+import world.skytale.model.sendable.EncryptionKey;
 
 public class SkyTaleDatabaseHandler implements DatabaseHandler, AccountProvider {
 
 
 
     SQLDatabaseHelper databaseHelper;
-    Account account;
+    UserAccount account;
     FilesHandlerImpl filesHandler;
 
 
-    public SkyTaleDatabaseHandler(Context context, Account account)
+    public SkyTaleDatabaseHandler(Context context, UserAccount account)
     {
         this.account = account;
         this.databaseHelper = new SQLDatabaseHelper(context);
@@ -39,7 +40,7 @@ public class SkyTaleDatabaseHandler implements DatabaseHandler, AccountProvider 
             e.printStackTrace();
         }
     }
-    public SkyTaleDatabaseHandler(SQLDatabaseHelper databaseHelper, Account account, Context context) {
+    public SkyTaleDatabaseHandler(SQLDatabaseHelper databaseHelper, UserAccount account, Context context) {
         this.databaseHelper = databaseHelper;
         this.account=account;
 
@@ -56,7 +57,7 @@ public class SkyTaleDatabaseHandler implements DatabaseHandler, AccountProvider 
     }
 
     @Override
-    public ContactsHandler getTableContacts() {
+    public ContactsHandler getContactsHandler() {
         return databaseHelper.getTableContacts();
     }
 
@@ -98,5 +99,12 @@ public class SkyTaleDatabaseHandler implements DatabaseHandler, AccountProvider 
     @Override
     public Account getCurrentAccount() {
         return account;
+    }
+
+    @Override
+    public boolean updatePostEncryptionKeys(EncryptionKey friendsPostEncryptionKey, EncryptionKey followersEncryptionKey) {
+        this.account.setFollowersPostEncryptionKey(followersEncryptionKey);
+        this.account.setFriendsPostEncryptionKey(friendsPostEncryptionKey);
+        return true;
     }
 }

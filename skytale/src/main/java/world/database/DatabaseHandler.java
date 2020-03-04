@@ -3,7 +3,7 @@ package world.database;
 public interface DatabaseHandler {
 
      AccountProvider getAccountProvider();
-     ContactsHandler getTableContacts();
+     ContactsHandler getContactsHandler();
      ChatHandler getChatHandler();
      ChatMessageHandler getChatMessageHandler();
      PostHandler getPostHandler();

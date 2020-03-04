@@ -15,11 +15,24 @@ import world.skytale.model.Account;
 import world.skytale.model.Attachment;
 import world.skytale.model.ID;
 import world.skytale.model.ProfilePage;
+import world.skytale.model.implementations.EncryptionKeyImp;
+import world.skytale.model.sendable.EncryptionKey;
 
 public class UserAccount implements Account {
 
     private ContactDAO userContact;
     private PrivateKey privateKey;
+
+    public void setFriendsPostEncryptionKey(EncryptionKey friendsPostEncryptionKey) {
+        this.friendsPostEncryptionKey = friendsPostEncryptionKey;
+    }
+
+    public void setFollowersPostEncryptionKey(EncryptionKey followersPostEncryptionKey) {
+        this.followersPostEncryptionKey = followersPostEncryptionKey;
+    }
+
+    EncryptionKey friendsPostEncryptionKey;
+    EncryptionKey followersPostEncryptionKey;
 
    private UserAccount(KeyPair keyPair, String email)
     {
@@ -27,13 +40,16 @@ public class UserAccount implements Account {
         PublicKey publicKey = keyPair.getPublic();
         ID id = ID.PublicKeyID.makeID(publicKey);
         this.userContact = new ContactDAO(id,publicKey,email);
+        this.followersPostEncryptionKey = EncryptionKeyImp.generateNewKey(id);
+        this.friendsPostEncryptionKey  = EncryptionKeyImp.generateNewKey(id);
+
     }
 
 
-    public static Account makeNewAccount(String email)
+    public static UserAccount makeNewAccount(String email)
     {
         KeyPair keyPair = AccountKey.generateKeyPair();
-        Account account = new UserAccount(keyPair,email);
+       UserAccount account = new UserAccount(keyPair,email);
         return account;
     }
 
@@ -81,5 +97,15 @@ public class UserAccount implements Account {
                return new ArrayList<String>();
             }
         };
+    }
+
+    @Override
+    public EncryptionKey getFriendsPostEncryptionKey() {
+        return null;
+    }
+
+    @Override
+    public EncryptionKey getFollowersPostEncryptionKey() {
+        return null;
     }
 }
