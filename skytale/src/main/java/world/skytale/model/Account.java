@@ -2,8 +2,13 @@ package world.skytale.model;
 
 import java.security.PrivateKey;
 
-public abstract class Account {
+import world.skytale.model.sendable.EncryptionKey;
 
-    public abstract Contact getUserContact();
-    public abstract PrivateKey getPrivateKey();
+public interface Account {
+     Contact getUserContact();
+     PrivateKey getPrivateKey();
+     ProfilePage getUserProfilePage();
+
+     EncryptionKey getFriendsPostEncryptionKey();
+     EncryptionKey getFollowersPostEncryptionKey();
 }

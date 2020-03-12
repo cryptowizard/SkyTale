@@ -62,7 +62,7 @@ public class PublickKeyConverter {
      */
     public static PublicKey fromBytes(byte [] encodedPublicKey) throws InvalidKeySpecException {
         try {
-            return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(encodedPublicKey));
+            return KeyFactory.getInstance("ECDH").generatePublic(new X509EncodedKeySpec(encodedPublicKey));
         } catch (NoSuchAlgorithmException e) {
            throw new RuntimeException(e.getMessage());
         }

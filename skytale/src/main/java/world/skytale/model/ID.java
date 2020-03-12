@@ -10,14 +10,14 @@ import world.skytale.cyphers.Sha256;
 
 
 /**
- *  IDs are long values used to uniquely identify object of the given type in database
+ *  IDs are long values used to uniquely identify object of the given contactType in database
  *  64 bit positive long values are enough due to decentralized nature of the network
  */
 public class ID implements Serializable, Comparable {
 
-    static final  long serialVersionUID = 777L;
+    static final  long serialVersionUID = 777l;
 
-    private long id;
+    private final long id;
 
 
     /**
@@ -27,7 +27,6 @@ public class ID implements Serializable, Comparable {
     public static ID generateRandomID()
     {
         long id = new Random().nextLong();
-        id = Math.abs(id);
         return new ID(id);
     }
 
@@ -35,6 +34,7 @@ public class ID implements Serializable, Comparable {
     {
             this.id = id;
     }
+
 
 
     public ID(String id)
@@ -48,6 +48,7 @@ public class ID implements Serializable, Comparable {
      * Base 32 is used so the returned string is shorter than base 10 or 16, but still easily readable and does not use any special characters
      * So it can be send in E-mail title without changing value due to different encoding used by the service provider
      */
+
     public String toString()
     {
         return LongConverter.toBase32String(id);
@@ -122,15 +123,16 @@ public static final class PublicKeyID {
 
     private static long generateID(PublicKey publicKey)
     {
-        byte [] publickKeyBytes = publicKey.getEncoded();
+        byte [] publicKeyBytes = publicKey.getEncoded();
 
-        byte [] hashedKey = Sha256.hash(publickKeyBytes);
+        byte [] hashedKey = Sha256.hash(publicKeyBytes);
 
         byte [] truncatedBytes = truncateBytes(hashedKey);
 
         long id = LongConverter.fromBytes(truncatedBytes);
 
-        return Math.abs(id);
+
+        return id;
 
     }
 }

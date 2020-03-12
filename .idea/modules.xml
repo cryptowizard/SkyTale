@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SkyTale.iml" filepath="$PROJECT_DIR$/SkyTale.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aappTest/aappTest.iml" filepath="$PROJECT_DIR$/aappTest/aappTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/handlersAndroid/handlersAndroid.iml" filepath="$PROJECT_DIR$/handlersAndroid/handlersAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/skytale/skytale.iml" filepath="$PROJECT_DIR$/skytale/skytale.iml" />
     </modules>
   </component>

@@ -1,26 +1,14 @@
 package world.skytale.model;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import javax.crypto.SecretKey;
 
-public class Chat {
-
-    public ID chatID;
-    public ID [] participantIDs;
-    public String chatName;
-    public SecretKey secretKey;
-    public String chatImagePath;
-
-
-    public Chat()
-    {
-
-    }
-    public  Chat (Chat chat)
-    {
-        this.chatID = chat.chatID;
-        this.participantIDs = chat.participantIDs;
-        this.chatName = chat.chatName;
-        this.secretKey = chat.secretKey;
-        this.chatImagePath = chat.chatImagePath;
-    }
+public interface Chat {
+    @NonNull ID getChatID();
+    @NonNull ID [] getParticipantIDs();
+    @NonNull SecretKey getSecretKey();
+    @NonNull String getChatName();
+    @Nullable Attachment getChatImage();
 }

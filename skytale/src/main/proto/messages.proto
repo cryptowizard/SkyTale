@@ -10,35 +10,97 @@ option java_outer_classname = "Messages";
 message Attachment
 {
     bytes fileBytes=1;
-    string fileName=2;
+    string fileExtension=2;
 }
 message Contact {
     bytes publicKey = 1;
     string address=2;
-    string firstName =3;
-    string lastName = 4;
-    Attachment profilePicture=5;
 }
 
-message PublicProfile{
+message FriendRequest
+{
+    string reciversEmail = 1;  // Recivers email required only for singing in
+    ProfilePage profilePage =3;
+}
+
+message FriendRequestAcceptRespone
+{
+    bytes chatEncryptionKey=1;
+    ProfilePage profilePage =3;
+    repeated EncryptionKey postEncryptionKeys=4;
+}
+// Friend chat request dont include picture or list of participants
+message FriendChatRequest{
+    bytes encryptedChatKey =2; // Secret chat key encrypted with chat
+}
+
+message ChatRequest
+{
+    int64 chatID =1;
+    bytes encryptedChatKey=2;
+    Attachment chatImage=3;
+    string chatName=4;
+}
+message PostEncryptionKeys
+{
+  repeated bytes encryptedEncryptionKeys =1;
+}
+message EncryptionKey
+{
+    bytes secretKeyBytes=1;
+    int64 time=2;
+   // int64 senderID=3;
+    // senderID is always the ID of the message sender
+}
+message ProfilePage
+{
+    string userName=1;
+    Attachment profilePicture=2;
+    string profileDescription=3;
+    repeated string profileLinks=4;
+    string configuration=5;
+}
+
+
+
+
+message PublicProfile {
     Contact contact=1;
-    string description=2;
-    repeated string links=3;
+    ProfilePage profilePage=2;
+}
+
+message Displayable {
+    string text = 1;
+    string configuration = 2;
+    repeated Attachment attachments=3;
+    string link=4;
+}
+
+message Comment {
+    int64 postSenderID=1;
+    int64 postTime=2;
+
+
+    int64 replyID =3;
+    int64 replyTime=4;
+
+    Displayable displayable = 5;
+}
+
+message Post {
+    int64 orginalSendersID = 1;
+    Displayable displayable =2;
 }
 
 
 message ChatMessage {
-    string messageText=1;
-    repeated Attachment attachments=2;
-    bytes randomBytes=3;
+    Displayable displayable=1;
+    bytes randomBytes=2;
 }
 
 message EncryptedChatMessage {
-    bytes encryptedChatMessage=1;
+    bytes encryptedChatMessageBytes=1;
     int64 chatID=2;
 }
 
-message Hmm
-{
-    string ok =1;
-}
+
