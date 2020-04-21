@@ -1,6 +1,8 @@
 package world.skytale.messages.processors;
 
 
+import android.util.Log;
+
 import com.google.protobuf.ByteString;
 
 import java.io.IOException;
@@ -41,6 +43,7 @@ public class PostEncryptionKeyProcessor implements MessageProcessor {
             byte [] decryptedKey = decryptWithAccountsPrivateKey(ByteConverter.fromBytesString(encryptedKey));
             Messages.EncryptionKey encryptionKeyProto = Messages.EncryptionKey.parseFrom(decryptedKey);
             EncryptionKey encryptionKey = new EncryptionKeyProto(encryptionKeyProto,senderID.toLong());
+           Log.i("timebzz",encryptionKey.getMessageID().toString());
             encryptionKeyHandler.addEncryptionKey(encryptionKey);
         }
     }

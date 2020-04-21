@@ -11,7 +11,6 @@ import org.junit.Rule;
 import world.database.DatabaseHandler;
 import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
-import world.skytale.model.Account;
 
 public class DatabaseHandlerTest {
     private final DatabaseHandler databaseHandler;
@@ -22,7 +21,7 @@ public class DatabaseHandlerTest {
     public DatabaseHandlerTest()
     {
         Context context  =  InstrumentationRegistry.getTargetContext();
-        Account user = UserAccount.makeNewAccount("MSD@xfreemedia.com");
+        UserAccount user = UserAccount.makeNewAccount("MSD@xfreemedia.com");
         this.databaseHandler = new SkyTaleDatabaseHandler(context, user);
 
     }

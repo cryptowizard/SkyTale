@@ -1,6 +1,8 @@
 package world.skytale.model;
 
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 /**
@@ -36,5 +38,9 @@ public class MessageID {
         return time;
     }
 
-
+    @NonNull
+    @Override
+    public String toString() {
+        return "senderID : "+senderID+" time "+time;
+    }
 }

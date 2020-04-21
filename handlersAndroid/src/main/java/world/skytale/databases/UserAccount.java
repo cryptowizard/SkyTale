@@ -22,6 +22,8 @@ public class UserAccount implements Account {
 
     private ContactDAO userContact;
     private PrivateKey privateKey;
+    EncryptionKey friendsPostEncryptionKey;
+    EncryptionKey followersPostEncryptionKey;
 
     public void setFriendsPostEncryptionKey(EncryptionKey friendsPostEncryptionKey) {
         this.friendsPostEncryptionKey = friendsPostEncryptionKey;
@@ -31,8 +33,7 @@ public class UserAccount implements Account {
         this.followersPostEncryptionKey = followersPostEncryptionKey;
     }
 
-    EncryptionKey friendsPostEncryptionKey;
-    EncryptionKey followersPostEncryptionKey;
+
 
    private UserAccount(KeyPair keyPair, String email)
     {
@@ -101,11 +102,11 @@ public class UserAccount implements Account {
 
     @Override
     public EncryptionKey getFriendsPostEncryptionKey() {
-        return null;
+        return friendsPostEncryptionKey;
     }
 
     @Override
     public EncryptionKey getFollowersPostEncryptionKey() {
-        return null;
+        return followersPostEncryptionKey;
     }
 }

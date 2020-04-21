@@ -125,7 +125,7 @@ public class PostEncryptionKeySender  {
         followersKeyList.add(followersEncryptionKey);
 
         friendsKeyList.add(followersEncryptionKey);
-        friendsKeyList.add(followersEncryptionKey);
+        friendsKeyList.add(friendsEncryptionKey);
 
         followersPostEncryptionKeyBuilder = new PostEncryptionKeyBuilder(attachmentFactory,accountProvider.getCurrentAccount());
         friendsPostEncryptionKeyBuilder = new PostEncryptionKeyBuilder(attachmentFactory,accountProvider.getCurrentAccount());

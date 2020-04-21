@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.security.KeyPair;
+import java.util.List;
 
 import world.database.ContactsHandler;
 import world.database.ItemNotFoundException;
@@ -94,6 +95,25 @@ public class TableContactsTest {
         assertEquals(mail,tmp.getAdress());
 
 
+    }
+
+    @Test
+    public void getAllContatsReturnsAllContacts()
+    {
+
+        SQLDatabaseHelper sqlDatabaseHelper = new SQLDatabaseHelper(context);
+        sqlDatabaseHelper.clearAll(sqlDatabaseHelper.getWritableDatabase());
+
+        contactsHandler = sqlDatabaseHelper.getTableContacts();
+
+        for(int i =0;i<10;i++)
+        {
+            ContactDAO contact = makeNewContact();
+            contactsHandler.addContact(contact);
+        }
+
+        List<Contact> all = contactsHandler.getAllContacts();
+        assertEquals(10,all.size());
     }
 
 

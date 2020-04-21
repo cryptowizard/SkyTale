@@ -9,11 +9,13 @@ import world.skytale.messages.VeryfiedMessage;
 import world.skytale.messages.builders.ChatMessageBuilder;
 import world.skytale.messages.builders.FriendRequestBuilder;
 import world.skytale.messages.builders.FriendRequestResponseBuilder;
+import world.skytale.messages.builders.PostEncryptionKeyBuilder;
 import world.skytale.messages.builders.PostMessageBuilder;
 import world.skytale.messages.processors.ChatMessageProcessor;
 import world.skytale.messages.processors.FriendRequestProcessor;
 import world.skytale.messages.processors.FriendRequestResponseProcessor;
 import world.skytale.messages.processors.MessageProcessor;
+import world.skytale.messages.processors.PostEncryptionKeyProcessor;
 import world.skytale.messages.processors.PostMessageProcessor;
 
 public abstract class IncomingMessageProcessor {
@@ -60,6 +62,8 @@ public abstract class IncomingMessageProcessor {
                 return new FriendRequestResponseProcessor(getDatabaseHandler());
             case  PostMessageBuilder.TYPE_TAG:
                 return new PostMessageProcessor(getDatabaseHandler().getPostHandler());
+            case PostEncryptionKeyBuilder.TYPE_TAG:
+                return new PostEncryptionKeyProcessor(getDatabaseHandler().getAccountProvider().getCurrentAccount(),getDatabaseHandler().getEncryptionKeyHandler());
 
 
 

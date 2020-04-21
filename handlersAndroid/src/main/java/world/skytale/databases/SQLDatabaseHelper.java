@@ -64,6 +64,7 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+        dropAllTables(db);
         db.execSQL(TableContacts.CreateTable());
         db.execSQL(TableChatList.createTable());
         db.execSQL(TablePosts.createTable());
@@ -74,7 +75,7 @@ public class SQLDatabaseHelper extends SQLiteOpenHelper implements  ChatHandler,
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            clearAll(db);
+           dropAllTables(db);
             onCreate(db);
     }
 

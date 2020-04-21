@@ -58,6 +58,7 @@ public abstract class Table<DAO, ID> {
         }
         cursor.moveToFirst();
         DAO dao = readFromCursor(cursor);
+        db.close();
         return dao;
     }
     public boolean updateData(DAO dao, ID id)
@@ -87,8 +88,10 @@ public abstract class Table<DAO, ID> {
         SQLiteDatabase db = sqlDatabaseHelper.getWritableDatabase();
         String query = "SELECT  * FROM " + getTableName();
         Cursor cursor = db.rawQuery(query,null);
+        ArrayList<DAO> result =  readAllFromCursor(cursor);
         db.close();
-        return readAllFromCursor(cursor);
+        return result;
+
     }
 
     protected ArrayList<DAO> readAllFromCursor(Cursor cursor)
@@ -103,6 +106,7 @@ public abstract class Table<DAO, ID> {
         while(!cursor.isAfterLast())
         {
             list.add(readFromCursor(cursor));
+            cursor.moveToNext();
         }
         return list;
     }

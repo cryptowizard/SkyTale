@@ -6,8 +6,10 @@ import world.database.DatabaseHandler;
 import world.database.MailTransporter;
 import world.skytale.messages.senders.FriendRequestResponseSender;
 import world.skytale.messages.senders.FriendRequestSender;
+import world.skytale.messages.senders.PostEncryptionKeySender;
 import world.skytale.messages.senders.PostSender;
 import world.skytale.model.AttachmentFactory;
+import world.skytale.model.sendable.EncryptionKey;
 import world.skytale.model.sendable.FriendRequest;
 import world.skytale.model.sendable.Post;
 
@@ -50,6 +52,11 @@ private final AttachmentFactory attachmentFactory;
         PostSender postSender = new PostSender(mailTransporter, databaseHandler, attachmentFactory);
         postSender.sharePostWithAllFriends(post);
 
+    }
+
+    public void updatePostEncryptionKeys(EncryptionKey friendsEncryptionKey, EncryptionKey followersEncryptionKey) throws PostEncryptionKeySender.KeySharingException {
+        PostEncryptionKeySender postEncryptionKeySender = new PostEncryptionKeySender(mailTransporter,databaseHandler,attachmentFactory);
+        postEncryptionKeySender.updatePostEncryptionKeys(friendsEncryptionKey, followersEncryptionKey);
     }
 
 
