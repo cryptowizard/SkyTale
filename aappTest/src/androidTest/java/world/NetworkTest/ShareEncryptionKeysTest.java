@@ -19,7 +19,7 @@ import world.skytale.converters.ByteConverter;
 import world.skytale.databases.daos.EncryptionKeyDAO;
 import world.skytale.messages.senders.PostEncryptionKeySender;
 import world.skytale.model.implementations.EncryptionKeyImp;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 import world.xfreemedia.FriendRelation;
 import world.xfreemedia.MockedNetwork;
 import world.xfreemedia.MockedUser;

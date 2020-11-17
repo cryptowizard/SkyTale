@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./aappTest/libs/mail.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/aappTest/libs/mail.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

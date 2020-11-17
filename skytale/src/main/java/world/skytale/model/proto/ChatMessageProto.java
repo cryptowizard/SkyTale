@@ -6,8 +6,8 @@ import java.util.Random;
 
 import world.skytale.converters.ByteConverter;
 import world.skytale.message.Messages;
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.ID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.Displayable;
 

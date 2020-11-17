@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import world.database.ItemNotFoundException;
 import world.skytale.databases.daos.DisplayableDAO;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.PostImp;
 import world.skytale.model.sendable.Post;
 import world.xfreemedia.FriendRelation;

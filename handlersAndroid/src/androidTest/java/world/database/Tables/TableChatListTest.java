@@ -18,7 +18,7 @@ import world.skytale.cyphers.AES;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.model.Chat;
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.ChatImp;
 
 import static org.junit.Assert.assertTrue;

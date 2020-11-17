@@ -18,7 +18,8 @@ public class FriendRelation {
     public static boolean usersAreFriends(MockedUser user0, MockedUser user1)
     {
         try {
-            return user0.skyTaleDatabaseHandler.getContactsHandler().getContact(user1.getUserID()).isFriend() && user1.skyTaleDatabaseHandler.getContactsHandler().getContact(user0.getUserID()).isFriend();
+            return user0.skyTaleDatabaseHandler.getContactsHandler().getContact(user1.getUserID()).isFriend() &&
+                    user1.skyTaleDatabaseHandler.getContactsHandler().getContact(user0.getUserID()).isFriend();
         } catch (ItemNotFoundException e) {
             return false;
         }

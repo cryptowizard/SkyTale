@@ -9,7 +9,7 @@ import world.skytale.MessageProcessingException;
 import world.skytale.converters.PublickKeyConverter;
 import world.skytale.message.Messages;
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 public class ContactProto implements Contact {
 

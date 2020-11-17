@@ -5,7 +5,6 @@ import javax.crypto.SecretKey;
 import world.skytale.cyphers.AES;
 import world.skytale.model.Attachment;
 import world.skytale.model.Chat;
-import world.skytale.model.ID;
 
 public class ChatImp implements Chat {
 

@@ -18,7 +18,7 @@ import world.skytale.cyphers.AccountKey;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.ContactDAO;
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

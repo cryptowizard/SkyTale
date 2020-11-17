@@ -18,9 +18,9 @@ import world.skytale.cyphers.ElipticCurveCypher;
 import world.skytale.message.Messages;
 import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.Account;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.proto.EncryptionKeyProto;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 public class PostEncryptionKeyProcessor implements MessageProcessor {
 
@@ -43,7 +43,7 @@ public class PostEncryptionKeyProcessor implements MessageProcessor {
             byte [] decryptedKey = decryptWithAccountsPrivateKey(ByteConverter.fromBytesString(encryptedKey));
             Messages.EncryptionKey encryptionKeyProto = Messages.EncryptionKey.parseFrom(decryptedKey);
             EncryptionKey encryptionKey = new EncryptionKeyProto(encryptionKeyProto,senderID.toLong());
-           Log.i("timebzz",encryptionKey.getMessageID().toString());
+           Log.i("timebzz",encryptionKey.getKeyID().toString());
             encryptionKeyHandler.addEncryptionKey(encryptionKey);
         }
     }

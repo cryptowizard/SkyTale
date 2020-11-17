@@ -6,13 +6,13 @@ import android.database.Cursor;
 import world.database.CommentsHandler;
 import world.database.ItemNotFoundException;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.CommentDAO;
+import world.skytale.databases.daos.ReplyDAO;
 import world.skytale.databases.daos.DisplayableDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
-import world.skytale.model.MessageID;
-import world.skytale.model.sendable.Comment;
+import world.skytale.model.implementations.MessageID;
+import world.skytale.model.sendable.Reply;
 
-public class TableComments extends Table<CommentDAO, MessageID> implements CommentsHandler {
+public class TableComments extends Table<ReplyDAO, MessageID> implements CommentsHandler {
 
 
     public static final String TABLE_NAME = "Comments";
@@ -51,7 +51,7 @@ public class TableComments extends Table<CommentDAO, MessageID> implements Comme
     }
 
     @Override
-    protected CommentDAO readFromCursor(Cursor cursor) {
+    protected ReplyDAO readFromCursor(Cursor cursor) {
         long senderID, time,postSenderID, postTime,replySenderID,replyTime;
 
         senderID = cursor.getLong(cursor.getColumnIndex(SENDER_ID));
@@ -71,16 +71,16 @@ public class TableComments extends Table<CommentDAO, MessageID> implements Comme
         DisplayableDAO displayableDAO = DisplayableSQLHelper.readFromCursor(cursor);
 
 
-        return new CommentDAO(messageID,postID,replyID,displayableDAO);
+        return new ReplyDAO(messageID,postID,replyID,displayableDAO);
     }
 
     @Override
-    protected ContentValues putIntoContentValues(CommentDAO commentDAO) {
+    protected ContentValues putIntoContentValues(ReplyDAO commentDAO) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SENDER_ID,commentDAO.getMessageID().getSenderID().toLong());
         contentValues.put(TIME,commentDAO.getMessageID().getTime());
-        contentValues.put(POST_SENDER_ID,commentDAO.getPostID().getSenderID().toLong());
-        contentValues.put(POST_TIME,commentDAO.getPostID().getTime());
+        contentValues.put(POST_SENDER_ID,commentDAO.getOrginalContentID().getSenderID().toLong());
+        contentValues.put(POST_TIME,commentDAO.getOrginalContentID().getTime());
 
         if(commentDAO.getReplyID()!=null)
         {
@@ -105,26 +105,26 @@ public class TableComments extends Table<CommentDAO, MessageID> implements Comme
     }
 
     @Override
-    public Comment getComment(MessageID messageID) throws ItemNotFoundException {
+    public Reply getComment(MessageID messageID) throws ItemNotFoundException {
         return getData(messageID);
     }
 
     @Override
-    public boolean addComment(Comment comment) {
+    public boolean addComment(Reply reply) {
 
 
-        return this.addData(toDAO(comment,filesHandler));
+        return this.addData(toDAO(reply,filesHandler));
     }
 
-    public static CommentDAO toDAO(Comment comment, FilesHandlerImpl filesHandler)
+    public static ReplyDAO toDAO(Reply reply, FilesHandlerImpl filesHandler)
     {
-        DisplayableDAO displayableDAO = DisplayableSQLHelper.createDAO(comment.getDisplayable(),filesHandler);
-        CommentDAO commentDAO = new CommentDAO(comment.getMessageID(),comment.getPostID(),comment.getReplyID(),displayableDAO);
+        DisplayableDAO displayableDAO = DisplayableSQLHelper.createDAO(reply.getDisplayable(),filesHandler);
+        ReplyDAO commentDAO = new ReplyDAO(reply.getMessageID(), reply.getOrginalContentID(), reply.getReplyID(),displayableDAO);
         return commentDAO;
     }
 
     @Override
-    public boolean removeComment(Comment comment) {
-        return this.removeData(comment.getMessageID());
+    public boolean removeComment(Reply reply) {
+        return this.removeData(reply.getMessageID());
     }
 }

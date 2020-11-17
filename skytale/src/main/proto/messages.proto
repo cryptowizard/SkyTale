@@ -6,6 +6,12 @@ option java_package = "world.skytale.message";
 option java_outer_classname = "Messages";
 
 
+message MessageID
+{
+    int64 senderID =1;
+    int64 time =2;
+}
+
 
 message Attachment
 {
@@ -48,9 +54,15 @@ message PostEncryptionKeys
 message EncryptionKey
 {
     bytes secretKeyBytes=1;
-    int64 time=2;
+    int32  encryptionKeyType =2;
    // int64 senderID=3;
     // senderID is always the ID of the message sender
+}
+
+message EncryptionKeyID
+{
+    int64 senderID =1;
+    int32  encryptionKeyType =2;
 }
 message ProfilePage
 {
@@ -76,15 +88,24 @@ message Displayable {
     string link=4;
 }
 
-message Comment {
-    int64 postSenderID=1;
-    int64 postTime=2;
 
+
+message Comment {
+
+    int64 postSenderID =1;
+    int64  postTime =2;
 
     int64 replyID =3;
-    int64 replyTime=4;
+    int64  replyTime=4;
 
     Displayable displayable = 5;
+}
+
+message EncryptedPost
+{
+    EncryptionKeyID keyID =1;
+    bytes  encryptedPostBytes =2;
+
 }
 
 message Post {

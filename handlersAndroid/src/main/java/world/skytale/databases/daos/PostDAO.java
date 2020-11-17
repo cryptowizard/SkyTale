@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 import java.util.Date;
 
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.ID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.Post;
 
 public class PostDAO implements Post {

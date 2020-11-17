@@ -14,7 +14,7 @@ import world.skytale.messages.builders.FriendRequestResponseBuilder;
 import world.skytale.model.AttachmentFactory;
 import world.skytale.model.Chat;
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.ProfilePage;
 import world.skytale.model.implementations.FriendsChat;
 import world.skytale.model.sendable.FriendRequest;

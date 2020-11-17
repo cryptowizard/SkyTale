@@ -7,7 +7,6 @@ import javax.crypto.SecretKey;
 
 import world.skytale.model.Attachment;
 import world.skytale.model.Chat;
-import world.skytale.model.ID;
 import world.skytale.model.ProfilePage;
 
 public class FriendsChat implements Chat {

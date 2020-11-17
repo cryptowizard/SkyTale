@@ -7,7 +7,7 @@ import java.util.List;
 
 import world.skytale.message.Messages;
 import world.skytale.model.Attachment;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.ProfilePage;
 
 public class ProfilePageProto implements ProfilePage {

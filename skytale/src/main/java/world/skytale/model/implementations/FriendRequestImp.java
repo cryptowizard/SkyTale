@@ -2,8 +2,6 @@ package world.skytale.model.implementations;
 
 import androidx.annotation.NonNull;
 
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
 import world.skytale.model.sendable.FriendRequest;
 
 public class FriendRequestImp implements FriendRequest {

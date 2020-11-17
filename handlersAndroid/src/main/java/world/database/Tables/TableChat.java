@@ -11,7 +11,7 @@ import world.skytale.converters.LongConverter;
 import world.skytale.databases.daos.ChatMessageDAO;
 import world.skytale.databases.daos.DisplayableDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.sendable.ChatMessage;
 
 

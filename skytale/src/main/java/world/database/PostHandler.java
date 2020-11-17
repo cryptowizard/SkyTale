@@ -1,6 +1,6 @@
 package world.database;
 
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.Post;
 
 public interface PostHandler {

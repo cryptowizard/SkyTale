@@ -7,8 +7,8 @@ import world.database.FriendRequestHandler;
 import world.database.ItemNotFoundException;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.FriendRequestDao;
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.ID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.FriendRequest;
 
 public class TableFriendRequest extends Table<FriendRequestDao, MessageID> implements FriendRequestHandler
@@ -78,7 +78,7 @@ public class TableFriendRequest extends Table<FriendRequestDao, MessageID> imple
     }
 
     @Override
-    public FriendRequest getFriendRequest(world.skytale.model.MessageID messageID) throws ItemNotFoundException {
+    public FriendRequest getFriendRequest(MessageID messageID) throws ItemNotFoundException {
         return this.getData(messageID);
     }
 

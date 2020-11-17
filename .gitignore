@@ -10,3 +10,19 @@ local.properties
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
 
 .gradle/5.4.1/executionHistory/executionHistory.lock
+
+.gradle/6.1.1/javaCompile/
+
+.gradle/checksums/
+
+.gradle/5.4.1/fileContent/
+
+.gradle/5.4.1/fileHashes/
+
+.gradle/5.4.1/javaCompile/
+
+.gradle/5.4.1/fileChanges/
+
+.gradle/6.1.1/executionHistory/
+
+.gradle/6.1.1/fileHashes/

@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import java.security.PublicKey;
 
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 public class ContactDAO implements Contact {
 

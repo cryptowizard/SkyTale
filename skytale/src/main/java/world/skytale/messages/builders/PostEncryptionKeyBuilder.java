@@ -11,7 +11,7 @@ import world.skytale.model.Account;
 import world.skytale.model.AttachmentFactory;
 import world.skytale.model.Contact;
 import world.skytale.model.proto.EncryptionKeyProto;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 public class PostEncryptionKeyBuilder extends MailBuilder{
 

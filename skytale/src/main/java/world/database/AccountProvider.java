@@ -1,7 +1,7 @@
 package world.database;
 
 import world.skytale.model.Account;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 /**
  * Account provider object is used to retrieve current users Account and make changes to it

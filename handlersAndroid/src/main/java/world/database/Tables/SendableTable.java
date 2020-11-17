@@ -3,7 +3,7 @@ package world.database.Tables;
 import android.database.Cursor;
 
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.Sendable;
 
 public abstract class SendableTable <T extends Sendable>  extends Table <T, MessageID> {

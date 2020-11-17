@@ -5,7 +5,7 @@ import org.junit.Test;
 import world.database.ItemNotFoundException;
 import world.database.PostHandler;
 import world.skytale.databases.daos.DisplayableDAO;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.PostImp;
 import world.skytale.model.sendable.Post;
 

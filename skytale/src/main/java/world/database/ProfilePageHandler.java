@@ -1,6 +1,6 @@
 package world.database;
 
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.ProfilePage;
 
 public interface ProfilePageHandler {

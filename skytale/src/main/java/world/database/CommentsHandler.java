@@ -1,11 +1,11 @@
 package world.database;
 
-import world.skytale.model.MessageID;
-import world.skytale.model.sendable.Comment;
+import world.skytale.model.implementations.MessageID;
+import world.skytale.model.sendable.Reply;
 
 public interface CommentsHandler {
-    Comment getComment(MessageID messageID) throws ItemNotFoundException;
-    boolean addComment(Comment comment);
-    boolean removeComment(Comment comment);
+    Reply getComment(MessageID messageID) throws ItemNotFoundException;
+    boolean addComment(Reply reply);
+    boolean removeComment(Reply reply);
 
 }

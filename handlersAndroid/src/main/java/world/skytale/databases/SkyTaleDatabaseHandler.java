@@ -19,7 +19,7 @@ import world.database.Tables.TableFriendRequest;
 import world.database.Tables.TablePosts;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.model.Account;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 public class SkyTaleDatabaseHandler implements DatabaseHandler, AccountProvider {
 

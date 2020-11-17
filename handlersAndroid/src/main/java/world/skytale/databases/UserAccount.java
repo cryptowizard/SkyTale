@@ -13,10 +13,10 @@ import world.skytale.cyphers.AccountKey;
 import world.skytale.databases.daos.ContactDAO;
 import world.skytale.model.Account;
 import world.skytale.model.Attachment;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.ProfilePage;
 import world.skytale.model.implementations.EncryptionKeyImp;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 public class UserAccount implements Account {
 

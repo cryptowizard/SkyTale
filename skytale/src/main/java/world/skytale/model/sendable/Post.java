@@ -1,7 +1,7 @@
 package world.skytale.model.sendable;
 
 import world.skytale.model.Displayable;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 public interface Post  extends Sendable{
 

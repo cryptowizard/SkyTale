@@ -3,7 +3,7 @@ package world.database;
 import java.util.List;
 
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 
 /**

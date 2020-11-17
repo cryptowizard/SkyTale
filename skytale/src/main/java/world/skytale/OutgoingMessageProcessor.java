@@ -9,7 +9,7 @@ import world.skytale.messages.senders.FriendRequestSender;
 import world.skytale.messages.senders.PostEncryptionKeySender;
 import world.skytale.messages.senders.PostSender;
 import world.skytale.model.AttachmentFactory;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 import world.skytale.model.sendable.FriendRequest;
 import world.skytale.model.sendable.Post;
 

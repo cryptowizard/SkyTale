@@ -11,7 +11,7 @@ import org.junit.Test;
 import world.database.ItemNotFoundException;
 import world.skytale.model.Chat;
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.FriendsChat;
 import world.skytale.model.implementations.FriendRequestImp;
 import world.skytale.model.sendable.FriendRequest;

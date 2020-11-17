@@ -2,8 +2,6 @@ package world.skytale.model.implementations;
 
 import androidx.annotation.NonNull;
 
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
 import world.skytale.model.sendable.ChatMessage;
 import world.skytale.model.Displayable;
 

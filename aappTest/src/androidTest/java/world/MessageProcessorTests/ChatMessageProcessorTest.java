@@ -23,11 +23,11 @@ import world.skytale.messages.IncomingMail;
 import world.skytale.messages.builders.ChatMessageBuilder;
 import world.skytale.model.Account;
 import world.skytale.model.AttachmentFactory;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.ChatImp;
 import world.skytale.model.implementations.ChatMessageImp;
 import world.skytale.model.implementations.LoadedAttachment;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 import static org.junit.Assert.assertEquals;
 

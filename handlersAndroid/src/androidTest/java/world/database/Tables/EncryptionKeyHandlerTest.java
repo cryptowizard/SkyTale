@@ -2,14 +2,13 @@ package world.database.Tables;
 
 import android.Manifest;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.test.InstrumentationRegistry;
 import androidx.test.rule.GrantPermissionRule;
 
 import org.junit.Rule;
 import org.junit.Test;
-
-import java.util.Date;
 
 import javax.crypto.SecretKey;
 
@@ -18,15 +17,17 @@ import world.database.ItemNotFoundException;
 import world.skytale.converters.SecretKeyConventer;
 import world.skytale.cyphers.AES;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.EncryptionKeyDAO;
-import world.skytale.model.ID;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.databases.daos.EncryptionKeyDao;
+import world.skytale.model.EncryptionKey;
+import world.skytale.model.implementations.ID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class EncryptionKeyHandlerTest {
+
+    private static final String TAG = "EncryptionKeyHandlerTes";
 
 
     private final EncryptionKeyHandler encryptionKeyHandler;
@@ -42,24 +43,33 @@ public class EncryptionKeyHandlerTest {
 
     public static EncryptionKey makeRandomEncryptionKey()
     {
-        long time = new Date().getTime();
+        int type = 123;
         ID senderID = ID.generateRandomID();
         SecretKey secretKey = AES.generateNewKey();
 
-        return new EncryptionKeyDAO(senderID,time,secretKey);
+        return new EncryptionKeyDao(senderID,type,secretKey);
     }
 
+    public static EncryptionKey makeRandomEncryptionKey(ID senderID, int type)
+    {
+        SecretKey secretKey = AES.generateNewKey();
+
+        return new EncryptionKeyDao(senderID,type,secretKey);
+    }
 
     @Test
     public void addToDatabase()
     {
+
+        Log.i(TAG, "addToDatabase: Tests running 2222 ");
         EncryptionKey encryptionKey1 = makeRandomEncryptionKey();
        boolean result =  encryptionKeyHandler.addEncryptionKey(encryptionKey1);
        assertTrue(result);
 
+        Log.i(TAG, "addToDatabase: Tests running 22223 ");
 
-       boolean resultFalse = encryptionKeyHandler.addEncryptionKey(encryptionKey1);;
-       assertFalse(resultFalse);
+       boolean resultTrue = encryptionKeyHandler.addEncryptionKey(encryptionKey1);;
+       assertTrue(resultTrue);
     }
 
 
@@ -67,7 +77,7 @@ public class EncryptionKeyHandlerTest {
     public void getFromDatabase() throws ItemNotFoundException {
         EncryptionKey encryptionKey1 = makeRandomEncryptionKey();
         encryptionKeyHandler.addEncryptionKey(encryptionKey1);
-        EncryptionKey encryptionKey2 = encryptionKeyHandler.getEncryptionKey(encryptionKey1.getMessageID().getSenderID(),encryptionKey1.getMessageID().getTime());
+        EncryptionKey encryptionKey2 = encryptionKeyHandler.getEncryptionKey(encryptionKey1.getKeyID());
         checkIfEqual(encryptionKey1, encryptionKey2);
     }
 
@@ -77,13 +87,43 @@ public class EncryptionKeyHandlerTest {
         EncryptionKey encryptionKey1 = makeRandomEncryptionKey();
         encryptionKeyHandler.addEncryptionKey(encryptionKey1);
 
-        ((TableEncryptionKeys) encryptionKeyHandler).removeEncryptionKey(encryptionKey1.getMessageID().getSenderID(),encryptionKey1.getMessageID().getTime());
+        ((TableEncryptionKeys) encryptionKeyHandler).removeEncryptionKey(encryptionKey1.getKeyID());
+
+
+        boolean keyFound = false;
+        try {
+            EncryptionKey encryptionKey2 = encryptionKeyHandler.getEncryptionKey(encryptionKey1.getKeyID());
+            keyFound = encryptionKey2!=null;
+        } catch (ItemNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        assertFalse(keyFound);
+    }
+
+    @Test
+    public void getKeyWithTheLowestType() throws ItemNotFoundException
+    {
+
+        ID senderID = ID.generateRandomID();
+
+        EncryptionKey ek0 = makeRandomEncryptionKey(senderID,100);
+        EncryptionKey ek1 = makeRandomEncryptionKey(senderID,1);
+        EncryptionKey ek2 = makeRandomEncryptionKey(senderID, 2);
+
+
+        encryptionKeyHandler.addEncryptionKey(ek1);
+        encryptionKeyHandler.addEncryptionKey(ek2);
+
+        EncryptionKey ek3 = encryptionKeyHandler.getEncryptionKeyWithTheLowestType(senderID);
+
+        checkIfEqual(ek3, ek1);
     }
 
     public void checkIfEqual(EncryptionKey encryptionKey1, EncryptionKey encryptionKey2)
     {
-        assertEquals(encryptionKey1.getMessageID().getTime(), encryptionKey2.getMessageID().getTime());
-        assertEquals(encryptionKey1.getMessageID().getSenderID(), encryptionKey2.getMessageID().getSenderID());
+        assertEquals(encryptionKey1.getKeyID().getKeyType(), encryptionKey2.getKeyID().getKeyType());
+        assertEquals(encryptionKey1.getKeyID().getSenderID(), encryptionKey2.getKeyID().getSenderID());
         assertEquals(SecretKeyConventer.toString(encryptionKey1.getKey()),SecretKeyConventer.toString(encryptionKey2.getKey()));
     }
 }

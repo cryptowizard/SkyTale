@@ -5,8 +5,6 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 
 import world.skytale.model.Attachment;
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
 import world.skytale.model.Displayable;
 import world.skytale.model.sendable.Post;
 

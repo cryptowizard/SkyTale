@@ -8,7 +8,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.MessageID;
 
 import static world.skytale.cyphers.IvVectorGenerator.generateIvVector;
 

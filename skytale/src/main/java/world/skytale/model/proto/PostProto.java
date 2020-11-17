@@ -3,8 +3,8 @@ package world.skytale.model.proto;
 import androidx.annotation.NonNull;
 
 import world.skytale.message.Messages;
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.ID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.Displayable;
 import world.skytale.model.sendable.Post;
 

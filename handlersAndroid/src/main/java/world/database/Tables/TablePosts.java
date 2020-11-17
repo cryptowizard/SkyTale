@@ -13,8 +13,8 @@ import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.DisplayableDAO;
 import world.skytale.databases.daos.PostDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.ID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.Post;
 
 public class TablePosts implements PostHandler {

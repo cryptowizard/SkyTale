@@ -23,7 +23,7 @@ import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.builders.PostEncryptionKeyBuilder;
 import world.skytale.messages.processors.PostEncryptionKeyProcessor;
 import world.skytale.model.implementations.LoadedAttachment;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 import static org.junit.Assert.assertEquals;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import world.skytale.model.Chat;
 import world.skytale.model.Contact;
 import world.skytale.model.sendable.ChatMessage;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 import world.skytale.model.sendable.FriendRequest;
 import world.skytale.model.sendable.Post;
 

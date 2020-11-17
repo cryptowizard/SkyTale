@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SkyTale.iml" filepath="$PROJECT_DIR$/SkyTale.iml" group="SkyTale" />
-      <module fileurl="file://$PROJECT_DIR$/aappTest/aappTest.iml" filepath="$PROJECT_DIR$/aappTest/aappTest.iml" group="SkyTale/aappTest" />
-      <module fileurl="file://$PROJECT_DIR$/handlersAndroid/handlersAndroid.iml" filepath="$PROJECT_DIR$/handlersAndroid/handlersAndroid.iml" group="SkyTale/handlersAndroid" />
-      <module fileurl="file://$PROJECT_DIR$/skytale/skytale.iml" filepath="$PROJECT_DIR$/skytale/skytale.iml" group="SkyTale/skytale" />
+      <module fileurl="file://$PROJECT_DIR$/SkyTale.iml" filepath="$PROJECT_DIR$/SkyTale.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aappTest/SkyTale.aappTest.iml" filepath="$PROJECT_DIR$/.idea/modules/aappTest/SkyTale.aappTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/handlersAndroid/SkyTale.handlersAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/handlersAndroid/SkyTale.handlersAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/skytale/SkyTale.skytale.iml" filepath="$PROJECT_DIR$/.idea/modules/skytale/SkyTale.skytale.iml" />
     </modules>
   </component>
 </project>

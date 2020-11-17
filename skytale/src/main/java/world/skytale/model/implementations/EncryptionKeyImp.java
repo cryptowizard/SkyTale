@@ -3,43 +3,44 @@ package world.skytale.model.implementations;
 
 import androidx.annotation.NonNull;
 
-import java.util.Date;
-import java.util.Random;
-
 import javax.crypto.SecretKey;
 
 import world.skytale.cyphers.AES;
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 public class EncryptionKeyImp implements EncryptionKey {
 
-    private  final MessageID messageID;
+    private final KeyID keyID;
     private final SecretKey key;
 
-    public static final EncryptionKey generateNewKey(ID senderID)
+    public static final EncryptionKey generateNewKey(ID senderID, int keyType)
     {
-        // random is added to avoid creating two keys with the same ID
-        long time = new Date().getTime() + new Random().nextInt(1000*60*60);
         SecretKey secretKey = AES.generateNewKey();
-
-        return new EncryptionKeyImp(new MessageID(senderID,time),secretKey);
+        KeyID keyID = new KeyID(senderID, keyType);
+        return new EncryptionKeyImp(keyID, secretKey);
     }
 
-    public EncryptionKeyImp(MessageID messageID, SecretKey key) {
-        this.messageID = messageID;
+    public static EncryptionKey generateNewKey(ID senderID)
+    {
+        return generateNewKey(senderID, 777);
+    }
+
+    public EncryptionKeyImp(KeyID keyID, SecretKey key) {
+        this.keyID = keyID;
         this.key = key;
     }
 
+
     @NonNull
     @Override
-    public MessageID getMessageID() {
-        return messageID;
+    public KeyID getKeyID() {
+        return keyID;
     }
 
     @Override
     public SecretKey getKey() {
         return key;
     }
+
+
 }

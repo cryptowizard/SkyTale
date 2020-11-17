@@ -15,9 +15,9 @@ import world.skytale.databases.UserAccount;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.IncomingMail;
 import world.skytale.model.Account;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.LoadedAttachment;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
 
 public class MockedUser implements MailTransporter, AccountProvider  {
 

@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.daos.PostDAO;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.Post;
 
 public class TablePosts2 extends Table<Post, MessageID> {

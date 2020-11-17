@@ -8,7 +8,7 @@ import java.util.Random;
 
 import world.skytale.cyphers.AccountKey;
 import world.skytale.messages.builders.ChatMessageBuilder;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

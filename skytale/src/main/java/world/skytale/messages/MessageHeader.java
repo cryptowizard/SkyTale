@@ -2,8 +2,8 @@ package world.skytale.messages;
 
 import world.skytale.converters.LongConverter;
 import world.skytale.MessageProcessingException;
-import world.skytale.model.ID;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.ID;
+import world.skytale.model.implementations.MessageID;
 
 public class MessageHeader {
 

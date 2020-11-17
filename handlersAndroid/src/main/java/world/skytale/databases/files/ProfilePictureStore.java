@@ -6,7 +6,7 @@ import java.io.File;
 
 import world.skytale.databases.daos.FileAttachment;
 import world.skytale.model.Attachment;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 public class ProfilePictureStore {
 

@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import java.security.PublicKey;
 
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
 
 public class ContactImp implements Contact {
 

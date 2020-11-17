@@ -7,13 +7,14 @@ import javax.crypto.SecretKey;
 import world.skytale.converters.ByteConverter;
 import world.skytale.converters.SecretKeyConventer;
 import world.skytale.message.Messages;
-import world.skytale.model.MessageID;
-import world.skytale.model.sendable.EncryptionKey;
+import world.skytale.model.EncryptionKey;
+import world.skytale.model.implementations.KeyID;
 
 public class EncryptionKeyProto implements EncryptionKey {
 
     private final Messages.EncryptionKey protoMessage;
     private final long senderID;
+
 
     public EncryptionKeyProto(Messages.EncryptionKey protoMessage, long senderID) {
         this.protoMessage = protoMessage;
@@ -25,11 +26,17 @@ public class EncryptionKeyProto implements EncryptionKey {
     {
 
         Messages.EncryptionKey protoEncryptionKey = Messages.EncryptionKey.newBuilder()
-                .setTime(encryptionKey.getMessageID().getTime())
+                .setEncryptionKeyType(encryptionKey.getKeyID().getKeyType())
                 .setSecretKeyBytes(ByteConverter.toByteString(encryptionKey.getKey().getEncoded()))
                 .build();
 
         return protoEncryptionKey;
+    }
+
+    @NonNull
+    @Override
+    public KeyID getKeyID() {
+        return new KeyID(senderID, protoMessage.getEncryptionKeyType());
     }
 
     @Override
@@ -38,9 +45,5 @@ public class EncryptionKeyProto implements EncryptionKey {
         return SecretKeyConventer.fromBytes(keyBytes);
     }
 
-    @NonNull
-    @Override
-    public MessageID getMessageID() {
-        return new MessageID(senderID, protoMessage.getTime());
-    }
+
 }

@@ -10,7 +10,7 @@ import world.skytale.cyphers.AES;
 import world.skytale.message.Messages;
 import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.Chat;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.proto.ChatMessageProto;
 
 

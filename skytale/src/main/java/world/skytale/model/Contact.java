@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 
 import java.security.PublicKey;
 
+import world.skytale.model.implementations.ID;
+
 public interface Contact{
     /**
      *  Constant values have been used because they take less resources than enum

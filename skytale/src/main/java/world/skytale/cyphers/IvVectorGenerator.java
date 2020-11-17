@@ -3,7 +3,7 @@ package world.skytale.cyphers;
 import java.util.Arrays;
 
 import world.skytale.converters.LongConverter;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.MessageID;
 
 public class IvVectorGenerator {
 

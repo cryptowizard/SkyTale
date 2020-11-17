@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.ProfilePage;
 
 public class ProfilePageDAO implements ProfilePage {

@@ -1,6 +1,6 @@
 package world.skytale.model.sendable;
 
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 
 public interface Like extends Sendable{
     ID getSenderID();

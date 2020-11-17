@@ -8,7 +8,7 @@ import world.skytale.converters.PublickKeyConverter;
 import world.database.ContactsHandler;
 import world.skytale.model.Attachment;
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.ContactImp;
 
 import static world.skytale.messages.builders.MailBuilder.MESSAGE_EXTENSION;

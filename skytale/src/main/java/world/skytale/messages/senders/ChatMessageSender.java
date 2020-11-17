@@ -11,7 +11,7 @@ import world.skytale.messages.builders.ChatMessageBuilder;
 import world.skytale.model.AttachmentFactory;
 import world.skytale.model.Chat;
 import world.skytale.model.Contact;
-import world.skytale.model.ID;
+import world.skytale.model.implementations.ID;
 import world.skytale.model.sendable.ChatMessage;
 
 public class ChatMessageSender extends MessageSender{

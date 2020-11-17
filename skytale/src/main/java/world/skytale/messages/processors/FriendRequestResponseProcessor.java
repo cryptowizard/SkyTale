@@ -22,7 +22,7 @@ import world.skytale.messages.VeryfiedMessage;
 import world.skytale.model.Account;
 import world.skytale.model.Chat;
 import world.skytale.model.Contact;
-import world.skytale.model.MessageID;
+import world.skytale.model.implementations.MessageID;
 import world.skytale.model.ProfilePage;
 import world.skytale.model.implementations.FriendsChat;
 import world.skytale.model.proto.ProfilePageProto;
