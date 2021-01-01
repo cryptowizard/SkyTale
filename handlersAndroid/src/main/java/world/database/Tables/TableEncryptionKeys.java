@@ -42,11 +42,11 @@ public class TableEncryptionKeys extends Table<EncryptionKeyDao, KeyID> implemen
 
 
     @Override
-    protected ContentValues putIntoContentValues(EncryptionKeyDao encryptionKeyDAO) {
+    protected ContentValues putIntoContentValues(EncryptionKeyDao EncryptionKeyDao) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(SENDER_ID,encryptionKeyDAO.getSenderID());
-        contentValues.put(TYPE,encryptionKeyDAO.getKeyType());
-        contentValues.put(SECRET_KEY, encryptionKeyDAO.getSecretKeyString());
+        contentValues.put(SENDER_ID,EncryptionKeyDao.getSenderID());
+        contentValues.put(TYPE,EncryptionKeyDao.getKeyType());
+        contentValues.put(SECRET_KEY, EncryptionKeyDao.getSecretKeyString());
 
         return contentValues;
     }

@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 
 import javax.crypto.BadPaddingException;
@@ -18,12 +17,12 @@ import world.database.Tables.TableEncryptionKeys;
 import world.skytale.MessageProcessingException;
 import world.skytale.cyphers.AES;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.EncryptionKeyDAO;
+import world.skytale.databases.daos.EncryptionKeyDao;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.builders.PostEncryptionKeyBuilder;
 import world.skytale.messages.processors.PostEncryptionKeyProcessor;
-import world.skytale.model.implementations.LoadedAttachment;
 import world.skytale.model.EncryptionKey;
+import world.skytale.model.implementations.LoadedAttachment;
 
 import static org.junit.Assert.assertEquals;
 
@@ -54,7 +53,7 @@ public class PostEncryptionKeyProcessorTest extends ProcessorTest {
         for(int i=0;i<=number;i++)
         {
             SecretKey secretKey = AES.generateNewKey();
-            EncryptionKey encryptionKey = new EncryptionKeyDAO(sender.getUserContact().getID(),new Date().getTime()+i,secretKey);
+            EncryptionKey encryptionKey = new EncryptionKeyDao(sender.getUserContact().getID(),secretKey);
             list.add(encryptionKey);
         }
 
@@ -76,7 +75,7 @@ public class PostEncryptionKeyProcessorTest extends ProcessorTest {
     private void checkAllKeysAreInReciversDatabase(ArrayList<EncryptionKey> list) throws ItemNotFoundException {
         for(EncryptionKey encryptionKey : list)
         {
-            EncryptionKey fromHandler = encryptionKeyHandler.getEncryptionKey(encryptionKey.getMessageID().getSenderID(),encryptionKey.getMessageID().getTime());
+            EncryptionKey fromHandler = encryptionKeyHandler.getEncryptionKey(encryptionKey.getKeyID());
             assertEquals(fromHandler,encryptionKey);
         }
     }

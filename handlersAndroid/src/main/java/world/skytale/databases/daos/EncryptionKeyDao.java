@@ -11,15 +11,30 @@ import world.skytale.model.implementations.KeyID;
 
 public class EncryptionKeyDao implements EncryptionKey {
 
+    public static final int TYPE_DEFAULT = 100;
+
     private final int keyType;
     private final long senderID;
 
     private final SecretKey secretKey;
 
+
+
+
     public EncryptionKeyDao( long senderID,int keyType,SecretKey secretKey) {
         this.keyType = keyType;
         this.senderID = senderID;
         this.secretKey =secretKey;
+    }
+
+    public EncryptionKeyDao(long senderID, SecretKey secretKey)
+    {
+        this(senderID,TYPE_DEFAULT,secretKey);
+    }
+
+    public EncryptionKeyDao(ID senderID, SecretKey secretKey)
+    {
+        this(senderID.toLong(), secretKey);
     }
 
     public EncryptionKeyDao(long senderID, int keyType, String secretKeyString)
