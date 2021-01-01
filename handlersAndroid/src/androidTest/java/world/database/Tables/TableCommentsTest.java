@@ -4,17 +4,22 @@ import org.junit.Test;
 
 import world.database.CommentsHandler;
 
-public class TableCommentsTest {
+public class TableCommentsTest extends DatabaseHandlerTest{
 
-    CommentsHandler commentsHandler;
 
-    @Test
-    public void getComment() {
-    }
+    private CommentsHandler commentsHandler = getDatabaseHandler().getCommentsHandler();
+
 
     @Test
     public void addComment() {
     }
+
+    
+    @Test
+    public void getComment() {
+    }
+
+
 
     @Test
     public void removeComment() {

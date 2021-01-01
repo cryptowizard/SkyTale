@@ -39,7 +39,7 @@ public class TablePosts2 extends Table<Post, MessageID> {
 
     @Override
     protected String getTableName() {
-        return null;
+        return TABLE_NAME;
     }
 
     @Override

@@ -26,3 +26,7 @@ local.properties
 .gradle/6.1.1/executionHistory/
 
 .gradle/6.1.1/fileHashes/
+
+.idea/caches/
+
+.idea/modules/aappTest/
