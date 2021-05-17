@@ -109,11 +109,6 @@ public class FilesHandlerImpl implements AttachmentFactory {
         {
             tmp2.mkdir();
         }
-
-        if(!(tmp2.exists()&&tmp.exists()))
-        {
-            makeFolders();
-        }
     }
 
 

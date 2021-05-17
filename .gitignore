@@ -38,3 +38,9 @@ local.properties
 *.iml
 
 .idea/
+
+.gradle/6.7.1/executionHistory/
+
+.gradle/6.7.1/javaCompile/
+
+.gradle/6.7.1/fileHashes/
