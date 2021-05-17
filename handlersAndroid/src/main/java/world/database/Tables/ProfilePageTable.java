@@ -9,7 +9,7 @@ import world.database.ItemNotFoundException;
 import world.database.ProfilePageHandler;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.conventers.StringListConventer;
-import world.skytale.databases.daos.ProfilePageDAO;
+import world.skytale.databases.model.ProfilePageDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.model.Attachment;
 import world.skytale.model.implementations.ID;

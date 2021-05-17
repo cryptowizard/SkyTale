@@ -3,7 +3,7 @@ package world.database.Tables;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import world.skytale.databases.daos.DisplayableDAO;
+import world.skytale.databases.model.DisplayableDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.model.Displayable;
 

@@ -16,7 +16,7 @@ import world.database.DatabaseHandler;
 import world.skytale.databases.SQLDatabaseHelper;
 import world.skytale.databases.SkyTaleDatabaseHandler;
 import world.skytale.databases.UserAccount;
-import world.skytale.databases.daos.ChatMessageDAO;
+import world.skytale.databases.model.ChatMessageDAO;
 import world.skytale.databases.files.FilesHandlerImpl;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.IncomingMail;

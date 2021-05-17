@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import world.skytale.databases.daos.FileAttachment;
+import world.skytale.databases.model.FileAttachment;
 import world.skytale.model.Attachment;
 import world.skytale.model.AttachmentFactory;
 

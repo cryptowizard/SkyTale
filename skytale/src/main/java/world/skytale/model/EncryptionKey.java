@@ -18,6 +18,9 @@ public interface EncryptionKey{
     @NonNull
     KeyID getKeyID();
 
+    @NonNull
+    long getTime();
+
 
     @NonNull
     SecretKey getKey();

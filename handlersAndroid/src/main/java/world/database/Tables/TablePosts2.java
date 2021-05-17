@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.PostDAO;
+import world.skytale.databases.model.PostDAO;
 import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.Post;
 

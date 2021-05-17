@@ -39,6 +39,12 @@ public class EncryptionKeyProto implements EncryptionKey {
         return new KeyID(senderID, protoMessage.getEncryptionKeyType());
     }
 
+    @NonNull
+    @Override
+    public long getTime() {
+        return protoMessage.getTime();
+    }
+
     @Override
     public SecretKey getKey() {
         byte [] keyBytes = protoMessage.getSecretKeyBytes().toByteArray();

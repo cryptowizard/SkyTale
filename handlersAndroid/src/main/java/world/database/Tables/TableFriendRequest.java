@@ -6,7 +6,7 @@ import android.database.Cursor;
 import world.database.FriendRequestHandler;
 import world.database.ItemNotFoundException;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.FriendRequestDao;
+import world.skytale.databases.model.FriendRequestDao;
 import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.MessageID;
 import world.skytale.model.sendable.FriendRequest;

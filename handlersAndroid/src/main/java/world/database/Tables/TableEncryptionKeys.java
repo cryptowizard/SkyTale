@@ -4,20 +4,24 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import javax.crypto.SecretKey;
+
 import world.database.EncryptionKeyHandler;
 import world.database.ItemNotFoundException;
+import world.skytale.converters.SecretKeyConventer;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.EncryptionKeyDao;
+import world.skytale.databases.model.EncryptionKeyDAO;
 import world.skytale.model.EncryptionKey;
 import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.KeyID;
 
-public class TableEncryptionKeys extends Table<EncryptionKeyDao, KeyID> implements EncryptionKeyHandler {
+public class TableEncryptionKeys extends Table<EncryptionKeyDAO, KeyID> implements EncryptionKeyHandler {
 
 
     public static final String TABLE_NAME = "Keys";
     public static final String SECRET_KEY = "SECRET_KEY";
     public static final String TYPE = "TYPE";
+    public static final String TIME = "TIME";
     public static final String SENDER_ID = "SENDER_ID";
 
 
@@ -28,6 +32,7 @@ public class TableEncryptionKeys extends Table<EncryptionKeyDao, KeyID> implemen
         String createTable = "CREATE TABLE " + TABLE_NAME + " (\r\n" +
                 "	" + SENDER_ID + "	INTEGER,\r\n" +
                 "	" + TYPE + "	INTEGER,\r\n" +
+                "	" + TIME + "	INTEGER,\r\n" +
                 "	" + SECRET_KEY + "	TEXT,\r\n" +
                 "	PRIMARY KEY(" + SENDER_ID + "," + TYPE + ")\r\n" +
                 ");";
@@ -42,26 +47,30 @@ public class TableEncryptionKeys extends Table<EncryptionKeyDao, KeyID> implemen
 
 
     @Override
-    protected ContentValues putIntoContentValues(EncryptionKeyDao EncryptionKeyDao) {
+    protected ContentValues putIntoContentValues(EncryptionKeyDAO EncryptionKeyDAO) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(SENDER_ID,EncryptionKeyDao.getSenderID());
-        contentValues.put(TYPE,EncryptionKeyDao.getKeyType());
-        contentValues.put(SECRET_KEY, EncryptionKeyDao.getSecretKeyString());
+        contentValues.put(SENDER_ID,EncryptionKeyDAO.getKeyID().getSenderID().toLong());
+        contentValues.put(TYPE,EncryptionKeyDAO.getKeyID().getKeyType());
+        contentValues.put(SECRET_KEY, EncryptionKeyDAO.getSecretKeyString());
 
         return contentValues;
     }
 
 
-    protected EncryptionKeyDao readFromCursor(Cursor cursor) {
+    protected EncryptionKeyDAO readFromCursor(Cursor cursor) {
         long senderID;
         int type;
         String secretKEY;
+        long time;
 
         secretKEY  = cursor.getString(cursor.getColumnIndex(SECRET_KEY));
         senderID = cursor.getLong(cursor.getColumnIndex(SENDER_ID));
         type = cursor.getInt(cursor.getColumnIndex(TYPE));
+        time = cursor.getLong(cursor.getColumnIndex(TIME));
 
-        return new EncryptionKeyDao(senderID,type,secretKEY);
+        KeyID keyID = new KeyID(senderID, type);
+        SecretKey key = SecretKeyConventer.fromString(secretKEY);
+        return new EncryptionKeyDAO(keyID,key,time);
     }
 
     @Override
@@ -76,7 +85,7 @@ public class TableEncryptionKeys extends Table<EncryptionKeyDao, KeyID> implemen
     }
 
 
-    public EncryptionKeyDao getEncryptionKey(ID senderID,int type) throws ItemNotFoundException {
+    public EncryptionKeyDAO getEncryptionKey(ID senderID,int type) throws ItemNotFoundException {
         return this.getData(new KeyID(senderID, type));
     }
 
@@ -111,7 +120,7 @@ public class TableEncryptionKeys extends Table<EncryptionKeyDao, KeyID> implemen
 
     @Override
     public boolean addEncryptionKey(EncryptionKey encryptionKey) {
-        return this.insertORReplace(new EncryptionKeyDao(encryptionKey));
+        return this.insertORReplace(new EncryptionKeyDAO(encryptionKey));
     }
 
     public boolean removeEncryptionKey(KeyID keyID)

@@ -4,7 +4,7 @@ import androidx.annotation.Nullable;
 
 import java.io.File;
 
-import world.skytale.databases.daos.FileAttachment;
+import world.skytale.databases.model.FileAttachment;
 import world.skytale.model.Attachment;
 import world.skytale.model.implementations.ID;
 

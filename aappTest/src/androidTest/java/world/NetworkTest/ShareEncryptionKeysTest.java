@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import world.database.ItemNotFoundException;
 import world.database.Tables.TableEncryptionKeys;
 import world.skytale.converters.ByteConverter;
-import world.skytale.databases.daos.EncryptionKeyDao;
+import world.skytale.databases.model.EncryptionKeyDAO;
 import world.skytale.messages.senders.PostEncryptionKeySender;
-import world.skytale.model.implementations.EncryptionKeyImp;
 import world.skytale.model.EncryptionKey;
+import world.skytale.model.implementations.EncryptionKeyImp;
 import world.xfreemedia.FriendRelation;
 import world.xfreemedia.MockedNetwork;
 import world.xfreemedia.MockedUser;
@@ -47,18 +47,18 @@ public class ShareEncryptionKeysTest{
     public void friendsCanRecivesKeysFromEachOther() throws PostEncryptionKeySender.KeySharingException {
         MockedUser sender = mockedNetwork.getUser(0);
 
-        EncryptionKey encryptionKey0 = EncryptionKeyImp.generateNewKey(sender.getUserID());
-        EncryptionKey encryptionKey1 = EncryptionKeyImp.generateNewKey(sender.getUserID());
+        EncryptionKey encryptionKey0 = EncryptionKeyImp.generateNewKey(sender.getUserID(),1);
+        EncryptionKey encryptionKey1 = EncryptionKeyImp.generateNewKey(sender.getUserID(),2);
 
         Log.i("timebzz2",encryptionKey0.getKeyID().toString());
         Log.i("timebzz2",encryptionKey1.getKeyID().toString());
         sender.outgoinMessageProcessor.updatePostEncryptionKeys(encryptionKey0,encryptionKey1);
 
 
-        ArrayList<EncryptionKeyDao> allKeys = ((TableEncryptionKeys)mockedNetwork.getUser(1).skyTaleDatabaseHandler.getEncryptionKeyHandler()).getAll();
+        ArrayList<EncryptionKeyDAO> allKeys = ((TableEncryptionKeys)mockedNetwork.getUser(1).skyTaleDatabaseHandler.getEncryptionKeyHandler()).getAll();
 
         verifyUserHasEncryptionKey(mockedNetwork.getUser(1),encryptionKey0);
-        //verifyUserHasEncryptionKey(mockedNetwork.getUser(1),encryptionKey1);
+        verifyUserHasEncryptionKey(mockedNetwork.getUser(1),encryptionKey1);
 
     }
 

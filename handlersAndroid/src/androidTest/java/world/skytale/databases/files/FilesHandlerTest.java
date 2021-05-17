@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.Arrays;
 
-import world.skytale.databases.daos.FileAttachment;
+import world.skytale.databases.model.FileAttachment;
 import world.skytale.model.Attachment;
 import world.skytale.model.implementations.LoadedAttachment;
 

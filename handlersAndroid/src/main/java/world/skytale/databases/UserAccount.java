@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import world.skytale.cyphers.AccountKey;
-import world.skytale.databases.daos.ContactDAO;
+import world.skytale.databases.model.ContactDAO;
 import world.skytale.model.Account;
 import world.skytale.model.Attachment;
 import world.skytale.model.implementations.ID;
@@ -41,8 +41,8 @@ public class UserAccount implements Account {
         PublicKey publicKey = keyPair.getPublic();
         ID id = ID.PublicKeyID.makeID(publicKey);
         this.userContact = new ContactDAO(id,publicKey,email);
-        this.followersPostEncryptionKey = EncryptionKeyImp.generateNewKey(id);
-        this.friendsPostEncryptionKey  = EncryptionKeyImp.generateNewKey(id);
+        this.followersPostEncryptionKey = EncryptionKeyImp.generateNewKey(id,1);
+        this.friendsPostEncryptionKey  = EncryptionKeyImp.generateNewKey(id,2);
 
     }
 

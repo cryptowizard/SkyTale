@@ -13,10 +13,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 
-import world.database.Tables.TableChatListTest;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.ChatMessageDAO;
-import world.skytale.databases.daos.DisplayableDAO;
+import world.skytale.databases.model.ChatMessageDAO;
+import world.skytale.databases.model.DisplayableDAO;
 import world.skytale.model.Contact;
 import world.skytale.model.implementations.ChatImp;
 

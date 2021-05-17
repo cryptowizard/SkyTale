@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import world.database.ItemNotFoundException;
-import world.skytale.databases.daos.ChatDAO;
+import world.skytale.databases.model.ChatDAO;
 
 
 public class TableChatList {

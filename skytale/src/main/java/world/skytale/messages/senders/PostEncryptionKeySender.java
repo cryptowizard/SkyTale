@@ -13,11 +13,12 @@ import world.skytale.messages.builders.PostEncryptionKeyBuilder;
 import world.skytale.model.Account;
 import world.skytale.model.AttachmentFactory;
 import world.skytale.model.Contact;
-import world.skytale.model.implementations.ID;
-import world.skytale.model.implementations.EncryptionKeyImp;
 import world.skytale.model.EncryptionKey;
+import world.skytale.model.implementations.EncryptionKeyImp;
+import world.skytale.model.implementations.ID;
+import world.skytale.model.implementations.KeyID;
 
-public class PostEncryptionKeySender  {
+public class PostEncryptionKeySender {
 
     private final MailTransporter mailTransporter;
     private final AttachmentFactory attachmentFactory;
@@ -35,7 +36,6 @@ public class PostEncryptionKeySender  {
     EncryptionKey followersEncryptionKey;
 
 
-
     public PostEncryptionKeySender(MailTransporter mailTransporter, DatabaseHandler databaseHandler, AttachmentFactory attachmentFactory) {
         this.mailTransporter = mailTransporter;
         this.attachmentFactory = attachmentFactory;
@@ -49,7 +49,8 @@ public class PostEncryptionKeySender  {
     public void updatePostEncryptionKeys(EncryptionKey friendsEncryptionKey, EncryptionKey followersEncryptionKey) throws KeySharingException {
         this.followersEncryptionKey = followersEncryptionKey;
         this.friendsEncryptionKey = friendsEncryptionKey;
-        send();;
+        send();
+        ;
     }
 
     public void updatePostEncryptionKeys() throws KeySharingException {
@@ -58,19 +59,18 @@ public class PostEncryptionKeySender  {
     }
 
 
-    private void generateNewEncryptionKeys()
-    {
-        ID accountID =accountProvider.getCurrentAccount().getUserContact().getID();
+    private void generateNewEncryptionKeys() {
+        ID accountID = accountProvider.getCurrentAccount().getUserContact().getID();
 
-        this.friendsEncryptionKey = EncryptionKeyImp.generateNewKey(accountID);
-        this.followersEncryptionKey = EncryptionKeyImp.generateNewKey(accountID);
-
+        this.friendsEncryptionKey = EncryptionKeyImp.generateNewKey(accountID, KeyID.KEY_TYPE_FRIENDS);
+        this.followersEncryptionKey = EncryptionKeyImp.generateNewKey(accountID, KeyID.KEY_TYPE_FOLLOWERS);
     }
 
 
     /**
      * Encryption Keys updates are send differently from other methods as they require that message
      * is encrypted with diffrent key for each recipent
+     *
      * @return
      * @throws Exception
      */
@@ -78,32 +78,28 @@ public class PostEncryptionKeySender  {
         ArrayList<ID> failedMessagesIDs = new ArrayList<ID>();
         ArrayList<Exception> failureCouses = new ArrayList<>();
 
-            addToDatabase();
-            initilizeBuilders();
-            getContactList();
+        addToDatabase();
+        initilizeBuilders();
+        getContactList();
 
-            for(Contact contact : allContacts)
-            {
-                try{
-                   sendToContact(contact);
-                }
-                catch (Exception cause)
-                {
-                    failedMessagesIDs.add(contact.getID());
-                    failureCouses.add(cause);
-                }
+        for (Contact contact : allContacts) {
+            try {
+                sendToContact(contact);
+            } catch (Exception cause) {
+                failedMessagesIDs.add(contact.getID());
+                failureCouses.add(cause);
             }
+        }
 
-            if(failedMessagesIDs.size()>0)
-            {
-                throw new KeySharingException(failedMessagesIDs,failureCouses);
-            }
+        if (failedMessagesIDs.size() > 0) {
+            throw new KeySharingException(failedMessagesIDs, failureCouses);
+        }
     }
 
     private boolean addToDatabase() {
         boolean keysUpdated = accountProvider.updatePostEncryptionKeys(friendsEncryptionKey, followersEncryptionKey);
 
-        if(!keysUpdated) return  false;
+        if (!keysUpdated) return false;
 
         Account updatedAccount = accountProvider.getCurrentAccount();
 
@@ -111,14 +107,13 @@ public class PostEncryptionKeySender  {
         friendsEncryptionKey = updatedAccount.getFriendsPostEncryptionKey();
 
 
-       boolean followersKeyAdded =  encryptionKeyHandler.addEncryptionKey(followersEncryptionKey);
-       boolean friendsKeyAdded =  encryptionKeyHandler.addEncryptionKey(friendsEncryptionKey);
+        boolean followersKeyAdded = encryptionKeyHandler.addEncryptionKey(followersEncryptionKey);
+        boolean friendsKeyAdded = encryptionKeyHandler.addEncryptionKey(friendsEncryptionKey);
 
-       return (followersKeyAdded && friendsKeyAdded);
+        return (followersKeyAdded && friendsKeyAdded);
     }
 
-    private void initilizeBuilders()
-    {
+    private void initilizeBuilders() {
         ArrayList<EncryptionKey> followersKeyList = new ArrayList<EncryptionKey>();
         ArrayList<EncryptionKey> friendsKeyList = new ArrayList<EncryptionKey>();
 
@@ -127,48 +122,40 @@ public class PostEncryptionKeySender  {
         friendsKeyList.add(followersEncryptionKey);
         friendsKeyList.add(friendsEncryptionKey);
 
-        followersPostEncryptionKeyBuilder = new PostEncryptionKeyBuilder(attachmentFactory,accountProvider.getCurrentAccount());
-        friendsPostEncryptionKeyBuilder = new PostEncryptionKeyBuilder(attachmentFactory,accountProvider.getCurrentAccount());
+        followersPostEncryptionKeyBuilder = new PostEncryptionKeyBuilder(attachmentFactory, accountProvider.getCurrentAccount());
+        friendsPostEncryptionKeyBuilder = new PostEncryptionKeyBuilder(attachmentFactory, accountProvider.getCurrentAccount());
 
         followersPostEncryptionKeyBuilder.setEncryptionKeys(followersKeyList);
         friendsPostEncryptionKeyBuilder.setEncryptionKeys(friendsKeyList);
     }
 
-    private void getContactList()
-    {
+    private void getContactList() {
         allContacts = contactsHandler.getAllContacts();
     }
 
     private void sendToContact(Contact contact) throws Exception {
         DownloadedMail downloadedMail;
-        if(contact.isFriend())
-        {
+        if (contact.isFriend()) {
             friendsPostEncryptionKeyBuilder.setReciversContact(contact);
             downloadedMail = friendsPostEncryptionKeyBuilder.makeDownloadedMail();
-        }
-        else if(contact.isFollower())
-        {
+        } else if (contact.isFollower()) {
             followersPostEncryptionKeyBuilder.setReciversContact(contact);
             downloadedMail = followersPostEncryptionKeyBuilder.makeDownloadedMail();
-        }
-        else {
+        } else {
             return;
         }
-        mailTransporter.sendMail(downloadedMail,contact.getAdress());
+        mailTransporter.sendMail(downloadedMail, contact.getAdress());
     }
 
-  public static class KeySharingException extends Exception{
-       private  final ArrayList<ID> failedReciverIDs;
-       private final ArrayList<Exception> couses;
+    public static class KeySharingException extends Exception {
+        private final ArrayList<ID> failedReciverIDs;
+        private final ArrayList<Exception> couses;
 
-      public KeySharingException(ArrayList<ID> failedReciverIDs, ArrayList<Exception> couses) {
-          this.failedReciverIDs = failedReciverIDs;
-          this.couses = couses;
-      }
-  }
-
-
-
+        public KeySharingException(ArrayList<ID> failedReciverIDs, ArrayList<Exception> couses) {
+            this.failedReciverIDs = failedReciverIDs;
+            this.couses = couses;
+        }
+    }
 
 
 }

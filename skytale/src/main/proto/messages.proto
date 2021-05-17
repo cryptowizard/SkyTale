@@ -55,8 +55,7 @@ message EncryptionKey
 {
     bytes secretKeyBytes=1;
     int32  encryptionKeyType =2;
-   // int64 senderID=3;
-    // senderID is always the ID of the message sender
+    int64  time =3;
 }
 
 message EncryptionKeyID

@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import world.database.ItemNotFoundException;
-import world.skytale.databases.daos.DisplayableDAO;
+import world.skytale.databases.model.DisplayableDAO;
 import world.skytale.model.implementations.ID;
 import world.skytale.model.implementations.PostImp;
 import world.skytale.model.sendable.Post;

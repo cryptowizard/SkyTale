@@ -32,3 +32,9 @@ local.properties
 .idea/modules/aappTest/
 
 .idea/modules/handlersAndroid/SkyTale.handlersAndroid.iml
+
+.idea/libraries/
+
+*.iml
+
+.idea/

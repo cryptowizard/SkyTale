@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import javax.crypto.BadPaddingException;
@@ -17,7 +18,7 @@ import world.database.Tables.TableEncryptionKeys;
 import world.skytale.MessageProcessingException;
 import world.skytale.cyphers.AES;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.EncryptionKeyDao;
+import world.skytale.databases.model.EncryptionKeyDAO;
 import world.skytale.messages.DownloadedMail;
 import world.skytale.messages.builders.PostEncryptionKeyBuilder;
 import world.skytale.messages.processors.PostEncryptionKeyProcessor;
@@ -53,7 +54,7 @@ public class PostEncryptionKeyProcessorTest extends ProcessorTest {
         for(int i=0;i<=number;i++)
         {
             SecretKey secretKey = AES.generateNewKey();
-            EncryptionKey encryptionKey = new EncryptionKeyDao(sender.getUserContact().getID(),secretKey);
+            EncryptionKey encryptionKey = new EncryptionKeyDAO(sender.getUserContact().getID().toLong(),i,secretKey, new Date().getTime());
             list.add(encryptionKey);
         }
 

@@ -2,6 +2,9 @@ package world.skytale.model.implementations;
 
 public class KeyID {
 
+    public static final int KEY_TYPE_FRIENDS = 1;
+    public static final int KEY_TYPE_FOLLOWERS = 2;
+
     private final int keyType;
     private final long senderID;
 

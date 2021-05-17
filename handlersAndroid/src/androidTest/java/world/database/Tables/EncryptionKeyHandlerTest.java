@@ -10,6 +10,8 @@ import androidx.test.rule.GrantPermissionRule;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.Date;
+
 import javax.crypto.SecretKey;
 
 import world.database.EncryptionKeyHandler;
@@ -17,7 +19,7 @@ import world.database.ItemNotFoundException;
 import world.skytale.converters.SecretKeyConventer;
 import world.skytale.cyphers.AES;
 import world.skytale.databases.SQLDatabaseHelper;
-import world.skytale.databases.daos.EncryptionKeyDao;
+import world.skytale.databases.model.EncryptionKeyDAO;
 import world.skytale.model.EncryptionKey;
 import world.skytale.model.implementations.ID;
 
@@ -47,14 +49,16 @@ public class EncryptionKeyHandlerTest {
         ID senderID = ID.generateRandomID();
         SecretKey secretKey = AES.generateNewKey();
 
-        return new EncryptionKeyDao(senderID,type,secretKey);
+
+
+        return new EncryptionKeyDAO(senderID.toLong(),type,secretKey, new Date().getTime());
     }
 
     public static EncryptionKey makeRandomEncryptionKey(ID senderID, int type)
     {
         SecretKey secretKey = AES.generateNewKey();
 
-        return new EncryptionKeyDao(senderID,type,secretKey);
+        return new EncryptionKeyDAO(senderID.toLong(),type,secretKey, new Date().getTime());
     }
 
     @Test
