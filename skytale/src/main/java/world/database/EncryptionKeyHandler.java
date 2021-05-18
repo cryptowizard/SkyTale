@@ -7,9 +7,7 @@ import world.skytale.model.implementations.KeyID;
 public interface EncryptionKeyHandler {
     EncryptionKey getEncryptionKey(KeyID keyID) throws ItemNotFoundException;
 
-
     EncryptionKey getEncryptionKeyWithTheLowestType(ID senderID) throws ItemNotFoundException;
+
     boolean addEncryptionKey(EncryptionKey encryptionKey);
-
-
 }

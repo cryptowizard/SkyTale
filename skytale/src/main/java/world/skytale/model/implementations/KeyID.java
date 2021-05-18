@@ -1,5 +1,7 @@
 package world.skytale.model.implementations;
 
+import androidx.annotation.Nullable;
+
 public class KeyID {
 
     public static final int KEY_TYPE_FRIENDS = 1;
@@ -28,5 +30,15 @@ public class KeyID {
     public int getKeyType()
     {
         return keyType;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if(obj instanceof KeyID)
+        {
+            KeyID key = (KeyID) obj;
+            return key.getKeyType() == this.getKeyType() && key.getSenderID() == this.getSenderID();
+        }
+        return  false;
     }
 }
