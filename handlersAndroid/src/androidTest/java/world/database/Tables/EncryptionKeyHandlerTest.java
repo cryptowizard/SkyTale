@@ -129,5 +129,6 @@ public class EncryptionKeyHandlerTest {
         assertEquals(encryptionKey1.getKeyID().getKeyType(), encryptionKey2.getKeyID().getKeyType());
         assertEquals(encryptionKey1.getKeyID().getSenderID(), encryptionKey2.getKeyID().getSenderID());
         assertEquals(SecretKeyConventer.toString(encryptionKey1.getKey()),SecretKeyConventer.toString(encryptionKey2.getKey()));
+        assertEquals(encryptionKey1.getTime(), encryptionKey2.getTime());
     }
 }

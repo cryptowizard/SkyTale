@@ -24,9 +24,14 @@ public class EncryptionKeyImp implements EncryptionKey {
 
     public static final EncryptionKey generateNewKey(ID senderID, int keyType)
     {
+        long time = new Date().getTime();
+        return generateNewKey(senderID, keyType, time);
+    }
+
+    public static final EncryptionKey generateNewKey(ID senderID, int keyType , long time)
+    {
         SecretKey secretKey = AES.generateNewKey();
         KeyID keyID = new KeyID(senderID, keyType);
-        long time = new Date().getTime();
         return new EncryptionKeyImp(keyID, secretKey, time);
     }
 

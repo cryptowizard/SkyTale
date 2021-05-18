@@ -28,6 +28,7 @@ public class EncryptionKeyProto implements EncryptionKey {
         Messages.EncryptionKey protoEncryptionKey = Messages.EncryptionKey.newBuilder()
                 .setEncryptionKeyType(encryptionKey.getKeyID().getKeyType())
                 .setSecretKeyBytes(ByteConverter.toByteString(encryptionKey.getKey().getEncoded()))
+                .setTime(encryptionKey.getTime())
                 .build();
 
         return protoEncryptionKey;

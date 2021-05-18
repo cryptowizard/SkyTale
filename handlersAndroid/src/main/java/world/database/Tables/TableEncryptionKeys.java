@@ -52,6 +52,7 @@ public class TableEncryptionKeys extends Table<EncryptionKeyDAO, KeyID> implemen
         contentValues.put(SENDER_ID,EncryptionKeyDAO.getKeyID().getSenderID().toLong());
         contentValues.put(TYPE,EncryptionKeyDAO.getKeyID().getKeyType());
         contentValues.put(SECRET_KEY, EncryptionKeyDAO.getSecretKeyString());
+        contentValues.put(TIME, EncryptionKeyDAO.getTime());
 
         return contentValues;
     }
