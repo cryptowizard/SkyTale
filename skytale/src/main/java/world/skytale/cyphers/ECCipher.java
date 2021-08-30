@@ -28,8 +28,8 @@ public class ECCipher {
     public static KeyPair generateKeyPair()
     {
         try {
-            ECGenParameterSpec ecParamSpec = new ECGenParameterSpec("secp256k1");
-            KeyPairGenerator kpg = KeyPairGenerator.getInstance("ECDH","SC");
+            ECGenParameterSpec ecParamSpec = new ECGenParameterSpec(SPEC);
+            KeyPairGenerator kpg = KeyPairGenerator.getInstance("ECDH",PROVIDER);
             kpg.initialize(ecParamSpec);
 
             KeyPair keyPair=kpg.generateKeyPair();

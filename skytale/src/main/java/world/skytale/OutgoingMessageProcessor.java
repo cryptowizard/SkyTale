@@ -4,6 +4,7 @@ import java.util.List;
 
 import world.database.DatabaseHandler;
 import world.database.MailTransporter;
+import world.skytale.messages.senders.EncryptedPostSender;
 import world.skytale.messages.senders.FriendRequestResponseSender;
 import world.skytale.messages.senders.FriendRequestSender;
 import world.skytale.messages.senders.PostEncryptionKeySender;
@@ -45,6 +46,11 @@ private final AttachmentFactory attachmentFactory;
     public void sharePost(Post post, List<String> adresses) throws Exception {
         PostSender postSender = new PostSender(mailTransporter, databaseHandler, attachmentFactory);
         postSender.sharePost(post,adresses);
+    }
+
+    public void sharePost(Post post, List<String> addresses, EncryptionKey encryptionKey) throws Exception {
+        EncryptedPostSender encryptedPostSender = new EncryptedPostSender(mailTransporter, databaseHandler, attachmentFactory);
+        encryptedPostSender.sharePost(post,addresses,encryptionKey);
     }
 
     public void sherePostWithAllFriends(Post post)

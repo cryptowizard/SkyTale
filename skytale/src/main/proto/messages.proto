@@ -73,8 +73,6 @@ message ProfilePage
 }
 
 
-
-
 message PublicProfile {
     Contact contact=1;
     ProfilePage profilePage=2;

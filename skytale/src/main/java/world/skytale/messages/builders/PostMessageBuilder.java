@@ -31,7 +31,7 @@ public class PostMessageBuilder extends MailBuilder {
     }
 
     @Override
-    protected byte[] buildMessageBytes() {
+    protected byte[] buildMessageBytes() throws Exception {
         Messages.Post postProto = PostProto.toProtoMessage(post);
         return postProto.toByteArray();
     }

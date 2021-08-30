@@ -2,15 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.google.protobuf'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
 
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 30
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -45,8 +43,7 @@ dependencies {
 
 
 dependencies {
-    implementation 'com.google.protobuf:protobuf-lite:3.0.0'
-    testCompile project(path: ':skytale')
+    testImplementation project(path: ':skytale')
 }
 
 dependencies {
@@ -56,32 +53,30 @@ dependencies {
 
 dependencies {
 
-    compile 'com.madgag.spongycastle:core:1.54.0.0'
-    compile 'com.madgag.spongycastle:prov:1.54.0.0'
-    compile 'com.madgag.spongycastle:pkix:1.54.0.0'
-    compile 'com.madgag.spongycastle:pg:1.54.0.0'
+    api 'com.madgag.spongycastle:core:1.54.0.0'
+    api 'com.madgag.spongycastle:prov:1.54.0.0'
+    api 'com.madgag.spongycastle:pkix:1.54.0.0'
+    api 'com.madgag.spongycastle:pg:1.54.0.0'
 
 }
 
-
+dependencies {
+    // You need to depend on the lite runtime library, not protobuf-java
+    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+}
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.0.0'
-    }
-    plugins {
-        javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
+        artifact = 'com.google.protobuf:protoc:3.8.0'
     }
     generateProtoTasks {
         all().each { task ->
             task.builtins {
-                remove java
-            }
-            task.plugins {
-                javalite { }
+                java {
+                    option "lite"
+                }
             }
         }
     }
+    generatedFilesBaseDir = "$projectDir/build/generated"
 }

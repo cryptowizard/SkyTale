@@ -2,6 +2,11 @@ package world.skytale.model.implementations;
 
 import androidx.annotation.Nullable;
 
+
+/**
+ * To Do allow somwhere in the app to set maximum key type for type of relation
+ * this will limit storage use
+ */
 public class KeyID {
 
     public static final int KEY_TYPE_FRIENDS = 1;

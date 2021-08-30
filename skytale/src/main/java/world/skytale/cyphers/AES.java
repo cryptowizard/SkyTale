@@ -15,7 +15,7 @@ import static world.skytale.cyphers.IvVectorGenerator.generateIvVector;
 public class AES {
 
 
-    public static final int KEY_SIZE = 128;
+    public static final int KEY_SIZE = 256;
 
     public static SecretKey generateNewKey()
     {
